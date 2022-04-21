@@ -17,12 +17,6 @@ namespace Projekt
             this.surname = surname;
             this.category = category;
         }
-        public Judge(Judge copy)
-        {
-            name = copy.name;
-            surname = copy.surname;
-            category = copy.category;
-        }
         public string getName()
         {
             return name;
