@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Projekt
 {
@@ -11,7 +7,9 @@ namespace Projekt
         private string name, surname, category;
         public Judge()
         {
-            
+            name = "";
+            surname = "";
+            category = "";
         }
         public Judge(string name, string surname, string category)
         {
