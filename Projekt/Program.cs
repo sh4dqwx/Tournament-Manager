@@ -16,6 +16,7 @@ namespace Projekt
             volleyball.addTeam(new Team("Drużyna 7"));
             volleyball.addTeam(new Team("Drużyna 8"));
             volleyball.addTeam(new Team("Drużyna 9"));
+            volleyball.addTeam(new Team("Drużyna 10"));
 
             volleyball.playElimination();
             
