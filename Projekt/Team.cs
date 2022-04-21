@@ -4,18 +4,8 @@ namespace Projekt
 {
     public class Team
     {
-        private String name;
+        private string name;
         private int score;
-
-        public String getName()
-        {
-            return name;
-        }
-
-        public int getScore()
-        {
-            return score;
-        }
 
         public Team()
         {
@@ -23,10 +13,20 @@ namespace Projekt
             score = 0;
         }
 
-        public Team(String name)
+        public Team(string name)
         {
             this.name = name;
             this.score = 0;
+        }
+
+        public string getName()
+        {
+            return name;
+        }
+
+        public int getScore()
+        {
+            return score;
         }
     }
 }

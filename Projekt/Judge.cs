@@ -9,19 +9,16 @@ namespace Projekt
     public class Judge
     {
         private string name, surname, category;
-        //konstruktor pusty, nie będzie zwracał żadnej wartości
         public Judge()
         {
             
         }
-        //konstruktor tworzenia sędziego
         public Judge(string name, string surname, string category)
         {
             this.name = name;
             this.surname = surname;
             this.category = category;
         }
-        //konstruktor kopiujący
         public Judge(Judge copy)
         {
             name = copy.name;
