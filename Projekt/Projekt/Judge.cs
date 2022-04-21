@@ -28,5 +28,17 @@ namespace Projekt
             surname = copy.surname;
             category = copy.category;
         }
+        public string getName()
+        {
+            return name;
+        }
+        public string getSurname()
+        {
+            return surname;
+        }
+        public string getCategory()
+        {
+            return category;
+        }
     }
 }
