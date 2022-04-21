@@ -53,7 +53,7 @@ namespace Projekt
                 teams.Add(errorTeams[chosen]);
                 errorTeams.RemoveAt(chosen);
             }
-            Console.WriteLine("\nGotowa lista:");
+
             showResults();
         }
     }
