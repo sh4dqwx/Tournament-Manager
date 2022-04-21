@@ -28,5 +28,15 @@ namespace Projekt
         {
             return score;
         }
+
+        public void addScore()
+        {
+            score++;
+        }
+
+        public void resetScore()
+        {
+            score = 0;
+        }
     }
 }
