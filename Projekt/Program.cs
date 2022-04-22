@@ -4,7 +4,7 @@ namespace Projekt
 {
     public class Projekt
     {
-        public void save()
+        private static void save(string fname, Volleyball volleyball)
         {
             /**
              * Zapisywanie do pliku:
@@ -13,6 +13,12 @@ namespace Projekt
              * - Drużyna: TVDrużyna10 (typ (T), typ sportu (V - volleyball) nazwa drużyny(Drużyna 1), aktualny wynik drużyny(0))
              * - Sędzia: JVJanKowalski (typ (J), typ sportu (V - volleyball) imię sędziego(Jan), nazwisko sędziego(Kowalski))
              */
+            StreamWriter saveStream = new StreamWriter($@"saved\{fname}.txt");
+            volleyball.getTeams().ForEach(team =>
+            {
+                saveStream.WriteLine($"T,V,{team.getName()},{team.getScore()}");
+            });
+            saveStream.Close();
         }
         public static void Main()
         {
@@ -58,7 +64,11 @@ namespace Projekt
                     case 3:
                         Console.Write("Nazwa pliku: ");
                         string? fname = Console.ReadLine();
-                        StreamWriter saveStream = new StreamWriter(fname + ".txt");
+                        if(fname == null || fname.Length == 0)
+                        {
+                            Console.WriteLine("Niepoprawna nazwa pliku");
+                        } 
+                        else save(fname, volleyball);
                         break;
                     case 4:
                         volleyball.playElimination();
