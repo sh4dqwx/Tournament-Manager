@@ -4,9 +4,21 @@ namespace Projekt
 {
     public class Projekt
     {
+        public void save()
+        {
+            /**
+             * Zapisywanie do pliku:
+             * - Podaj nazwe pliku, do ktorego ma zapisac
+             * - Dla każdego sportu podanego jako parametr metody zapisz do pliku wszystkich sędziów i drużyny w specjalnym kodzie
+             * - Drużyna: TVDrużyna10 (typ (T), typ sportu (V - volleyball) nazwa drużyny(Drużyna 1), aktualny wynik drużyny(0))
+             * - Sędzia: JVJanKowalski (typ (J), typ sportu (V - volleyball) imię sędziego(Jan), nazwisko sędziego(Kowalski))
+             */
+        }
         public static void Main()
         {
             Volleyball volleyball = new Volleyball();
+            string dirpath = Directory.GetCurrentDirectory();
+            Console.WriteLine(dirpath);
 
             int wybor = -1;
             bool end = false;
@@ -36,9 +48,17 @@ namespace Projekt
                         volleyball.addTeam(new Team("Drużyna 8"));
                         volleyball.addTeam(new Team("Drużyna 9"));
                         volleyball.addTeam(new Team("Drużyna 10"));
-                        Console.WriteLine("Dodane 10 drużyn");
+                        volleyball.addJudge(new Judge("Sędzia", "1", "volleyball"));
+                        volleyball.addJudge(new Judge("Sędzia", "2", "volleyball"));
+                        volleyball.addJudge(new Judge("Sędzia", "3", "volleyball"));
+                        volleyball.addJudge(new Judge("Sędzia", "4", "volleyball"));
+                        volleyball.addJudge(new Judge("Sędzia", "5", "volleyball"));
+                        Console.WriteLine("Dodane 10 drużyn i 5 sędziów");
                         break;
                     case 3:
+                        Console.Write("Nazwa pliku: ");
+                        string? fname = Console.ReadLine();
+                        StreamWriter saveStream = new StreamWriter(fname + ".txt");
                         break;
                     case 4:
                         volleyball.playElimination();
