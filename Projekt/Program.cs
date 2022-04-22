@@ -6,7 +6,15 @@ namespace Projekt
     {
         public static void Main()
         {
-            Volleyball volleyball = new Volleyball();
+            Console.WriteLine("------------------------------");
+            Console.WriteLine("1. Wczytaj z pliku");
+            Console.WriteLine("2. Domyślne");
+            Console.WriteLine("3. Zapisz do pliku");
+            Console.WriteLine("4. Zagraj");
+            Console.WriteLine("0. Zakończ działanie programu");
+            Console.WriteLine("------------------------------");
+
+            /*Volleyball volleyball = new Volleyball();
             volleyball.addTeam(new Team("Drużyna 1"));
             volleyball.addTeam(new Team("Drużyna 2"));
             volleyball.addTeam(new Team("Drużyna 3"));
@@ -17,9 +25,8 @@ namespace Projekt
             volleyball.addTeam(new Team("Drużyna 8"));
             volleyball.addTeam(new Team("Drużyna 9"));
             volleyball.addTeam(new Team("Drużyna 10"));
+            volleyball.playElimination();*/
 
-            volleyball.playElimination();
-            
             /*List<Team> teams = volleyball.getTeams();
             teams.ForEach(team => Console.WriteLine(team.getName() + " " + team.getScore().ToString()));*/
         }
