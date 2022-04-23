@@ -8,6 +8,7 @@ namespace Projekt
 {
     public class Tug_of_war: Sports
     {
+        private Random random = new Random();
         public Tug_of_war()
         {
 
@@ -16,7 +17,6 @@ namespace Projekt
         {
             Console.WriteLine("Rozpoczynamy turniej przeciagania liny");
             Console.WriteLine("---------------------------------------------------------------");
-            Random random = new Random();
             teams.ForEach(team => team.resetScore());
 
             for (int i = 0; i < teams.Count; i++)
@@ -45,6 +45,7 @@ namespace Projekt
             if (teams[3].getScore() != teams[4].getScore())
             {
                 teams.RemoveRange(4, teams.Count - 4);
+                Console.WriteLine("Lista drużyn zakwalifikowanych: ");
                 showResults();
                 return;
             }
@@ -68,8 +69,58 @@ namespace Projekt
                 teams.Add(errorTeams[chosen]);
                 errorTeams.RemoveAt(chosen);
             }
-
+            Console.WriteLine("Lista zakwalifikowanych:");
             showResults();
+        }
+        public void semi_finals()
+        {
+            Console.WriteLine("\n");
+            Console.WriteLine("Rozpoczynamy półfinały");
+            if (random.NextDouble() >= 0.5)
+            {
+                Console.WriteLine("W spotkaniu " + teams[0].getName() + " vs " + teams[3].getName() + " wygrywa " + teams[3].getName());
+                teams.RemoveAt(0);
+                if (random.NextDouble() >= 0.5)
+                {
+                    Console.WriteLine("W spotkaniu " + teams[0].getName() + " vs " + teams[1].getName() + " wygrywa " + teams[1].getName());
+                    teams.RemoveAt(0);
+                }
+                else
+                {
+                    Console.WriteLine("W spotkaniu " + teams[0].getName() + " vs " + teams[1].getName() + " wygrywa " + teams[0].getName());
+                    teams.RemoveAt(1);
+                }
+            }
+            else
+            {
+                Console.WriteLine("W spotkaniu " + teams[0].getName() + " vs " + teams[3].getName() + " wygrywa " + teams[0].getName());
+                teams.RemoveAt(3);
+                if (random.NextDouble() >= 0.5)
+                {
+                    Console.WriteLine("W spotkaniu " + teams[1].getName() + " vs " + teams[2].getName() + " wygrywa " + teams[2].getName());
+                    teams.RemoveAt(1);
+                }
+                else
+                {
+                    Console.WriteLine("W spotkaniu " + teams[1].getName() + " vs " + teams[2].getName() + " wygrywa " + teams[1].getName());
+                    teams.RemoveAt(2);
+                }
+            }
+
+        }
+        public void finals()
+        {
+            Console.WriteLine("\n");
+            Console.WriteLine("Rozpoczynamy finał w przeciąganiu liny");
+            Console.WriteLine("W finale wystąpią " + teams[0].getName() + " i " + teams[1].getName());
+            if (random.NextDouble() >= 0.5)
+            {
+                Console.WriteLine("Turniej wygrywa " + teams[1].getName());
+            }
+            else
+            {
+                Console.WriteLine("Turniej wygrywa " + teams[0].getName());
+            }
         }
     }
 }
