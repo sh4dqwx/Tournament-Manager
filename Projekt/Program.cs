@@ -4,30 +4,48 @@ namespace Projekt
 {
     public class Projekt
     {
-        private static void save(string fname, Volleyball volleyball)
+        public static void load(string? fname)
         {
-            /**
-             * Zapisywanie do pliku:
-             * - Podaj nazwe pliku, do ktorego ma zapisac
-             * - Dla każdego sportu podanego jako parametr metody zapisz do pliku wszystkich sędziów i drużyny w specjalnym kodzie
-             * - Drużyna: TVDrużyna10 (typ (T), typ sportu (V - volleyball) nazwa drużyny(Drużyna 1), aktualny wynik drużyny(0))
-             * - Sędzia: JVJanKowalski (typ (J), typ sportu (V - volleyball) imię sędziego(Jan), nazwisko sędziego(Kowalski))
-             */
+            if (fname == null || fname.Length == 0 || !File.Exists($@"saved\{fname}.txt"))
+            {
+                Console.WriteLine("Niepoprawna nazwa pliku");
+                return;
+            }
+
+            StreamReader loadStream = new StreamReader($@"saved\{fname}.txt");
+            while(!loadStream.EndOfStream)
+            {
+                Console.WriteLine(loadStream.ReadLine());
+            }
+            loadStream.Close();
+        }
+        public static void save(string? fname, Volleyball volleyball)
+        {
+            if (fname == null || fname.Length == 0)
+            {
+                Console.WriteLine("Niepoprawna nazwa pliku");
+                return;
+            }
+
             StreamWriter saveStream = new StreamWriter($@"saved\{fname}.txt");
+
             volleyball.getTeams().ForEach(team =>
             {
                 saveStream.WriteLine($"T,V,{team.getName()},{team.getScore()}");
+            });
+            volleyball.getJudges().ForEach(judge =>
+            {
+                saveStream.WriteLine($"J,V,{judge.getName()},{judge.getSurname()}");
             });
             saveStream.Close();
         }
         public static void Main()
         {
             Volleyball volleyball = new Volleyball();
-            string dirpath = Directory.GetCurrentDirectory();
-            Console.WriteLine(dirpath);
 
             int wybor = -1;
             bool end = false;
+            string? fname = "";
             while(end == false)
             {
                 Console.WriteLine("------------------------------");
@@ -42,6 +60,9 @@ namespace Projekt
                 switch (wybor)
                 {
                     case 1:
+                        Console.Write("Nazwa pliku: ");
+                        fname = Console.ReadLine();                        
+                        load(fname);
                         break;
                     case 2:
                         volleyball.addTeam(new Team("Drużyna 1"));
@@ -63,12 +84,8 @@ namespace Projekt
                         break;
                     case 3:
                         Console.Write("Nazwa pliku: ");
-                        string? fname = Console.ReadLine();
-                        if(fname == null || fname.Length == 0)
-                        {
-                            Console.WriteLine("Niepoprawna nazwa pliku");
-                        } 
-                        else save(fname, volleyball);
+                        fname = Console.ReadLine();                        
+                        save(fname, volleyball);
                         break;
                     case 4:
                         volleyball.playElimination();
