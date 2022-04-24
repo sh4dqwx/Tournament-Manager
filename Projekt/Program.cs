@@ -76,7 +76,8 @@ namespace Projekt
                 Console.WriteLine("1. Wczytaj z pliku");
                 Console.WriteLine("2. Domyślne");
                 Console.WriteLine("3. Zapisz do pliku");
-                Console.WriteLine("4. Zagraj");
+                Console.WriteLine("4. Przegląd drużyn");
+                Console.WriteLine("5. Zagraj");
                 Console.WriteLine("0. Zakończ działanie programu");
                 Console.WriteLine("------------------------------");
                 wybor = Convert.ToInt16(Console.ReadLine());
@@ -90,6 +91,7 @@ namespace Projekt
                         load(fname, volleyball);
                         break;
                     case 2:
+                        //Dodaje 10 drużyn i 5 sędziów
                         volleyball.addTeam(new Team("Drużyna 1"));
                         volleyball.addTeam(new Team("Drużyna 2"));
                         volleyball.addTeam(new Team("Drużyna 3"));
@@ -108,14 +110,31 @@ namespace Projekt
                         Console.WriteLine("Dodane 10 drużyn i 5 sędziów");
                         break;
                     case 3:
+                        //Bierze nazwę pliku i zapisuje dane do pliku pod tą nazwą
                         Console.Write("Nazwa pliku: ");
                         fname = Console.ReadLine();                        
                         save(fname, volleyball);
                         break;
                     case 4:
+                        //Wypisuje nazwy wszystkich drużyn które obecnie istnieją
+                        if (volleyball.getTeams().Count() == 0) 
+                        { 
+                            Console.WriteLine("Brak drużyn");
+                        }
+                        else
+                        {
+                            volleyball.getTeams().ForEach(team =>
+                            {
+                                Console.WriteLine(team.getName());
+                            });
+                        }
+                        break;
+                    case 5:
+                        //Gramy B)
                         volleyball.playElimination();
                         break;
                     case 0:
+                        //Kończy program
                         end = true;
                         break;
                     default:
