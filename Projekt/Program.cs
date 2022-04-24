@@ -4,31 +4,54 @@ namespace Projekt
 {
     public class Projekt
     {
-        public static void load(string? fname)
+        public static void load(string? fname, Volleyball volleyball)
         {
+            //Najpierw sprawdzamy czy nazwa pliku jest dobra i czy taki plik istnieje
             if (fname == null || fname.Length == 0 || !File.Exists($@"saved\{fname}.txt"))
             {
                 Console.WriteLine("Niepoprawna nazwa pliku");
                 return;
             }
 
+            //Usuwamy to co było wcześniej w listach
+            volleyball.getTeams().Clear();
+            volleyball.getJudges().Clear(); 
+
+            //Póki co tylko dla siatkówki, sprawdzamy czy dana linijka to drużyna czy sędzia, potem jaki sport, i dodajemy do odpowiedniej listy
+            //PROBLEM - trzeba konstruktor Team zmienić, żeby można było dać wynik drużyny, chociaż zależy kiedy chcemy zapisywać nwm
+            //PROBLEM - wywalić kategorie z sędziów, po cholere to
             StreamReader loadStream = new StreamReader($@"saved\{fname}.txt");
             while(!loadStream.EndOfStream)
             {
-                Console.WriteLine(loadStream.ReadLine());
+                string[] dane = loadStream.ReadLine().Split(',');
+                if(dane[0].Equals("T"))
+                {
+                    if(dane[1].Equals("V"))
+                    {
+                        volleyball.getTeams().Add(new Team(dane[2]));
+                    }
+                }
+                else if(dane[0].Equals("J"))
+                {
+                    if (dane[1].Equals("V"))
+                    {
+                        volleyball.getJudges().Add(new Judge(dane[2], dane[3], "volleyball"));
+                    }
+                }
             }
             loadStream.Close();
         }
         public static void save(string? fname, Volleyball volleyball)
         {
+            //Najpierw sprawdzamy czy nazwa pliku jest dobra
             if (fname == null || fname.Length == 0)
             {
                 Console.WriteLine("Niepoprawna nazwa pliku");
                 return;
             }
 
+            //Zapisujemy w kodzie T,[sport],[nazwa] dla drużyn i J,[sport],[imie],[nazwisko] dla sędziów
             StreamWriter saveStream = new StreamWriter($@"saved\{fname}.txt");
-
             volleyball.getTeams().ForEach(team =>
             {
                 saveStream.WriteLine($"T,V,{team.getName()},{team.getScore()}");
@@ -43,6 +66,7 @@ namespace Projekt
         {
             Volleyball volleyball = new Volleyball();
 
+            //Rozbudowany main, dodałem proste menu tekstowe, żeby łatwiej mi się testowało
             int wybor = -1;
             bool end = false;
             string? fname = "";
@@ -60,9 +84,10 @@ namespace Projekt
                 switch (wybor)
                 {
                     case 1:
+                        //Bierze nazwę pliku i wczytuje z niego dane
                         Console.Write("Nazwa pliku: ");
                         fname = Console.ReadLine();                        
-                        load(fname);
+                        load(fname, volleyball);
                         break;
                     case 2:
                         volleyball.addTeam(new Team("Drużyna 1"));
