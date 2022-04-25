@@ -74,38 +74,25 @@ namespace Projekt
         }
         public void semi_finals()
         {
-            Console.WriteLine("\n");
-            Console.WriteLine("Rozpoczynamy półfinały");
-            if (random.NextDouble() >= 0.5)
+            List<Team> final = new List<Team>();
+            while (final.Count < 2)
             {
-                Console.WriteLine("W spotkaniu " + teams[0].getName() + " vs " + teams[3].getName() + " wygrywa " + teams[3].getName());
-                teams.RemoveAt(0);
-                if (random.NextDouble() >= 0.5)
-                {
-                    Console.WriteLine("W spotkaniu " + teams[0].getName() + " vs " + teams[1].getName() + " wygrywa " + teams[1].getName());
-                    teams.RemoveAt(0);
-                }
-                else
-                {
-                    Console.WriteLine("W spotkaniu " + teams[0].getName() + " vs " + teams[1].getName() + " wygrywa " + teams[0].getName());
-                    teams.RemoveAt(1);
-                }
+                int firstIndex = random.Next() % teams.Count;
+                Team firstTeam = teams[firstIndex];
+                teams.RemoveAt(firstIndex);
+                int secondIndex = random.Next() % teams.Count;
+                Team secondTeam = teams[secondIndex];
+                teams.RemoveAt(secondIndex);
+
+                if (random.NextDouble() >= 0.5) final.Add(firstTeam);
+                else final.Add(secondTeam);
             }
-            else
-            {
-                Console.WriteLine("W spotkaniu " + teams[0].getName() + " vs " + teams[3].getName() + " wygrywa " + teams[0].getName());
-                teams.RemoveAt(3);
-                if (random.NextDouble() >= 0.5)
-                {
-                    Console.WriteLine("W spotkaniu " + teams[1].getName() + " vs " + teams[2].getName() + " wygrywa " + teams[2].getName());
-                    teams.RemoveAt(1);
-                }
-                else
-                {
-                    Console.WriteLine("W spotkaniu " + teams[1].getName() + " vs " + teams[2].getName() + " wygrywa " + teams[1].getName());
-                    teams.RemoveAt(2);
-                }
-            }
+
+            Console.WriteLine("Finaliści:");
+            final.ForEach(team => {
+                Console.WriteLine(team.getName());
+                teams.Add(team);
+            });
 
         }
         public void finals()
