@@ -49,7 +49,7 @@ namespace Projekt
             showResults();
         }
 
-        public void playFinal()
+        public void playSemiFinal()
         {
             List<Team> final = new List<Team>();
             while(final.Count < 2)
@@ -66,13 +66,17 @@ namespace Projekt
             }
 
             Console.WriteLine("Finaliści:");
-            final.ForEach(team => Console.WriteLine(team.getName()));
+            final.ForEach(team => { Console.WriteLine(team.getName()); teams.Add(team); });
 
-            if (random.NextDouble() >= 0.5) final.RemoveAt(0);
-            else final.RemoveAt(1);
+        }
+
+        public void playFinal()
+        {
+            if (random.NextDouble() >= 0.5) teams.RemoveAt(0);
+            else teams.RemoveAt(1);
 
             Console.WriteLine("\nZwycięzca:");
-            final.ForEach(team => Console.WriteLine(team.getName()));
+            teams.ForEach(team => Console.WriteLine(team.getName()));
         }
 
 

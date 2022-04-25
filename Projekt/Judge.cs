@@ -4,18 +4,21 @@ namespace Projekt
 {
     public class Judge
     {
-        private string name, surname, category;
+        private string name, surname;
         public Judge()
         {
             name = "";
             surname = "";
-            category = "";
         }
-        public Judge(string name, string surname, string category)
+        public Judge(string name, string surname)
         {
             this.name = name;
             this.surname = surname;
-            this.category = category;
+        }
+        public Judge(Judge judge)
+        {
+            name = judge.name;
+            surname = judge.surname;
         }
         public string getName()
         {
@@ -24,10 +27,6 @@ namespace Projekt
         public string getSurname()
         {
             return surname;
-        }
-        public string getCategory()
-        {
-            return category;
         }
     }
 }

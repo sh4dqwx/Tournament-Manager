@@ -19,12 +19,26 @@ namespace Projekt
 
         public List<Team> getTeams()
         {
-            return teams;
+            List<Team> toSend = new List<Team>();
+            teams.ForEach(team => toSend.Add(new Team(team)));
+            return toSend;
         }
 
         public List<Judge> getJudges()
         {
-            return judges;
+            List<Judge> toSend = new List<Judge>();
+            judges.ForEach(judge => toSend.Add(new Judge(judge));
+            return toSend;
+        }
+
+        public void clearTeams()
+        {
+            teams.Clear();
+        }
+
+        public void clearJudges()
+        {
+            judges.Clear();
         }
 
         public void showResults()

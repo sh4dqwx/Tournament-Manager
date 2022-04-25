@@ -19,6 +19,12 @@ namespace Projekt
             this.score = 0;
         }
 
+        public Team(Team team)
+        {
+            name = team.name;
+            score = team.score;
+        }
+
         public string getName()
         {
             return name;
