@@ -5,13 +5,13 @@ namespace Projekt
 {
     public class Volleyball: Sports
     {
+        private Random random = new Random();
         public Volleyball()
         {
             
         }
         public void playElimination()
         {
-            Random random = new Random();
             teams.ForEach(team => team.resetScore());
 
             for (int i = 0; i < teams.Count; i++)
@@ -26,35 +26,55 @@ namespace Projekt
             teams.Reverse();
             showResults();
 
-            //Jeżeli nie ma konfliktu, usuń przegrane drużyny i wyjdź
             if (teams[3].getScore() != teams[4].getScore())
             {
                 teams.RemoveRange(4, teams.Count - 4);
+                Console.WriteLine("Półfinaliści:");
                 showResults();
                 return;
             }
             
-            //Jeżeli jest konflikt, wybierz drużyny do wylosowania, usuń przegrane i konfliktowe drużyny
             List<Team> errorTeams = teams.FindAll(team => team.getScore() == teams[3].getScore());
             int qualified = teams.Where(team => team.getScore() > teams[3].getScore()).Count();
             teams.RemoveRange(qualified, teams.Count - qualified);
 
-            //Debugowanie (do usunięcia później)
-            Console.WriteLine("Lista zakwalifikowanych:");
-            showResults();
-            Console.WriteLine("\nLista z tą samą liczbą punktów:");
-            errorTeams.ForEach(team => Console.WriteLine(team.getName() + " " + team.getScore()));
-
-            //Dodaj wylosowane drużyny
             for (int i = 0; i < 4 - qualified; i++)
             {
                 int chosen = random.Next() % errorTeams.Count;
-                //ewentualny komentarz kogo wybrało
                 teams.Add(errorTeams[chosen]);
                 errorTeams.RemoveAt(chosen);
             }
 
+            Console.WriteLine("Półfinaliści:");
             showResults();
         }
+
+        public void playFinal()
+        {
+            List<Team> final = new List<Team>();
+            while(final.Count < 2)
+            {
+                int firstIndex = random.Next() % teams.Count;
+                Team firstTeam = teams[firstIndex];
+                teams.RemoveAt(firstIndex);
+                int secondIndex = random.Next() % teams.Count;
+                Team secondTeam = teams[secondIndex];
+                teams.RemoveAt(secondIndex);
+
+                if (random.NextDouble() >= 0.5) final.Add(firstTeam);
+                else final.Add(secondTeam);
+            }
+
+            Console.WriteLine("Finaliści:");
+            final.ForEach(team => Console.WriteLine(team.getName()));
+
+            if (random.NextDouble() >= 0.5) final.RemoveAt(0);
+            else final.RemoveAt(1);
+
+            Console.WriteLine("\nZwycięzca:");
+            final.ForEach(team => Console.WriteLine(team.getName()));
+        }
+
+
     }
 }

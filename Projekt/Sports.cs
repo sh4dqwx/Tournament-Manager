@@ -4,8 +4,8 @@ namespace Projekt
 {
     public abstract class Sports
     {
-        public List<Team> teams = new List<Team>();
-        public List<Judge> judges = new List<Judge>();
+        protected List<Team> teams = new List<Team>();
+        protected List<Judge> judges = new List<Judge>();
 
         public void addTeam(Team team)
         {
