@@ -4,7 +4,7 @@ namespace Projekt
 {
     public class Projekt
     {
-        public static void load(string? fname, Volleyball volleyball)
+        public static void load(string? fname, Volleyball volleyball, Tug_of_war tugOfWar)
         {
             //Najpierw sprawdzamy czy nazwa pliku jest dobra i czy taki plik istnieje
             if (fname == null || fname.Length == 0 || !File.Exists($@"saved\{fname}.txt"))
@@ -16,6 +16,8 @@ namespace Projekt
             //Usuwamy to co było wcześniej w listach
             volleyball.clearTeams();
             volleyball.clearJudges(); 
+            tugOfWar.clearTeams();
+            tugOfWar.clearJudges();
 
             //Póki co tylko dla siatkówki, sprawdzamy czy dana linijka to drużyna czy sędzia, potem jaki sport, i dodajemy do odpowiedniej listy
             StreamReader loadStream = new StreamReader($@"saved\{fname}.txt");
@@ -28,6 +30,10 @@ namespace Projekt
                     {
                         volleyball.addTeam(new Team(dane[2]));
                     }
+                    else if(dane[1].Equals("T"))
+                    {
+                        tugOfWar.addTeam(new Team(dane[2]));
+                    }
                 }
                 else if(dane[0].Equals("J"))
                 {
@@ -35,11 +41,15 @@ namespace Projekt
                     {
                         volleyball.addJudge(new Judge(dane[2], dane[3]));
                     }
+                    else if(dane[1].Equals("T"))
+                    {
+                        tugOfWar.addJudge(new Judge(dane[2], dane[3]));
+                    }
                 }
             }
             loadStream.Close();
         }
-        public static void save(string? fname, Volleyball volleyball)
+        public static void save(string? fname, Volleyball volleyball, Tug_of_war tugOfWar)
         {
             //Najpierw sprawdzamy czy nazwa pliku jest dobra
             if (fname == null || fname.Length == 0)
@@ -58,12 +68,21 @@ namespace Projekt
             {
                 saveStream.WriteLine($"J,V,{judge.getName()},{judge.getSurname()}");
             });
+            tugOfWar.getTeams().ForEach(team =>
+            {
+                saveStream.WriteLine($"T,T.{team.getName()}");
+            });
+            tugOfWar.getJudges().ForEach(judge =>
+            {
+                saveStream.WriteLine($"J,T,{judge.getName()}, {judge.getSurname()}");
+            });
             saveStream.Close();
         }
         public static void Main()
         {
             
             Volleyball volleyball = new Volleyball();
+            Tug_of_war tugOfWar = new Tug_of_war();
             
             //Rozbudowany main, dodałem proste menu tekstowe, żeby łatwiej mi się testowało
             int wybor = -1;
@@ -112,7 +131,7 @@ namespace Projekt
                         //Bierze nazwę pliku i zapisuje dane do pliku pod tą nazwą
                         Console.Write("Nazwa pliku: ");
                         fname = Console.ReadLine();                        
-                        save(fname, volleyball);
+                        save(fname, volleyball, tugOfWar);
                         break;
                     case 4:
                         //Wypisuje nazwy wszystkich drużyn które obecnie istnieją
