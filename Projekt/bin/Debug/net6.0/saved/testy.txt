@@ -1,0 +1,36 @@
+T,V,Modena Volley
+T,V,CSKA Moscow 
+T,V,Dynamo Moscow
+T,V,Olympiacos
+T,V,Pallavolo Parma
+T,V,Volley Lube
+T,V,Volley Treviso
+T,V,Panathinaikos Athens
+T,T,Atlanta Hawks
+T,T,Boston Celtics
+T,T,Brooklyn Nets
+T,T,Charlotte Hornets
+T,T,Chicago Bulls
+T,T,Cleveland Cavaliers
+T,T,Dallas Mavericks
+T,T,Denver Nuggets
+J,V,Adamczyk,Bartłomiej
+J,V,Adamczyk,Ryszard
+J,V,Andraka,Piotr
+J,V,Aneszko,Marta
+J,V,Arentowicz,Mirosław
+J,V,Armknecht,Małgorzata
+J,V,Awiżeń,Adam
+J,V,Bajorek,Leszek
+J,V,Bałabański,Tomasz
+J,V,Banaś,Anna
+J,T,Baniak,Jan
+J,T,Baniak,Bartłomiej
+J,T,Bartłomiejczak,Marcin
+J,T,Beń,Mirosław
+J,T,Biernaczyk,Marcin
+J,T,Biernat,Adam
+J,T,Bilkowski,Piotr
+J,T,Błażejewski,Marek
+J,T,Błażewicz,Albert
+J,T,Bober,Bogusław
