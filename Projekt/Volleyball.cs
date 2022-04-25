@@ -66,7 +66,10 @@ namespace Projekt
             }
 
             Console.WriteLine("Finaliści:");
-            final.ForEach(team => { Console.WriteLine(team.getName()); teams.Add(team); });
+            final.ForEach(team => {
+                Console.WriteLine(team.getName());
+                teams.Add(team);
+            });
 
         }
 
