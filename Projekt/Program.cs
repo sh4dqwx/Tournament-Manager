@@ -6,6 +6,7 @@ namespace Projekt
     {
         public static void Main()
         {
+            /*
             Volleyball volleyball = new Volleyball();
             volleyball.addTeam(new Team("Drużyna 1"));
             volleyball.addTeam(new Team("Drużyna 2"));
@@ -18,9 +19,19 @@ namespace Projekt
             volleyball.addTeam(new Team("Drużyna 9"));
 
             volleyball.playElimination();
+            */
+            Tug_of_war war = new Tug_of_war();
+            war.addTeam(new Team("Drużyna 1"));
+            war.addTeam(new Team("Drużyna 2"));
+            war.addTeam(new Team("Drużyna 3"));
+            war.addTeam(new Team("Drużyna 4"));
+            war.addTeam(new Team("Drużyna 5"));
+            war.addTeam(new Team("Drużyna 6"));
+            war.addTeam(new Team("Drużyna 7"));
 
-            volleyball.playFinal();
-            
+            war.playElimination();
+            war.semi_finals();
+            war.finals();
             /*List<Team> teams = volleyball.getTeams();
             teams.ForEach(team => Console.WriteLine(team.getName() + " " + team.getScore().ToString()));*/
         }
