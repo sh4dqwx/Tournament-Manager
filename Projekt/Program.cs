@@ -106,7 +106,7 @@ namespace Projekt
                         //Bierze nazwę pliku i wczytuje z niego dane
                         Console.Write("Nazwa pliku: ");
                         fname = Console.ReadLine();                        
-                        load(fname, volleyball);
+                        load(fname, volleyball, tugOfWar);
                         break;
                     case 2:
                         //Dodaje 10 drużyn i 5 sędziów
