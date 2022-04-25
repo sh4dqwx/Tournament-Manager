@@ -87,15 +87,14 @@ namespace Projekt
             //Rozbudowany main, dodałem proste menu tekstowe, żeby łatwiej mi się testowało
             int wybor = -1;
             bool end = false;
-            string? fname = "";
+            string? fname = "", sport = "";
             while(end == false)
             {
                 Console.WriteLine("------------------------------");
                 Console.WriteLine("1. Wczytaj z pliku");
-                Console.WriteLine("2. Domyślne");
-                Console.WriteLine("3. Zapisz do pliku");
-                Console.WriteLine("4. Przegląd drużyn");
-                Console.WriteLine("5. Zagraj");
+                Console.WriteLine("2. Zapisz do pliku");
+                Console.WriteLine("3. Przegląd drużyn");
+                Console.WriteLine("4. Zagraj");
                 Console.WriteLine("0. Zakończ działanie programu");
                 Console.WriteLine("------------------------------");
                 wybor = Convert.ToInt16(Console.ReadLine());
@@ -109,38 +108,32 @@ namespace Projekt
                         load(fname, volleyball, tugOfWar);
                         break;
                     case 2:
-                        //Dodaje 10 drużyn i 5 sędziów
-                        volleyball.addTeam(new Team("Drużyna 1"));
-                        volleyball.addTeam(new Team("Drużyna 2"));
-                        volleyball.addTeam(new Team("Drużyna 3"));
-                        volleyball.addTeam(new Team("Drużyna 4"));
-                        volleyball.addTeam(new Team("Drużyna 5"));
-                        volleyball.addTeam(new Team("Drużyna 6"));
-                        volleyball.addTeam(new Team("Drużyna 7"));
-                        volleyball.addTeam(new Team("Drużyna 8"));
-                        volleyball.addTeam(new Team("Drużyna 9"));
-                        volleyball.addTeam(new Team("Drużyna 10"));
-                        volleyball.addJudge(new Judge("Sędzia", "1"));
-                        volleyball.addJudge(new Judge("Sędzia", "2"));
-                        volleyball.addJudge(new Judge("Sędzia", "3"));
-                        volleyball.addJudge(new Judge("Sędzia", "4"));
-                        volleyball.addJudge(new Judge("Sędzia", "5"));
-                        Console.WriteLine("Dodane 10 drużyn i 5 sędziów");
-                        break;
-                    case 3:
                         //Bierze nazwę pliku i zapisuje dane do pliku pod tą nazwą
                         Console.Write("Nazwa pliku: ");
                         fname = Console.ReadLine();                        
                         save(fname, volleyball, tugOfWar);
                         break;
-                    case 4:
+                    case 3:
                         //Wypisuje nazwy wszystkich drużyn które obecnie istnieją
-                        if (volleyball.getTeams().Count() == 0) Console.WriteLine("Brak drużyn");
-                        else volleyball.getTeams().ForEach(team => { Console.WriteLine(team.getName()); });
+                        Console.Write("Wybierz sport:");
+                        sport = Console.ReadLine();
+                        if(sport == "volleyball")
+                        {
+                            if (volleyball.getTeams().Count() == 0) Console.WriteLine("Brak drużyn");
+                            else volleyball.getTeams().ForEach(team => { Console.WriteLine(team.getName()); });
+                        }
+                        else if(sport == "tug of war")
+                        {
+                            if (tugOfWar.getTeams().Count() == 0) Console.WriteLine("Brak drużyn");
+                            else tugOfWar.getTeams().ForEach(team => { Console.WriteLine(team.getName()); });
+                        }
                         break;
-                    case 5:
+                    case 4:
                         //Gramy B)
-                        volleyball.playElimination();
+                        Console.Write("Wybierz sport:");
+                        sport = Console.ReadLine();
+                        if (sport == "volleyball") volleyball.playElimination();
+                        else if (sport == "tug of war") tugOfWar.playElimination();
                         break;
                     case 0:
                         //Kończy program
