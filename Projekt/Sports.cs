@@ -27,7 +27,7 @@ namespace Projekt
         public List<Judge> getJudges()
         {
             List<Judge> toSend = new List<Judge>();
-            judges.ForEach(judge => toSend.Add(new Judge(judge));
+            judges.ForEach(judge => toSend.Add(new Judge(judge)));
             return toSend;
         }
 

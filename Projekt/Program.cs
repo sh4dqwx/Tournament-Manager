@@ -14,12 +14,10 @@ namespace Projekt
             }
 
             //Usuwamy to co było wcześniej w listach
-            volleyball.getTeams().Clear();
-            volleyball.getJudges().Clear(); 
+            volleyball.clearTeams();
+            volleyball.clearJudges(); 
 
             //Póki co tylko dla siatkówki, sprawdzamy czy dana linijka to drużyna czy sędzia, potem jaki sport, i dodajemy do odpowiedniej listy
-            //PROBLEM - trzeba konstruktor Team zmienić, żeby można było dać wynik drużyny, chociaż zależy kiedy chcemy zapisywać nwm
-            //PROBLEM - wywalić kategorie z sędziów, po cholere to
             StreamReader loadStream = new StreamReader($@"saved\{fname}.txt");
             while(!loadStream.EndOfStream)
             {
@@ -28,14 +26,14 @@ namespace Projekt
                 {
                     if(dane[1].Equals("V"))
                     {
-                        volleyball.getTeams().Add(new Team(dane[2]));
+                        volleyball.addTeam(new Team(dane[2]));
                     }
                 }
                 else if(dane[0].Equals("J"))
                 {
                     if (dane[1].Equals("V"))
                     {
-                        volleyball.getJudges().Add(new Judge(dane[2], dane[3], "volleyball"));
+                        volleyball.addJudge(new Judge(dane[2], dane[3]));
                     }
                 }
             }
@@ -54,7 +52,7 @@ namespace Projekt
             StreamWriter saveStream = new StreamWriter($@"saved\{fname}.txt");
             volleyball.getTeams().ForEach(team =>
             {
-                saveStream.WriteLine($"T,V,{team.getName()},{team.getScore()}");
+                saveStream.WriteLine($"T,V,{team.getName()}");
             });
             volleyball.getJudges().ForEach(judge =>
             {
@@ -103,11 +101,11 @@ namespace Projekt
                         volleyball.addTeam(new Team("Drużyna 8"));
                         volleyball.addTeam(new Team("Drużyna 9"));
                         volleyball.addTeam(new Team("Drużyna 10"));
-                        volleyball.addJudge(new Judge("Sędzia", "1", "volleyball"));
-                        volleyball.addJudge(new Judge("Sędzia", "2", "volleyball"));
-                        volleyball.addJudge(new Judge("Sędzia", "3", "volleyball"));
-                        volleyball.addJudge(new Judge("Sędzia", "4", "volleyball"));
-                        volleyball.addJudge(new Judge("Sędzia", "5", "volleyball"));
+                        volleyball.addJudge(new Judge("Sędzia", "1"));
+                        volleyball.addJudge(new Judge("Sędzia", "2"));
+                        volleyball.addJudge(new Judge("Sędzia", "3"));
+                        volleyball.addJudge(new Judge("Sędzia", "4"));
+                        volleyball.addJudge(new Judge("Sędzia", "5"));
                         Console.WriteLine("Dodane 10 drużyn i 5 sędziów");
                         break;
                     case 3:
@@ -118,17 +116,8 @@ namespace Projekt
                         break;
                     case 4:
                         //Wypisuje nazwy wszystkich drużyn które obecnie istnieją
-                        if (volleyball.getTeams().Count() == 0) 
-                        { 
-                            Console.WriteLine("Brak drużyn");
-                        }
-                        else
-                        {
-                            volleyball.getTeams().ForEach(team =>
-                            {
-                                Console.WriteLine(team.getName());
-                            });
-                        }
+                        if (volleyball.getTeams().Count() == 0) Console.WriteLine("Brak drużyn");
+                        else volleyball.getTeams().ForEach(team => { Console.WriteLine(team.getName()); });
                         break;
                     case 5:
                         //Gramy B)
