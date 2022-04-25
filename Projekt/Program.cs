@@ -18,6 +18,8 @@ namespace Projekt
             volleyball.addTeam(new Team("Drużyna 9"));
 
             volleyball.playElimination();
+
+            volleyball.playFinal();
             
             /*List<Team> teams = volleyball.getTeams();
             teams.ForEach(team => Console.WriteLine(team.getName() + " " + team.getScore().ToString()));*/
