@@ -64,25 +64,9 @@ namespace Projekt
         }
         public static void Main()
         {
-            /*
+            
             Volleyball volleyball = new Volleyball();
-
-<<<<<<< HEAD
-            volleyball.playElimination();
-            */
-            Tug_of_war war = new Tug_of_war();
-            war.addTeam(new Team("Drużyna 1"));
-            war.addTeam(new Team("Drużyna 2"));
-            war.addTeam(new Team("Drużyna 3"));
-            war.addTeam(new Team("Drużyna 4"));
-            war.addTeam(new Team("Drużyna 5"));
-            war.addTeam(new Team("Drużyna 6"));
-            war.addTeam(new Team("Drużyna 7"));
-
-            war.playElimination();
-            war.semi_finals();
-            war.finals();
-=======
+            
             //Rozbudowany main, dodałem proste menu tekstowe, żeby łatwiej mi się testowało
             int wybor = -1;
             bool end = false;
@@ -159,8 +143,7 @@ namespace Projekt
                         break;
                 }
             }
-
->>>>>>> bartek
+            
             /*List<Team> teams = volleyball.getTeams();
             teams.ForEach(team => Console.WriteLine(team.getName() + " " + team.getScore().ToString()));*/
         }
