@@ -13,13 +13,47 @@ namespace Projekt
         public void playElimination()
         {
             teams.ForEach(team => team.resetScore());
-
+            int set;
+            int d1;
+            int d2;
             for (int i = 0; i < teams.Count; i++)
             {
                 for (int j = i + 1; j < teams.Count; j++)
                 {
-                    if (random.NextDouble() >= 0.5) teams[i].addScore();
-                    else teams[j].addScore();
+                    set = 1;
+                    d1 = 0;
+                    d2 = 0;
+                    Console.WriteLine(teams[i].getName() + " vs " + teams[j].getName());
+                    for (int k = 0; k < 3; k++)
+                    {
+                        if(random.NextDouble() >= 0.5)
+                        {
+                            d1++;
+                            Console.WriteLine(set + " set wygrała " + teams[i].getName());
+                            set++;
+                        }
+                        else
+                        {
+                            d2++;
+                            Console.WriteLine(set + " set wygrała " + teams[j].getName());
+                            set++;
+                        }
+                        if(d1==2 || d2==2)
+                        {
+                            break;
+                        }
+                    }
+                    if (d1 > d2)
+                    {
+                        Console.WriteLine("Wygrywa " + teams[i].getName());
+                        teams[i].addScore();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Wygrywa " + teams[j].getName());
+                        teams[j].addScore();
+                    }
+                    Console.WriteLine("\n");
                 }
             }
             teams = teams.OrderBy(team => team.getScore()).ToList();

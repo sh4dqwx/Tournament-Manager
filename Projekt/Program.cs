@@ -7,7 +7,7 @@ namespace Projekt
         public static void load(string? fname, Volleyball volleyball, Tug_of_war tugOfWar)
         {
             //Najpierw sprawdzamy czy nazwa pliku jest dobra i czy taki plik istnieje
-            if (fname == null || fname.Length == 0 || !File.Exists($@"saved\{fname}.txt"))
+            if (fname == null || fname.Length == 0 || !File.Exists($@"..\..\..\saved\{fname}.txt"))
             {
                 Console.WriteLine("Niepoprawna nazwa pliku");
                 return;
@@ -20,7 +20,7 @@ namespace Projekt
             tugOfWar.clearJudges();
 
             //Póki co tylko dla siatkówki, sprawdzamy czy dana linijka to drużyna czy sędzia, potem jaki sport, i dodajemy do odpowiedniej listy
-            StreamReader loadStream = new StreamReader($@"saved\{fname}.txt");
+            StreamReader loadStream = new StreamReader($@"..\..\..\saved\{fname}.txt");
             while(!loadStream.EndOfStream)
             {
                 string[] dane = loadStream.ReadLine().Split(',');
@@ -59,7 +59,7 @@ namespace Projekt
             }
 
             //Zapisujemy w kodzie T,[sport],[nazwa] dla drużyn i J,[sport],[imie],[nazwisko] dla sędziów
-            StreamWriter saveStream = new StreamWriter($@"saved\{fname}.txt");
+            StreamWriter saveStream = new StreamWriter($@"..\..\..\saved\{fname}.txt");
             volleyball.getTeams().ForEach(team =>
             {
                 saveStream.WriteLine($"T,V,{team.getName()}");
