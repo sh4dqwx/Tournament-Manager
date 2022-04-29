@@ -7,4 +7,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Background\menu.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Background\menu.png" />
+  </ItemGroup>
+
 </Project>
