@@ -1,0 +1,15 @@
+T,V,Drużyna 1,0
+T,V,Drużyna 2,0
+T,V,Drużyna 3,0
+T,V,Drużyna 4,0
+T,V,Drużyna 5,0
+T,V,Drużyna 6,0
+T,V,Drużyna 7,0
+T,V,Drużyna 8,0
+T,V,Drużyna 9,0
+T,V,Drużyna 10,0
+J,V,Sędzia,1
+J,V,Sędzia,2
+J,V,Sędzia,3
+J,V,Sędzia,4
+J,V,Sędzia,5
