@@ -6,8 +6,10 @@
       xmlns:local="clr-namespace:Project"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MenuPage"
-      Background="Wheat">
+      Title="MenuPage">
+    <Page.Background>
+        <ImageBrush ImageSource="Background\menu.png"/>
+    </Page.Background>
 
     <Grid>
         <Button Content="Wyjście" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Click="Exit_Button"/>
