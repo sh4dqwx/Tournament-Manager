@@ -7,9 +7,12 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MenuPage"
-      Background="Wheat">
+      >
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/background/menu.png" Stretch="Fill"/>
+        </Grid.Background>
         <Button Content="Wyjście" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Click="Exit_Button"/>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
             <TextBlock Text="Menu Główne" FontSize="36" HorizontalAlignment="Center"/>
