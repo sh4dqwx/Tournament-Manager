@@ -3,16 +3,17 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace Project
+namespace Project.RegistrationPages
 {
-    public partial class TugOfWarPage : Page
+    public partial class TeamPage : Page
     {
         private MenuPage _menu;
-        public TugOfWarPage(MenuPage menu)
+        public TeamPage(MenuPage menu)
         {
             InitializeComponent();
             _menu = menu;
         }
+
         private void GoBack_Button(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(_menu);

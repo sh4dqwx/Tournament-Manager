@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Project.Registration
+namespace Project.Registrations
 {
     public class Team
     {

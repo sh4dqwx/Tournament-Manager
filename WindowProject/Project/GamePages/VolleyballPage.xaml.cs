@@ -3,11 +3,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace Project
+namespace Project.GamePages
 {
     public partial class VolleyballPage : Page
     {
         private MenuPage _menu;
+        public string name = "Tak";
         public VolleyballPage(MenuPage menu)
         {
             InitializeComponent();

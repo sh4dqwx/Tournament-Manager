@@ -1,80 +1,94 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using Project.Registration;
+using Project.Registrations;
 
-namespace Project.Sports
+namespace Project.Games
 {
-    public class Tug_of_war: Sports
+    public class Volleyball: Sports
     {
         private Random random = new Random();
-        public Tug_of_war()
+        public Volleyball()
         {
-
+            
         }
         public void playElimination()
         {
-            Console.WriteLine("Rozpoczynamy turniej przeciagania liny");
-            Console.WriteLine("---------------------------------------------------------------");
             teams.ForEach(team => team.resetScore());
-
+            int set;
+            int d1;
+            int d2;
             for (int i = 0; i < teams.Count; i++)
             {
                 for (int j = i + 1; j < teams.Count; j++)
                 {
-                    if (random.NextDouble() >= 0.5)
+                    set = 1;
+                    d1 = 0;
+                    d2 = 0;
+                    Console.WriteLine(teams[i].getName() + " vs " + teams[j].getName());
+                    for (int k = 0; k < 3; k++)
                     {
-                        Console.WriteLine(teams[i].getName() + " wygrywa z " + teams[j].getName());
+                        if(random.NextDouble() >= 0.5)
+                        {
+                            d1++;
+                            Console.WriteLine(set + " set wygrała " + teams[i].getName());
+                            set++;
+                        }
+                        else
+                        {
+                            d2++;
+                            Console.WriteLine(set + " set wygrała " + teams[j].getName());
+                            set++;
+                        }
+                        if(d1==2 || d2==2)
+                        {
+                            break;
+                        }
+                    }
+                    if (d1 > d2)
+                    {
+                        Console.WriteLine("Wygrywa " + teams[i].getName());
                         teams[i].addScore();
                     }
                     else
                     {
-                        Console.WriteLine(teams[j].getName() + " wygrywa z " + teams[i].getName());
+                        Console.WriteLine("Wygrywa " + teams[j].getName());
                         teams[j].addScore();
                     }
+                    Console.WriteLine("\n");
                 }
             }
-            Console.WriteLine("---------------------------------------------------------------");
             teams = teams.OrderBy(team => team.getScore()).ToList();
             teams.Reverse();
-            Console.WriteLine("Wyniki wszystkich drużyn:");
             showResults();
 
-           
             if (teams[3].getScore() != teams[4].getScore())
             {
                 teams.RemoveRange(4, teams.Count - 4);
-                Console.WriteLine("Lista drużyn zakwalifikowanych: ");
+                Console.WriteLine("Półfinaliści:");
                 showResults();
                 return;
             }
-
-           
+            
             List<Team> errorTeams = teams.FindAll(team => team.getScore() == teams[3].getScore());
             int qualified = teams.Where(team => team.getScore() > teams[3].getScore()).Count();
             teams.RemoveRange(qualified, teams.Count - qualified);
 
-        
-            Console.WriteLine("Lista zakwalifikowanych:");
-            showResults();
-            Console.WriteLine("\nLista z tą samą liczbą punktów:");
-            errorTeams.ForEach(team => Console.WriteLine(team.getName() + " " + team.getScore()));
-
-        
             for (int i = 0; i < 4 - qualified; i++)
             {
                 int chosen = random.Next() % errorTeams.Count;
-             
                 teams.Add(errorTeams[chosen]);
                 errorTeams.RemoveAt(chosen);
             }
-            Console.WriteLine("Lista zakwalifikowanych:");
+
+            Console.WriteLine("Półfinaliści:");
             showResults();
         }
-        public void semi_finals()
+
+        public void playSemiFinal()
         {
             List<Team> final = new List<Team>();
-            while (final.Count < 2)
+            while(final.Count < 2)
             {
                 int firstIndex = random.Next() % teams.Count;
                 Team firstTeam = teams[firstIndex];
@@ -94,19 +108,16 @@ namespace Project.Sports
             });
 
         }
-        public void finals()
+
+        public void playFinal()
         {
-            Console.WriteLine("\n");
-            Console.WriteLine("Rozpoczynamy finał w przeciąganiu liny");
-            Console.WriteLine("W finale wystąpią " + teams[0].getName() + " i " + teams[1].getName());
-            if (random.NextDouble() >= 0.5)
-            {
-                Console.WriteLine("Turniej wygrywa " + teams[1].getName());
-            }
-            else
-            {
-                Console.WriteLine("Turniej wygrywa " + teams[0].getName());
-            }
+            if (random.NextDouble() >= 0.5) teams.RemoveAt(0);
+            else teams.RemoveAt(1);
+
+            Console.WriteLine("\nZwycięzca:");
+            teams.ForEach(team => Console.WriteLine(team.getName()));
         }
+
+
     }
 }

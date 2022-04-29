@@ -3,41 +3,29 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using Project.Registration;
-using Project.Sports;
+using Project.RegistrationPages;
+using Project.Registrations;
+using Project.Games;
+using Project.GamePages;
 
 namespace Project
 {
     public partial class MenuPage : Page
     {
         private Window mainWindow;
-        private VolleyballPage volleyball;
-        private TugOfWarPage tugOfWar;
+        private TeamPage teamPage;
+        private VolleyballPage volleyballPage;
+        private TugOfWarPage tugOfWarPage;
+
+        public Volleyball volleyball = new Volleyball();
+        public Tug_of_war tug_Of_War = new Tug_of_war();
         public MenuPage(MainWindow window)
         {
             InitializeComponent();
-            volleyball = new VolleyballPage(this);
-            tugOfWar = new TugOfWarPage(this);
             mainWindow = window;
-        }
-        private void Volleyball_Button(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(volleyball);
-        }
-
-        private void TugOfWar_Button(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(tugOfWar);
-        }
-
-        private void Exit_Button(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult result = MessageBox.Show("Czy zapisać stan programu?", "Wyjście", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes)
-            {
-
-            }
-            mainWindow.Close();
+            volleyballPage = new VolleyballPage(this);
+            tugOfWarPage = new TugOfWarPage(this);
+            teamPage = new TeamPage(this);
         }
 
         public static void load(string? fname, Volleyball volleyball, Tug_of_war tugOfWar)
@@ -113,6 +101,45 @@ namespace Project
                 saveStream.WriteLine($"J,T,{judge.getName()}, {judge.getSurname()}");
             });
             saveStream.Close();
+        }
+
+        private void TeamButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(teamPage);
+        }
+
+        private void JudgeButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void LoadButton_Clicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void VolleyballButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(volleyballPage);
+        }
+
+        private void TugOfWarButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(tugOfWarPage);
+        }
+
+        private void DodgeballButton_Clicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Exit_Button(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Czy zapisać stan programu?", "Wyjście", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+
+            }
+            mainWindow.Close();
         }
     }
 }

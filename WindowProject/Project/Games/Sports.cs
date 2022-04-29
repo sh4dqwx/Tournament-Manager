@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Project.Registration;
+using Project.Registrations;
 
-namespace Project.Sports
+namespace Project.Games
 {
     public abstract class Sports
     {
