@@ -1,0 +1,20 @@
+﻿<Page x:Class="Project.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Project"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MenuPage"
+      Background="Wheat">
+
+    <Grid>
+        <Button Content="Wyjście" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Click="Exit_Button"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+            <TextBlock Text="Menu Główne" FontSize="36" HorizontalAlignment="Center"/>
+            <Button Content="Do siatkówki" Margin="10,30,10,0" Click="Volleyball_Button"/>
+            <Button Content="Do przeciągania liny" Margin="10,30,10,0" Click="TugOfWar_Button"/>
+        </StackPanel>
+    </Grid>
+</Page>
