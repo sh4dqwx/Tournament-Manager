@@ -10,10 +10,13 @@
     <Compile Update="MenuPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="TugOfWarPage.xaml.cs">
+    <Compile Update="RegistrationPages\TeamPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="VolleyballPage.xaml.cs">
+    <Compile Update="GamePages\TugOfWarPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GamePages\VolleyballPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -24,10 +27,13 @@
     <Page Update="MenuPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="TugOfWarPage.xaml">
+    <Page Update="RegistrationPages\TeamPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="VolleyballPage.xaml">
+    <Page Update="GamePages\TugOfWarPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GamePages\VolleyballPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
