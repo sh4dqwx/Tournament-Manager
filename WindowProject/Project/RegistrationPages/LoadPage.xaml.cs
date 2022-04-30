@@ -20,23 +20,24 @@ namespace Project.RegistrationPages
             _menu = menu;
         }
 
-        public static void load(string? fileName, Volleyball volleyball, Tug_of_war tugOfWar)
+        private void Load_Button(object sender, RoutedEventArgs e)
         {
             //Najpierw sprawdzamy czy nazwa pliku jest dobra i czy taki plik istnieje
-            if (fileName == null || fileName.Length == 0 || !File.Exists($@"..\..\..\saved\{fileName}.txt"))
+            if (fileName.Text == null || fileName.Text.Length == 0 || !File.Exists($@"..\..\..\saved\{fileName.Text}.txt"))
             {
-                Console.WriteLine("Niepoprawna nazwa pliku");
+                messageText.Text = "Niepoprawna nazwa pliku";
+                fileName.Text = "";
                 return;
             }
 
             //Usuwamy to co było wcześniej w listach
-            volleyball.clearTeams();
-            volleyball.clearJudges();
-            tugOfWar.clearTeams();
-            tugOfWar.clearJudges();
+            _menu.volleyball.clearTeams();
+            _menu.volleyball.clearJudges();
+            _menu.tugOfWar.clearTeams();
+            _menu.tugOfWar.clearJudges();
 
             //Póki co tylko dla siatkówki, sprawdzamy czy dana linijka to drużyna czy sędzia, potem jaki sport, i dodajemy do odpowiedniej listy
-            StreamReader loadStream = new StreamReader($@"..\..\..\saved\{fileName}.txt");
+            StreamReader loadStream = new StreamReader($@"..\..\..\saved\{fileName.Text}.txt");
             while (!loadStream.EndOfStream)
             {
                 string[] dane = loadStream.ReadLine().Split(',');
@@ -44,34 +45,33 @@ namespace Project.RegistrationPages
                 {
                     if (dane[1].Equals("V"))
                     {
-                        volleyball.addTeam(new Team(dane[2]));
+                        _menu.volleyball.addTeam(new Team(dane[2]));
                     }
                     else if (dane[1].Equals("T"))
                     {
-                        tugOfWar.addTeam(new Team(dane[2]));
+                        _menu.tugOfWar.addTeam(new Team(dane[2]));
                     }
                 }
                 else if (dane[0].Equals("J"))
                 {
                     if (dane[1].Equals("V"))
                     {
-                        volleyball.addJudge(new Judge(dane[2], dane[3]));
+                        _menu.volleyball.addJudge(new Judge(dane[2], dane[3]));
                     }
                     else if (dane[1].Equals("T"))
                     {
-                        tugOfWar.addJudge(new Judge(dane[2], dane[3]));
+                        _menu.tugOfWar.addJudge(new Judge(dane[2], dane[3]));
                     }
                 }
             }
             loadStream.Close();
-        }
-
-        private void Load_Button(object sender, RoutedEventArgs e)
-        {
-            load(fileName.Text, _menu.volleyball, _menu.tug_Of_War);
+            messageText.Text = "Wczytano";
+            fileName.Text = "";
         }
         private void GoBack_Button(object sender, RoutedEventArgs e)
         {
+            fileName.Text = "";
+            messageText.Text = "";
             NavigationService.Navigate(_menu);
         }
     }

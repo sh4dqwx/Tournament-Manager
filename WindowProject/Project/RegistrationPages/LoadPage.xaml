@@ -13,7 +13,7 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
             <TextBlock Text="Podaj nazwę pliku" FontSize="18" HorizontalAlignment="Left"/>
             <TextBox x:Name="fileName" Margin="10,20,10,0"/>
-            <TextBlock x:Name="messageText" Text="" Margin="10,5,10,0"/>
+            <TextBlock x:Name="messageText" Margin="10,5,10,0" HorizontalAlignment="Center"/>
             <Button Content="Wczytaj" Margin="10,5,10,0" Click="Load_Button"/>
             <Button Content="Powrót do menu" Margin="10,5,10,0" Click="GoBack_Button"/>
         </StackPanel>
