@@ -68,7 +68,7 @@ namespace Project.RegistrationPages
 
         private void Load_Button(object sender, RoutedEventArgs e)
         {
-
+            load(fileName.Text, _menu.volleyball, _menu.tug_Of_War);
         }
         private void GoBack_Button(object sender, RoutedEventArgs e)
         {
