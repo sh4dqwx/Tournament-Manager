@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using System.Windows.Forms;
 using Project.RegistrationPages;
 using Project.Registrations;
 using Project.Games;
@@ -136,10 +137,13 @@ namespace Project
         }
         private void Exit_Button(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Czy zapisać stan programu?", "Wyjście", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes)
+            DialogResult result = System.Windows.Forms.MessageBox.Show("Czy zapisać stan programu?", "Wyjście", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
-
+                FolderBrowserDialog folder = new FolderBrowserDialog();
+                if (folder.ShowDialog() != DialogResult.OK) return;
+                string path = folder.SelectedPath;
+                //Tu wywołaj zapis (i usuń tą linijkę wyżej, bo to ma tylko pokazać gdzie masz wybraną ścieżkę)
             }
             mainWindow.Close();
         }
