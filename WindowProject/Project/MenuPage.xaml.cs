@@ -14,6 +14,7 @@ namespace Project
     {
         private Window mainWindow;
         private TeamPage teamPage;
+        private LoadPage loadPage;
         private VolleyballPage volleyballPage;
         private TugOfWarPage tugOfWarPage;
 
@@ -23,9 +24,10 @@ namespace Project
         {
             InitializeComponent();
             mainWindow = window;
+            teamPage = new TeamPage(this);
+            loadPage = new LoadPage(this);
             volleyballPage = new VolleyballPage(this);
             tugOfWarPage = new TugOfWarPage(this);
-            teamPage = new TeamPage(this);
         }
 
         public static void load(string? fname, Volleyball volleyball, Tug_of_war tugOfWar)
@@ -115,7 +117,7 @@ namespace Project
 
         private void LoadButton_Clicked(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(loadPage);
         }
 
         private void VolleyballButton_Clicked(object sender, RoutedEventArgs e)
