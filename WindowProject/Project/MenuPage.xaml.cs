@@ -21,6 +21,7 @@ namespace Project
 
         public Volleyball volleyball = new Volleyball();
         public Tug_of_war tugOfWar = new Tug_of_war();
+
         public MenuPage(MainWindow window)
         {
             InitializeComponent();
@@ -29,52 +30,6 @@ namespace Project
             loadPage = new LoadPage(this);
             volleyballPage = new VolleyballPage(this);
             tugOfWarPage = new TugOfWarPage(this);
-        }
-
-        public static void load(string? fname, Volleyball volleyball, Tug_of_war tugOfWar)
-        {
-            //Najpierw sprawdzamy czy nazwa pliku jest dobra i czy taki plik istnieje
-            if (fname == null || fname.Length == 0 || !File.Exists($@"..\..\..\saved\{fname}.txt"))
-            {
-                Console.WriteLine("Niepoprawna nazwa pliku");
-                return;
-            }
-
-            //Usuwamy to co było wcześniej w listach
-            volleyball.clearTeams();
-            volleyball.clearJudges();
-            tugOfWar.clearTeams();
-            tugOfWar.clearJudges();
-
-            //Póki co tylko dla siatkówki, sprawdzamy czy dana linijka to drużyna czy sędzia, potem jaki sport, i dodajemy do odpowiedniej listy
-            StreamReader loadStream = new StreamReader($@"..\..\..\saved\{fname}.txt");
-            while (!loadStream.EndOfStream)
-            {
-                string[] dane = loadStream.ReadLine().Split(',');
-                if (dane[0].Equals("T"))
-                {
-                    if (dane[1].Equals("V"))
-                    {
-                        volleyball.addTeam(new Team(dane[2]));
-                    }
-                    else if (dane[1].Equals("T"))
-                    {
-                        tugOfWar.addTeam(new Team(dane[2]));
-                    }
-                }
-                else if (dane[0].Equals("J"))
-                {
-                    if (dane[1].Equals("V"))
-                    {
-                        volleyball.addJudge(new Judge(dane[2], dane[3]));
-                    }
-                    else if (dane[1].Equals("T"))
-                    {
-                        tugOfWar.addJudge(new Judge(dane[2], dane[3]));
-                    }
-                }
-            }
-            loadStream.Close();
         }
 
         private void TeamButton_Clicked(object sender, RoutedEventArgs e)
