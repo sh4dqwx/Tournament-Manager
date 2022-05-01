@@ -138,14 +138,16 @@ namespace Project
         private void Exit_Button(object sender, RoutedEventArgs e)
         {
             DialogResult result = System.Windows.Forms.MessageBox.Show("Czy zapisać stan programu?", "Wyjście", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
+            if (result == DialogResult.Yes) //Jeżeli ktoś wybierze, że chce zapisać (wybierze "tak")
             {
-                FolderBrowserDialog folder = new FolderBrowserDialog();
-                if (folder.ShowDialog() != DialogResult.OK) return;
-                string path = folder.SelectedPath;
+                FolderBrowserDialog folder = new FolderBrowserDialog(); //Tworzysz obiekt okna i ewentualnie ustawiasz mu propertisy. My nie potrzebujemy, podstawowe są git
+                if (folder.ShowDialog() != DialogResult.OK) return; //Jak Ktoś zamknie okno lub wyjdzie nie zatwierdzając wyboru to ma wrócić do menu bez wychodzenia
+                string path = folder.SelectedPath; //Robisz coś z uzyskaną ścieżką
                 //Tu wywołaj zapis (i usuń tą linijkę wyżej, bo to ma tylko pokazać gdzie masz wybraną ścieżkę)
             }
             mainWindow.Close();
+
+            //Po usuwaj komentarze potem
         }
     }
 }
