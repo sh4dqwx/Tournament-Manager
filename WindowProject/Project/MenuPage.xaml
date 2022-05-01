@@ -89,8 +89,8 @@
             <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="0,0,0,50">
                 <Label Grid.Column="0" Content="Rozgrywki" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" FontFamily="Constantia" />
                 <Button Style="{DynamicResource RoundedButton}" Content="Siatkówka" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="VolleyballButton_Clicked"/>
-                <Button Style="{DynamicResource RoundedButton}" Content="Przeciąganie liny" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF"/>
-                <Button Style="{DynamicResource RoundedButton}" Content="Dwa ognie" Margin="20" Height="24" Width="120" Background="#FFCCE6FF"/>
+                <Button Style="{DynamicResource RoundedButton}" Content="Przeciąganie liny" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="TugOfWarButton_Clicked"/>
+                <Button Style="{DynamicResource RoundedButton}" Content="Dwa ognie" Margin="20" Height="24" Width="120" Background="#FFCCE6FF" Click="DodgeballButton_Clicked"/>
             </StackPanel>
         </Grid>
     </Grid>

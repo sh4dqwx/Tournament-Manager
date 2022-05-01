@@ -44,5 +44,11 @@ namespace Project.Registrations
         {
             score = 0;
         }
+        public override bool Equals(object obj)
+        {
+            if(!(obj is Team)) return false;
+            Team team = (Team) obj;
+            return name.Equals(team.name);
+        }
     }
 }

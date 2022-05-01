@@ -1,0 +1,91 @@
+﻿<Page x:Class="Project.RegistrationPages.JudgePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Project.RegistrationPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="JudgePage"
+      Background="AliceBlue">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Zarządzanie jurorami" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
+        <Button Grid.Row="1" Content="Wróć do menu" Margin="10" Height="24" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#FFCCE6FF" Click="GoBack_Button"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="1" Grid.Column="2" Height="300" Width="250" Margin="0,0,0,50">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"  Text="Imię i nazwisko" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="Kategoria" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBox x:Name="JudgeName" Grid.Column="0" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
+                <TextBox x:Name="JudgeCategory" Grid.Column="1" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
+            </Grid>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,50">
+                <TextBlock Text="Dodaj jurora" FontSize="24" FontFamily="Constantia" Margin="0,0,0,10"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Imię: " FontSize="16"/>
+                    <TextBox Grid.Column="1" Grid.Row="0" x:Name="addJudgeName" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,10"/>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Nazwisko: " FontSize="16"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" x:Name="addJudgeSurname" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>
+                    <TextBlock Grid.Column="2" Grid.Row="0" Text="Kategoria: " FontSize="16" Margin="30,0,10,0"/>
+                    <ComboBox Grid.Column="3" Grid.Row="0" x:Name="addCategoryName" Width="120" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <ComboBoxItem Content="Siatkówka" IsSelected="True"/>
+                        <ComboBoxItem Content="Przeciąganie liny"/>
+                        <ComboBoxItem Content="Dwa ognie"/>
+                    </ComboBox>
+                </Grid>
+                <Button Content="Dodaj" Height="24" Width="60" HorizontalAlignment="Left" Margin="0,10,0,0" Background="#FFCCE6FF" Click="addJudgeButton" />
+                <Separator Margin="0,15"/>
+                <TextBlock Text="Usuń jurora" FontSize="24" FontFamily="Constantia" Margin="0,0,0,10"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Imię: " FontSize="16"/>
+                    <TextBox Grid.Column="1" Grid.Row="0" x:Name="removeJudgeName" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,10"/>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Nazwisko: " FontSize="16"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" x:Name="removeJudgeSurname" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>
+                    <TextBlock Grid.Column="2" Grid.Row="0" Text="Kategoria: " FontSize="16" Margin="30,0,10,0"/>
+                    <ComboBox Grid.Column="3" Grid.Row="0" x:Name="removeCategoryName" Width="120" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <ComboBoxItem Content="Siatkówka" IsSelected="True"/>
+                        <ComboBoxItem Content="Przeciąganie liny"/>
+                        <ComboBoxItem Content="Dwa ognie"/>
+                    </ComboBox>
+                </Grid>
+                <Button Content="Usuń" Height="24" Width="60" HorizontalAlignment="Left" Margin="0,10,0,0" Background="#FFCCE6FF" Click="removeJudgeButton"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
