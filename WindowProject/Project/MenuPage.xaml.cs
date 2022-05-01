@@ -133,7 +133,10 @@ namespace Project
 
         private void DodgeballButton_Clicked(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog fileBrowser = new OpenFileDialog();
+            fileBrowser.InitialDirectory = $@"..\..\..\saved";
+            fileBrowser.ShowDialog();
+            if (fileBrowser.ShowDialog() != DialogResult.OK) return;
         }
         private void Exit_Button(object sender, RoutedEventArgs e)
         {
