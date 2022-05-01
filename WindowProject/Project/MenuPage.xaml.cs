@@ -100,6 +100,7 @@ namespace Project
             OpenFileDialog loadFile = new OpenFileDialog();
             loadFile.InitialDirectory = folderPath;
             loadFile.Filter = "txt files (*.txt)|*.txt";
+            loadFile.CheckFileExists = true;
 
             if (loadFile.ShowDialog() == false) return;
 
