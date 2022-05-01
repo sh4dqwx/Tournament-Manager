@@ -3,7 +3,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using System.Windows.Forms;
+using Microsoft.Win32;
 using Project.RegistrationPages;
 using Project.Registrations;
 using Project.Games;
@@ -137,17 +137,20 @@ namespace Project
         }
         private void Exit_Button(object sender, RoutedEventArgs e)
         {
-            DialogResult result = System.Windows.Forms.MessageBox.Show("Czy zapisać stan programu?", "Wyjście", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes) //Jeżeli ktoś wybierze, że chce zapisać (wybierze "tak")
+            MessageBoxResult result = MessageBox.Show("Czy zapisać stan programu?", "Wyjście", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
             {
-                FolderBrowserDialog folder = new FolderBrowserDialog(); //Tworzysz obiekt okna i ewentualnie ustawiasz mu propertisy. My nie potrzebujemy, podstawowe są git
-                if (folder.ShowDialog() != DialogResult.OK) return; //Jak Ktoś zamknie okno lub wyjdzie nie zatwierdzając wyboru to ma wrócić do menu bez wychodzenia
-                string path = folder.SelectedPath; //Robisz coś z uzyskaną ścieżką
-                //Tu wywołaj zapis (i usuń tą linijkę wyżej, bo to ma tylko pokazać gdzie masz wybraną ścieżkę)
+                OpenFileDialog file = new OpenFileDialog(); // Dodałem filtr, aby domyślnie pokazywało tylko txt
+                file.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //Ustaw tu domyślnie wyświetlany folder
+                file.Filter = "txt files (*.txt)|*.txt";
+                file.CheckFileExists = true;
+                if (file.ShowDialog() == false) return; //Jak nie zatwierdzi to wraca do menu bez wychodzenia
+                string path = file.FileName; //Tu jest pełna ścieżka i nazwa pliku
+                //Tu wywołaj zapis czy odczyt (sprawdzaj w tym czy wybrany plik jest faktycznie z rozszerzeniem txt albo czy ma konkretną nazwę)
             }
             mainWindow.Close();
 
-            //Po usuwaj komentarze potem
+            //Usuń komentarze potem
         }
     }
 }
