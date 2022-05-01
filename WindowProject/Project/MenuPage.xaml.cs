@@ -140,6 +140,14 @@ namespace Project
             MessageBoxResult result = MessageBox.Show("Czy zapisać stan programu?", "Wyjście", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (result == MessageBoxResult.Yes)
             {
+                string[] folders = AppDomain.CurrentDomain.BaseDirectory.Split('\\');
+                string folderPath = "";
+                for(int i=0; i<folders.Length-3; i++)
+                {
+                    folderPath += $@"{folders[i]}\";
+                }
+                folderPath += "saved";
+
                 OpenFileDialog file = new OpenFileDialog(); //Otwieram okno diaogowe
                 file.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //Ustaw tu domyślnie wyświetlany folder
                 file.Filter = "txt files (*.txt)|*.txt"; // Dodałem filtr, aby domyślnie pokazywało tylko txt
