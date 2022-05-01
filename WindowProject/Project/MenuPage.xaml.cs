@@ -15,7 +15,6 @@ namespace Project
     {
         private Window mainWindow;
         private TeamPage teamPage;
-        private LoadPage loadPage;
         private VolleyballPage volleyballPage;
         private TugOfWarPage tugOfWarPage;
 
@@ -27,7 +26,6 @@ namespace Project
             InitializeComponent();
             mainWindow = window;
             teamPage = new TeamPage(this);
-            loadPage = new LoadPage(this);
             volleyballPage = new VolleyballPage(this);
             tugOfWarPage = new TugOfWarPage(this);
         }
