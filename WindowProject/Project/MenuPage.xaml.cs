@@ -140,10 +140,10 @@ namespace Project
             MessageBoxResult result = MessageBox.Show("Czy zapisać stan programu?", "Wyjście", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (result == MessageBoxResult.Yes)
             {
-                OpenFileDialog file = new OpenFileDialog(); // Dodałem filtr, aby domyślnie pokazywało tylko txt
+                OpenFileDialog file = new OpenFileDialog(); //Otwieram okno diaogowe
                 file.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; //Ustaw tu domyślnie wyświetlany folder
-                file.Filter = "txt files (*.txt)|*.txt";
-                file.CheckFileExists = true;
+                file.Filter = "txt files (*.txt)|*.txt"; // Dodałem filtr, aby domyślnie pokazywało tylko txt
+                file.CheckFileExists = true; //Niech sprawdza czy plik istnieje bo w między czasie mógł zniknąć
                 if (file.ShowDialog() == false) return; //Jak nie zatwierdzi to wraca do menu bez wychodzenia
                 string path = file.FileName; //Tu jest pełna ścieżka i nazwa pliku
                 //Tu wywołaj zapis czy odczyt (sprawdzaj w tym czy wybrany plik jest faktycznie z rozszerzeniem txt albo czy ma konkretną nazwę)
