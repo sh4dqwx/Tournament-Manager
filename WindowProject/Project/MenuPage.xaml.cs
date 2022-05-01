@@ -89,7 +89,53 @@ namespace Project
 
         private void LoadButton_Clicked(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(loadPage);
+            string[] folders = AppDomain.CurrentDomain.BaseDirectory.Split('\\');
+            string folderPath = "";
+            for (int i = 0; i < folders.Length - 4; i++)
+            {
+                folderPath += $@"{folders[i]}\";
+            }
+            folderPath += "saved";
+
+            OpenFileDialog loadFile = new OpenFileDialog();
+            loadFile.InitialDirectory = folderPath;
+            loadFile.Filter = "txt files (*.txt)|*.txt";
+
+            if (loadFile.ShowDialog() == false) return;
+
+            volleyball.clearTeams();
+            volleyball.clearJudges();
+            tugOfWar.clearTeams();
+            tugOfWar.clearJudges();
+
+            StreamReader loadStream = new StreamReader(loadFile.FileName);
+            while (!loadStream.EndOfStream)
+            {
+                string[] dane = loadStream.ReadLine().Split(',');
+                if (dane[0].Equals("T"))
+                {
+                    if (dane[1].Equals("V"))
+                    {
+                        volleyball.addTeam(new Team(dane[2]));
+                    }
+                    else if (dane[1].Equals("T"))
+                    {
+                        tugOfWar.addTeam(new Team(dane[2]));
+                    }
+                }
+                else if (dane[0].Equals("J"))
+                {
+                    if (dane[1].Equals("V"))
+                    {
+                        volleyball.addJudge(new Judge(dane[3], dane[2]));
+                    }
+                    else if (dane[1].Equals("T"))
+                    {
+                        tugOfWar.addJudge(new Judge(dane[3], dane[2]));
+                    }
+                }
+            }
+            loadStream.Close();
         }
 
         private void VolleyballButton_Clicked(object sender, RoutedEventArgs e)
@@ -111,7 +157,6 @@ namespace Project
             MessageBoxResult result = MessageBox.Show("Czy zapisać stan programu?", "Wyjście", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (result == MessageBoxResult.Yes)
             { 
-                //Ręcznie tworzę ścieżkę do folderu saved
                 string[] folders = AppDomain.CurrentDomain.BaseDirectory.Split('\\');
                 string folderPath = "";
                 for(int i=0; i<folders.Length-4; i++)
@@ -119,8 +164,7 @@ namespace Project
                     folderPath += $@"{folders[i]}\";
                 }
                 folderPath += "saved";
-
-                //Tworzę okno do zapisywania plików i zapisuje do pliku txt o podanej nazwie
+         
                 SaveFileDialog saveFile = new SaveFileDialog();
                 saveFile.InitialDirectory = folderPath;
                 saveFile.Filter = "txt files (*.txt)|*.txt";
@@ -130,14 +174,14 @@ namespace Project
                 volleyball.getTeams().ForEach(team =>
                 {
                     saveStream.WriteLine($"T,V,{team.getName()}");
+                });                
+                tugOfWar.getTeams().ForEach(team =>
+                {
+                    saveStream.WriteLine($"T,T,{team.getName()}");
                 });
                 volleyball.getJudges().ForEach(judge =>
                 {
                     saveStream.WriteLine($"J,V,{judge.getSurname()},{judge.getName()}");
-                });
-                tugOfWar.getTeams().ForEach(team =>
-                {
-                    saveStream.WriteLine($"T,T,{team.getName()}");
                 });
                 tugOfWar.getJudges().ForEach(judge =>
                 {
