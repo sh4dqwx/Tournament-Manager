@@ -19,6 +19,16 @@ namespace Project.Games
             judges.Add(judge);
         }
 
+        public void removeTeam(Team team)
+        {
+            teams.Remove(team);
+        }
+
+        public void removeJudge(Judge judge)
+        {
+            judges.Remove(judge);
+        }
+
         public List<Team> getTeams()
         {
             List<Team> toSend = new List<Team>();

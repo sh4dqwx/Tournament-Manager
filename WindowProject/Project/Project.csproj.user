@@ -7,7 +7,13 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="GamePages\Dodgeball.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MenuPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RegistrationPages\JudgePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="RegistrationPages\LoadPage.xaml.cs">
@@ -24,10 +30,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="GamePages\Dodgeball.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MenuPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="RegistrationPages\JudgePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="RegistrationPages\LoadPage.xaml">

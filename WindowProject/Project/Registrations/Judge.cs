@@ -28,5 +28,11 @@ namespace Project.Registrations
         {
             return surname;
         }
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Judge)) return false;
+            Judge judge = (Judge)obj;
+            return name.Equals(judge.name) && surname.Equals(judge.surname);
+        }
     }
 }
