@@ -17,13 +17,13 @@ namespace Project.RegistrationPages
         public void refreshJudges()
         {
             string names = "";
-            string surnames = "";
+            string category = "";
             List<Judge> judges = _menu.volleyball.getJudges();
-            judges.ForEach(judge => { names += judge.getName() + "\n"; surnames += judge.getSurname() + "\n"; });
+            judges.ForEach(judge => { names += judge.getName() + " " + judge.getSurname() + "\n"; category += "Siatkówka\n"; });
             judges = _menu.tugOfWar.getJudges();
-            judges.ForEach(judge => { names += judge.getName() + "\n"; surnames += judge.getSurname() + "\n"; });
+            judges.ForEach(judge => { names += judge.getName() + " " + judge.getSurname() + "\n"; category += "Przeciąganie liny\n"; ; });
             JudgeName.Text = names;
-            JudgeSurname.Text = surnames;
+            JudgeCategory.Text = category;
         }
 
         private void GoBack_Button(object sender, RoutedEventArgs e)
@@ -34,18 +34,44 @@ namespace Project.RegistrationPages
         private void addJudgeButton(object sender, RoutedEventArgs e)
         {
             if (addJudgeName.Text.Length == 0 || addJudgeSurname.Text.Length == 0) return;
-            //Wywołanie dodania sędzięgo
+            switch (addCategoryName.SelectedIndex)
+            {
+                case 0:
+                    _menu.volleyball.addJudge(new Judge(addJudgeName.Text, addJudgeSurname.Text));
+                    break;
+                case 1:
+                    _menu.tugOfWar.addJudge(new Judge(addJudgeName.Text, addJudgeSurname.Text));
+                    break;
+                case 2:
+                    break;
+                default:
+                    break;
+            }
             addJudgeName.Text = "";
             addJudgeSurname.Text = "";
+            addCategoryName.SelectedIndex = 0;
             refreshJudges();
         }
 
         private void removeJudgeButton(object sender, RoutedEventArgs e)
         {
-            if (addJudgeName.Text.Length == 0 || addJudgeSurname.Text.Length == 0) return;
-            //Wywołanie usunięcia sędziego
-            addJudgeName.Text = "";
-            addJudgeSurname.Text = "";
+            if (removeJudgeName.Text.Length == 0 || removeJudgeSurname.Text.Length == 0) return;
+            switch (removeCategoryName.SelectedIndex)
+            {
+                case 0:
+                    _menu.volleyball.removeJudge(new Judge(removeJudgeName.Text, removeJudgeSurname.Text));
+                    break;
+                case 1:
+                    _menu.tugOfWar.removeJudge(new Judge(removeJudgeName.Text, removeJudgeSurname.Text));
+                    break;
+                case 2:
+                    break;
+                default:
+                    break;
+            }
+            removeJudgeName.Text = "";
+            removeJudgeSurname.Text = "";
+            removeCategoryName.SelectedIndex = 0;
             refreshJudges();
         }
     }
