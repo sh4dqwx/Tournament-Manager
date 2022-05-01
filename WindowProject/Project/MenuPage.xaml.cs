@@ -16,7 +16,6 @@ namespace Project
         private Window mainWindow;
         private TeamPage teamPage;
         private JudgePage judgePage;
-        private LoadPage loadPage;
         private VolleyballPage volleyballPage;
         private TugOfWarPage tugOfWarPage;
         private Dodgeball dodgeball;
@@ -30,7 +29,6 @@ namespace Project
             mainWindow = window;
             teamPage = new TeamPage(this);
             judgePage = new JudgePage(this);
-            loadPage = new LoadPage(this);
             volleyballPage = new VolleyballPage(this);
             tugOfWarPage = new TugOfWarPage(this);
             dodgeball = new Dodgeball(this);
@@ -43,7 +41,7 @@ namespace Project
 
         private void JudgeButton_Clicked(object sender, RoutedEventArgs e)
         {
-            
+            NavigationService.Navigate(judgePage);
         }
 
         private void LoadButton_Clicked(object sender, RoutedEventArgs e)

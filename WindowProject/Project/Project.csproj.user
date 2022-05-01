@@ -16,9 +16,6 @@
     <Compile Update="RegistrationPages\JudgePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="RegistrationPages\LoadPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="RegistrationPages\TeamPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,9 +37,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="RegistrationPages\JudgePage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="RegistrationPages\LoadPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="RegistrationPages\TeamPage.xaml">
