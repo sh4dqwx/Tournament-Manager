@@ -110,61 +110,42 @@ namespace Project
         {
             MessageBoxResult result = MessageBox.Show("Czy zapisać stan programu?", "Wyjście", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (result == MessageBoxResult.Yes)
-            {
+            { 
+                //Ręcznie tworzę ścieżkę do folderu saved
                 string[] folders = AppDomain.CurrentDomain.BaseDirectory.Split('\\');
                 string folderPath = "";
                 for(int i=0; i<folders.Length-4; i++)
                 {
                     folderPath += $@"{folders[i]}\";
                 }
-                folderPath += "saved";              
+                folderPath += "saved";
 
-                SaveFileDialog saveFile = new SaveFileDialog(); //Otwieram okno dialogowe
-                saveFile.InitialDirectory = folderPath; //Ustaw tu domyślnie wyświetlany folder
-                saveFile.Filter = "txt files (*.txt)|*.txt"; // Dodałem filtr, aby domyślnie pokazywało tylko txt                
-                if (saveFile.ShowDialog() == false) return; //Jak nie zatwierdzi to wraca do menu bez wychodzenia
-                else
+                //Tworzę okno do zapisywania plików i zapisuje do pliku txt o podanej nazwie
+                SaveFileDialog saveFile = new SaveFileDialog();
+                saveFile.InitialDirectory = folderPath;
+                saveFile.Filter = "txt files (*.txt)|*.txt";
+
+                if (saveFile.ShowDialog() == false) return;
+                StreamWriter saveStream = new StreamWriter(saveFile.FileName);
+                volleyball.getTeams().ForEach(team =>
                 {
-                    string filePath = saveFile.FileName;
-
-                    MessageBoxResult debug = MessageBox.Show(filePath, "debug", MessageBoxButton.OK);
-                }
-                string path = saveFile.FileName; //Tu jest pełna ścieżka i nazwa pliku
-                //Tu wywołaj zapis czy odczyt (sprawdzaj w tym czy wybrany plik jest faktycznie z rozszerzeniem txt albo czy ma konkretną nazwę)
+                    saveStream.WriteLine($"T,V,{team.getName()}");
+                });
+                volleyball.getJudges().ForEach(judge =>
+                {
+                    saveStream.WriteLine($"J,V,{judge.getSurname()},{judge.getName()}");
+                });
+                tugOfWar.getTeams().ForEach(team =>
+                {
+                    saveStream.WriteLine($"T,T,{team.getName()}");
+                });
+                tugOfWar.getJudges().ForEach(judge =>
+                {
+                    saveStream.WriteLine($"J,T,{judge.getSurname()}, {judge.getName()}");
+                });
+                saveStream.Close();                   
             }
             mainWindow.Close();
-
-            //Usuń komentarze potem
-        }
-
-        public static void save(string? fname, Volleyball volleyball, Tug_of_war tugOfWar)
-        {
-            //Najpierw sprawdzamy czy nazwa pliku jest dobra
-            if (fname == null || fname.Length == 0)
-            {
-                Console.WriteLine("Niepoprawna nazwa pliku");
-                return;
-            }
-
-            //Zapisujemy w kodzie T,[sport],[nazwa] dla drużyn i J,[sport],[imie],[nazwisko] dla sędziów
-            StreamWriter saveStream = new StreamWriter($@"..\..\..\saved\{fname}.txt");
-            volleyball.getTeams().ForEach(team =>
-            {
-                saveStream.WriteLine($"T,V,{team.getName()}");
-            });
-            volleyball.getJudges().ForEach(judge =>
-            {
-                saveStream.WriteLine($"J,V,{judge.getName()},{judge.getSurname()}");
-            });
-            tugOfWar.getTeams().ForEach(team =>
-            {
-                saveStream.WriteLine($"T,T.{team.getName()}");
-            });
-            tugOfWar.getJudges().ForEach(judge =>
-            {
-                saveStream.WriteLine($"J,T,{judge.getName()}, {judge.getSurname()}");
-            });
-            saveStream.Close();
         }
     }
 }
