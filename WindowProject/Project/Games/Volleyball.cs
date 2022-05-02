@@ -12,8 +12,9 @@ namespace Project.Games
         {
             
         }
-        public void playElimination()
+        public string playElimination()
         {
+            string results = "";
             teams.ForEach(team => team.resetScore());
             int set;
             int d1;
@@ -25,19 +26,22 @@ namespace Project.Games
                     set = 1;
                     d1 = 0;
                     d2 = 0;
-                    Console.WriteLine(teams[i].getName() + " vs " + teams[j].getName());
+                    results += teams[i].getName() + " vs " + teams[j].getName()+"\n";
+                    //Console.WriteLine(teams[i].getName() + " vs " + teams[j].getName());
                     for (int k = 0; k < 3; k++)
                     {
                         if(random.NextDouble() >= 0.5)
                         {
                             d1++;
-                            Console.WriteLine(set + " set wygrała " + teams[i].getName());
+                            results += set + " set wygrała " + teams[i].getName() + "\n";
+                            //Console.WriteLine(set + " set wygrała " + teams[i].getName());
                             set++;
                         }
                         else
                         {
                             d2++;
-                            Console.WriteLine(set + " set wygrała " + teams[j].getName());
+                            results += set + " set wygrała " + teams[j].getName() + "\n";
+                            //Console.WriteLine(set + " set wygrała " + teams[j].getName());
                             set++;
                         }
                         if(d1==2 || d2==2)
@@ -47,12 +51,16 @@ namespace Project.Games
                     }
                     if (d1 > d2)
                     {
-                        Console.WriteLine("Wygrywa " + teams[i].getName());
+                        results += "Wygrywa " + teams[i].getName() + "\n";
+                        results += "\n";
+                        //Console.WriteLine("Wygrywa " + teams[i].getName());
                         teams[i].addScore();
                     }
                     else
                     {
-                        Console.WriteLine("Wygrywa " + teams[j].getName());
+                        results += "Wygrywa " + teams[j].getName() + "\n";
+                        results += "\n";
+                        //Console.WriteLine("Wygrywa " + teams[j].getName());
                         teams[j].addScore();
                     }
                     Console.WriteLine("\n");
@@ -60,14 +68,17 @@ namespace Project.Games
             }
             teams = teams.OrderBy(team => team.getScore()).ToList();
             teams.Reverse();
-            showResults();
+            results += "Punktacja:\n";
+            results+=showResults();
 
             if (teams[3].getScore() != teams[4].getScore())
             {
                 teams.RemoveRange(4, teams.Count - 4);
-                Console.WriteLine("Półfinaliści:");
-                showResults();
-                return;
+                results += "\n";
+                results += "Półfinaliści:\n";
+                //Console.WriteLine("Półfinaliści:");
+                results+=showResults();
+                return results;
             }
             
             List<Team> errorTeams = teams.FindAll(team => team.getScore() == teams[3].getScore());
@@ -80,9 +91,11 @@ namespace Project.Games
                 teams.Add(errorTeams[chosen]);
                 errorTeams.RemoveAt(chosen);
             }
-
-            Console.WriteLine("Półfinaliści:");
-            showResults();
+            results += "\n";
+            results += "Półfinaliści:\n";
+            //Console.WriteLine("Półfinaliści:");
+            results +=showResults();
+            return results;
         }
 
         public void playSemiFinal()

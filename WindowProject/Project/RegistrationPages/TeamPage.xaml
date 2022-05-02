@@ -6,9 +6,10 @@
       xmlns:local="clr-namespace:Project.RegistrationPages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="TeamPage"
-      Background="AliceBlue">
-
+      Title="TeamPage">
+    <Page.Background>
+        <ImageBrush ImageSource="/Background/team.png" Stretch="Fill"/>
+    </Page.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>

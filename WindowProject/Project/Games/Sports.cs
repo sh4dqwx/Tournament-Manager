@@ -53,10 +53,13 @@ namespace Project.Games
             judges.Clear();
         }
 
-        public void showResults()
+        public string showResults()
         {
-            teams.ForEach(team => Console.WriteLine(team.getName() + " " + team.getScore()));
-            Console.WriteLine();
+            string z = "";
+            //teams.ForEach(team => Console.WriteLine(team.getName() + " " + team.getScore()));
+            teams.ForEach(team => z += team.getName() + " " + team.getScore()+"\n");
+            //Console.WriteLine();
+            return z;
         }
     }
 }

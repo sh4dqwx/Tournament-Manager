@@ -8,11 +8,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Background\dodgeball.png" />
+    <None Remove="Background\judge.png" />
     <None Remove="Background\menu.png" />
+    <None Remove="Background\team.png" />
+    <None Remove="Background\tug_of_war.png" />
+    <None Remove="Background\volleyball.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Background\dodgeball.png" />
+    <Resource Include="Background\judge.png" />
     <Resource Include="Background\menu.png" />
+    <Resource Include="Background\team.png" />
+    <Resource Include="Background\tug_of_war.png" />
+    <Resource Include="Background\volleyball.png" />
   </ItemGroup>
 
 </Project>

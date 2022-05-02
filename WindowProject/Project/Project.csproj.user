@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="GamePages\Content.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="GamePages\Dodgeball.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -27,6 +30,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="GamePages\Content.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="GamePages\Dodgeball.xaml">
       <SubType>Designer</SubType>
     </Page>

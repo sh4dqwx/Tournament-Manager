@@ -19,7 +19,6 @@ namespace Project
         private VolleyballPage volleyballPage;
         private TugOfWarPage tugOfWarPage;
         private Dodgeball dodgeball;
-
         public Volleyball volleyball = new Volleyball();
         public Tug_of_war tugOfWar = new Tug_of_war();
 
