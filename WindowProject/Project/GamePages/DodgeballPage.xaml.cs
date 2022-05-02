@@ -5,10 +5,10 @@ using System.Windows.Navigation;
 
 namespace Project.GamePages
 {
-    public partial class Dodgeball : Page
+    public partial class DodgeballPage : Page
     {
         private MenuPage _menu;
-        public Dodgeball(MenuPage menu)
+        public DodgeballPage(MenuPage menu)
         {
             InitializeComponent();
             _menu = menu;

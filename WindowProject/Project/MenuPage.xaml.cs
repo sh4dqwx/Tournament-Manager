@@ -18,7 +18,7 @@ namespace Project
         private JudgePage judgePage;
         private VolleyballPage volleyballPage;
         private TugOfWarPage tugOfWarPage;
-        private Dodgeball dodgeball;
+        private DodgeballPage dodgeballPage;
 
         public Volleyball volleyball = new Volleyball();
         public Tug_of_war tugOfWar = new Tug_of_war();
@@ -31,7 +31,7 @@ namespace Project
             judgePage = new JudgePage(this);
             volleyballPage = new VolleyballPage(this);
             tugOfWarPage = new TugOfWarPage(this);
-            dodgeball = new Dodgeball(this);
+            dodgeballPage = new DodgeballPage(this);
         }
 
         private void TeamButton_Clicked(object sender, RoutedEventArgs e)
@@ -110,7 +110,7 @@ namespace Project
 
         private void DodgeballButton_Clicked(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(dodgeball);
+            NavigationService.Navigate(dodgeballPage);
         }
         private void Exit_Button(object sender, RoutedEventArgs e)
         {
