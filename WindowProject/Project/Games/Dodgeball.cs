@@ -12,6 +12,20 @@ namespace Project.Games
         {
 
         }
+
+        public void playMatch(Team t1, Team t2)
+        {
+            if (random.NextDouble() >= 0.5)
+            {
+                Console.WriteLine(t1.getName() + " wygrywa z " + t2.getName());
+                t1.addScore();
+            }
+            else
+            {
+                Console.WriteLine(t2.getName() + " wygrywa z " + t1.getName());
+                t2.addScore();
+            }
+        }
         public void playElimination()
         {
             Console.WriteLine("Rozpoczynamy turniej dwóch ogni");
@@ -22,16 +36,7 @@ namespace Project.Games
             {
                 for (int j = i + 1; j < teams.Count; j++)
                 {
-                    if (random.NextDouble() >= 0.5)
-                    {
-                        Console.WriteLine(teams[i].getName() + " wygrywa z " + teams[j].getName());
-                        teams[i].addScore();
-                    }
-                    else
-                    {
-                        Console.WriteLine(teams[j].getName() + " wygrywa z " + teams[i].getName());
-                        teams[j].addScore();
-                    }
+                    playMatch(teams[i], teams[j]);
                 }
             }
 
