@@ -67,31 +67,33 @@
     <Page.Background>
         <ImageBrush ImageSource="/Background/menu.png" Stretch="Fill"/>
     </Page.Background>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Wielki Turniej Kopakabana" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
-        <Button Grid.Column="2" Grid.Row="1" Style="{DynamicResource RoundedButton}" Content="Wyjście" Margin="10" Height="24" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#FFCCE6FF" Click="Exit_Button"/>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,0,50">
-                <Label Grid.Column="0" Content="Rejestracje" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" FontFamily="Constantia" />
-                <Button Style="{DynamicResource RoundedButton}" Content="Drużyny" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="TeamButton_Clicked" />
-                <Button Style="{DynamicResource RoundedButton}" Content="Sędziowie" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="JudgeButton_Clicked"/>
-                <Button Style="{DynamicResource RoundedButton}" Content="Wczytaj z pliku" Margin="20" Height="24" Width="120" Background="#FFCCE6FF" Click="LoadButton_Clicked"/>
-            </StackPanel>
-            <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="0,0,0,50">
-                <Label Grid.Column="0" Content="Rozgrywki" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" FontFamily="Constantia" />
-                <Button Style="{DynamicResource RoundedButton}" Content="Siatkówka" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="VolleyballButton_Clicked"/>
-                <Button Style="{DynamicResource RoundedButton}" Content="Przeciąganie liny" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="TugOfWarButton_Clicked"/>
-                <Button Style="{DynamicResource RoundedButton}" Content="Dwa ognie" Margin="20" Height="24" Width="120" Background="#FFCCE6FF" Click="DodgeballButton_Clicked"/>
-            </StackPanel>
+    <Viewbox StretchDirection="UpOnly" Stretch="Uniform">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Wielki Turniej Kopakabana" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
+            <Button Grid.Column="2" Grid.Row="1" Style="{DynamicResource RoundedButton}" Content="Wyjście" Margin="10" Height="24" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#FFCCE6FF" Click="Exit_Button"/>
+            <Grid Grid.Row="1" MinWidth="750">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,0,50">
+                    <Label Grid.Column="0" Content="Rejestracje" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" FontFamily="Constantia" />
+                    <Button Style="{DynamicResource RoundedButton}" Content="Drużyny" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="TeamButton_Clicked" />
+                    <Button Style="{DynamicResource RoundedButton}" Content="Sędziowie" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="JudgeButton_Clicked"/>
+                    <Button Style="{DynamicResource RoundedButton}" Content="Wczytaj z pliku" Margin="20" Height="24" Width="120" Background="#FFCCE6FF" Click="LoadButton_Clicked"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="0,0,0,50">
+                    <Label Grid.Column="0" Content="Rozgrywki" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" FontFamily="Constantia" />
+                    <Button Style="{DynamicResource RoundedButton}" Content="Siatkówka" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="VolleyballButton_Clicked"/>
+                    <Button Style="{DynamicResource RoundedButton}" Content="Przeciąganie liny" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="TugOfWarButton_Clicked"/>
+                    <Button Style="{DynamicResource RoundedButton}" Content="Dwa ognie" Margin="20" Height="24" Width="120" Background="#FFCCE6FF" Click="DodgeballButton_Clicked"/>
+                </StackPanel>
+            </Grid>
         </Grid>
-    </Grid>
+    </Viewbox>
 </Page>
