@@ -10,6 +10,8 @@
     <Page.Background>
         <ImageBrush ImageSource="/Background/volleyball.png" Stretch="Fill"/>
     </Page.Background>
+    
+    <Viewbox StretchDirection="UpOnly" Stretch="Uniform">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -17,12 +19,12 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="Siatkówka" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
         <Button Grid.Row="1" Content="Wróć do menu" Margin="10" Height="24" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#FFCCE6FF" Click="GoBackButton"/>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" MinWidth="750">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="300"/>
             </Grid.ColumnDefinitions>
-            
+
             <Grid Grid.Row="1" Grid.Column="2" Height="300" Width="250" Margin="0,0,0,50">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20"/>
@@ -49,4 +51,5 @@
             </StackPanel>
         </Grid>
     </Grid>
+    </Viewbox>
 </Page>

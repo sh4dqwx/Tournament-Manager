@@ -14,6 +14,7 @@ namespace Project.Games
         }
         public string playElimination()
         {
+            if(teams.Count <= 4) throw new Exception("Not enough teams");
             string results = "";
             teams.ForEach(team => team.resetScore());
             int set;
@@ -100,6 +101,7 @@ namespace Project.Games
 
         public string playSemiFinal()
         {
+            if (teams.Count != 4) throw new Exception("Not enough teams");
             string results = "";
             List<Team> final = new List<Team>();
             while(final.Count < 2)
@@ -123,6 +125,7 @@ namespace Project.Games
                         if (d1 == 2)
                         {
                             results +="Spotkanie wygrywa "+firstTeam.getName() + "\n\n";
+                            firstTeam.addScore();
                             final.Add(firstTeam);
                             break;
                         }
@@ -135,6 +138,7 @@ namespace Project.Games
                         if (d2 == 2)
                         {
                             results += "Spotkanie wygrywa " + secondTeam.getName() + "\n\n";
+                            secondTeam.addScore();
                             final.Add(secondTeam);
                             break;
                         }
@@ -148,12 +152,15 @@ namespace Project.Games
                 //Console.WriteLine(team.getName());
                 teams.Add(team);
             });
+            teams = teams.OrderBy(team => team.getScore()).ToList();
+            teams.Reverse();
             return results;
 
         }
 
         public string playFinal()
         {
+            if (teams.Count != 2) throw new Exception("Not enough teams");
             string results = "";
             int d1 = 0;
             int d2 = 0;
@@ -169,6 +176,7 @@ namespace Project.Games
                     {
                         results += "Finał wygrywa " + teams[0].getName();
                         teams.RemoveAt(1);
+                        teams[0].addScore();
                         break;
                     }
                 }
@@ -180,6 +188,7 @@ namespace Project.Games
                     {
                         results += "Finał wygrywa " + teams[1].getName();
                         teams.RemoveAt(0);
+                        teams[0].addScore();
                         break;
                     }
                 }

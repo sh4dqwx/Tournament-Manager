@@ -47,31 +47,31 @@ namespace Project.GamePages
             HCw.IsEnabled = true;
             HEl.IsEnabled = false;
 
-
-                string score =_menu.volleyball.playElimination();
-                Content content = new Content(score);
-                content.Show();
-                refreshPoints();
+            string score =_menu.volleyball.playElimination();
+            Content content = new Content(score);
+            content.Show();
+            refreshPoints();
         }
         private void Semi_Button(object sender, RoutedEventArgs e)
         {
             HFi.IsEnabled = true;
             HCw.IsEnabled = false;
 
-                string score = _menu.volleyball.playSemiFinal();
-                Content content2 = new Content(score);
-                content2.Show();
-                refreshPoints();
+            string score = _menu.volleyball.playSemiFinal();
+            Content content2 = new Content(score);
+            content2.Show();
+            refreshPoints();
 
         }
         private void Final_Button(object sender, RoutedEventArgs e)
         {
             HFi.IsEnabled = false;
+            HRo.IsEnabled = true;
 
-                string score=_menu.volleyball.playFinal();
-                Content content3 = new Content(score);
-                content3.Show();
-                refreshPoints();
+            string score=_menu.volleyball.playFinal();
+            Content content3 = new Content(score);
+            content3.Show();
+            refreshPoints();
         }
     }
 }

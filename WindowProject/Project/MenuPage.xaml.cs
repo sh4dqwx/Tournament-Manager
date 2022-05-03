@@ -151,5 +151,12 @@ namespace Project
             }
             mainWindow.Close();
         }
+
+        public void refreshSports()
+        {
+            volleyballPage.refreshPoints();
+            //Nie dodawać osobno, zrobimy to razem bo będą konflikty
+            //Tylko do testów można
+        }
     }
 }
