@@ -65,7 +65,7 @@
         </Style>
     </Page.Resources>
     <Page.Background>
-        <ImageBrush ImageSource="/background/menu.png" Stretch="Fill"/>
+        <ImageBrush ImageSource="/Background/menu.png" Stretch="Fill"/>
     </Page.Background>
     <Grid>
         <Grid.RowDefinitions>

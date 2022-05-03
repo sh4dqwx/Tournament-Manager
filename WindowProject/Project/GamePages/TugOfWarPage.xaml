@@ -6,9 +6,10 @@
       xmlns:local="clr-namespace:Project.GamePages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="TugOfWarPage"
-      Background="White">
-
+      Title="TugOfWarPage">
+    <Page.Background>
+        <ImageBrush ImageSource="/Background/tug_of_war.png" Stretch="Fill"/>
+    </Page.Background>
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
             <TextBlock Text="Przeciąganie liny" FontSize="36" HorizontalAlignment="Center"/>
