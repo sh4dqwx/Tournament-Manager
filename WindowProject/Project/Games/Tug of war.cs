@@ -71,7 +71,7 @@ namespace Project.Games
             Console.WriteLine("Lista zakwalifikowanych:");
             showResults();
         }
-        public void semi_finals()
+        public void playSemiFinal()
         {
             List<Team> final = new List<Team>();
             while (final.Count < 2)
@@ -94,7 +94,7 @@ namespace Project.Games
             });
 
         }
-        public void finals()
+        public void playFinal()
         {
             Console.WriteLine("\n");
             Console.WriteLine("Rozpoczynamy finał w przeciąganiu liny");

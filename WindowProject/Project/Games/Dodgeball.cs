@@ -13,7 +13,7 @@ namespace Project.Games
 
         }
 
-        public void playMatch(Team t1, Team t2)
+        private void playMatch(Team t1, Team t2)
         {
             if (random.NextDouble() >= 0.5)
             {
@@ -73,7 +73,7 @@ namespace Project.Games
             Console.WriteLine("Lista zakwalifikowanych:");
             showResults();
         }
-        public void semi_finals()
+        public void playSemiFinal()
         {
             List<Team> final = new List<Team>();
             while (final.Count < 2)
@@ -96,7 +96,7 @@ namespace Project.Games
             });
 
         }
-        public void finals()
+        public void playFinal()
         {
             Console.WriteLine("\n");
             Console.WriteLine("Rozpoczynamy finał w dwóch ogniach");
