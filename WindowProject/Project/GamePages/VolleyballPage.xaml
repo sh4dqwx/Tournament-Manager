@@ -42,10 +42,10 @@
             </Grid>
             <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="50,0,0,50">
                 <Label Grid.Column="0" Content="Opcje Turnieju" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" FontFamily="Constantia" />
-                <Button Content="Pokaż drużyny" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="ShowTeams_Button"/>
-                <Button Content="Eliminacje" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="Elimination_Button"/>
-                <Button Content="Ćwierćfinały" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="Semi_Button"/>
-                <Button Content="Finały" Margin="20" Height="24" Width="120" Background="#FFCCE6FF" Click="Final_Button"/>
+                <Button x:Name="HRo" Content="Rozpocznij" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="ShowTeams_Button"/>
+                <Button x:Name="HEl" Content="Eliminacje" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="Elimination_Button" IsEnabled="False"/>
+                <Button x:Name="HCw" Content="Ćwierćfinały" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="Semi_Button" IsEnabled="False"/>
+                <Button x:Name="HFi" Content="Finały" Margin="20" Height="24" Width="120" Background="#FFCCE6FF" Click="Final_Button" IsEnabled="False"/>
             </StackPanel>
         </Grid>
     </Grid>

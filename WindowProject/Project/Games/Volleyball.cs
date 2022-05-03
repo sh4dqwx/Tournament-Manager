@@ -98,8 +98,9 @@ namespace Project.Games
             return results;
         }
 
-        public void playSemiFinal()
+        public string playSemiFinal()
         {
+            string results = "";
             List<Team> final = new List<Team>();
             while(final.Count < 2)
             {
@@ -109,26 +110,90 @@ namespace Project.Games
                 int secondIndex = random.Next() % teams.Count;
                 Team secondTeam = teams[secondIndex];
                 teams.RemoveAt(secondIndex);
-
-                if (random.NextDouble() >= 0.5) final.Add(firstTeam);
-                else final.Add(secondTeam);
+                results += firstTeam.getName() + " vs " + secondTeam.getName()+"\n";
+                int d1 = 0;
+                int d2 = 0;
+                for (int i = 1; i < 4; i++)
+                {
+                    if (random.NextDouble() >= 0.5)
+                    {
+                        results += "Set " + i + " wygrywa " + firstTeam.getName() + "\n";
+                        d1++;
+                        //final.Add(firstTeam);
+                        if (d1 == 2)
+                        {
+                            results +="Spotkanie wygrywa "+firstTeam.getName() + "\n\n";
+                            final.Add(firstTeam);
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        results += "Set " + i + " wygrywa " + secondTeam.getName() + "\n";
+                        //final.Add(secondTeam);
+                        d2++;
+                        if (d2 == 2)
+                        {
+                            results += "Spotkanie wygrywa " + secondTeam.getName() + "\n\n";
+                            final.Add(secondTeam);
+                            break;
+                        }
+                    }
+                }
             }
-
-            Console.WriteLine("Finaliści:");
+            results += "Finaliści:\n";
+            //Console.WriteLine("Finaliści:");
             final.ForEach(team => {
-                Console.WriteLine(team.getName());
+                results+=team.getName()+"\n";
+                //Console.WriteLine(team.getName());
                 teams.Add(team);
             });
+            return results;
 
         }
 
-        public void playFinal()
+        public string playFinal()
         {
+            string results = "";
+            int d1 = 0;
+            int d2 = 0;
+            results += "Mecz finałowy:\n";
+            results += teams[0].getName() + " vs " + teams[1].getName()+"\n";
+            for (int i = 1; i < 4; i++)
+            {
+                if (random.NextDouble() >= 0.5)
+                {
+                    results += "Set " + i + " wygrywa " + teams[0].getName() + "\n";
+                    d1++;
+                    if(d1==2)
+                    {
+                        results += "Finał wygrywa " + teams[0].getName();
+                        teams.RemoveAt(1);
+                        break;
+                    }
+                }
+                else
+                {
+                    results += "Set " + i + " wygrywa " + teams[1].getName() + "\n";
+                    d2++;
+                    if (d2 == 2)
+                    {
+                        results += "Finał wygrywa " + teams[1].getName();
+                        teams.RemoveAt(0);
+                        break;
+                    }
+                }
+            }
+            return results;
+            /*
             if (random.NextDouble() >= 0.5) teams.RemoveAt(0);
             else teams.RemoveAt(1);
 
             Console.WriteLine("\nZwycięzca:");
             teams.ForEach(team => Console.WriteLine(team.getName()));
+            return results;
+            */
+            
         }
 
 

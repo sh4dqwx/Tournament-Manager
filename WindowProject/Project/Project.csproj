@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Background\cup.png" />
     <None Remove="Background\dodgeball.png" />
     <None Remove="Background\judge.png" />
     <None Remove="Background\menu.png" />
@@ -17,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Background\cup.png" />
     <Resource Include="Background\dodgeball.png" />
     <Resource Include="Background\judge.png" />
     <Resource Include="Background\menu.png" />

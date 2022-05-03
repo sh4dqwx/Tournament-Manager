@@ -10,7 +10,6 @@ namespace Project.GamePages
     public partial class VolleyballPage : Page
     {
         private MenuPage _menu;
-        private int x = 0;
         public VolleyballPage(MenuPage menu)
         {
             InitializeComponent();
@@ -34,49 +33,45 @@ namespace Project.GamePages
         }
         private void ShowTeams_Button(object sender, RoutedEventArgs e)
         {
-            x = 1;
+            if(_menu.volleyball.getTeams().Count <= 4)
+            {
+               MessageBox.Show("Za mało drużyn minimalna liczba to 5", "Uwaga", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            HEl.IsEnabled = true;
+            HRo.IsEnabled = false;
             refreshPoints();
         }
         private void Elimination_Button(object sender, RoutedEventArgs e)
         {
-            if (x == 1)
-            {
-                x = 2;
+            HCw.IsEnabled = true;
+            HEl.IsEnabled = false;
+
 
                 string score =_menu.volleyball.playElimination();
                 Content content = new Content(score);
                 content.Show();
                 refreshPoints();
-            }
-            else
-            {
-                MessageBoxResult info = MessageBox.Show("Najpierw wybierz 'Pokaż drużyny'", "Uwaga", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
         }
         private void Semi_Button(object sender, RoutedEventArgs e)
         {
-            if (x == 2)
-            {
-                x = 3;
-                _menu.volleyball.playSemiFinal();
+            HFi.IsEnabled = true;
+            HCw.IsEnabled = false;
+
+                string score = _menu.volleyball.playSemiFinal();
+                Content content2 = new Content(score);
+                content2.Show();
                 refreshPoints();
-            }
-            else
-            {
-                MessageBoxResult info = MessageBox.Show("Najpierw wybierz 'Eliminacje'", "Uwaga", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+
         }
         private void Final_Button(object sender, RoutedEventArgs e)
         {
-            if (x == 3)
-            {
-                _menu.volleyball.playFinal();
+            HFi.IsEnabled = false;
+
+                string score=_menu.volleyball.playFinal();
+                Content content3 = new Content(score);
+                content3.Show();
                 refreshPoints();
-            }
-            else
-            {
-                MessageBoxResult info = MessageBox.Show("Najpierw wybierz 'Ćwierćfinały'", "Uwaga", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
         }
     }
 }

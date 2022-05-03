@@ -95,6 +95,7 @@ namespace Project
             loadStream.Close();
             teamPage.refreshTeams();
             judgePage.refreshJudges();
+            volleyballPage.refreshPoints();
         }
 
         private void VolleyballButton_Clicked(object sender, RoutedEventArgs e)
