@@ -7,6 +7,7 @@ namespace Project.Games
 {
     public class Dodgeball : Sports
     {
+        private string results = "";
         private Random random = new Random();
         public Dodgeball()
         {
@@ -17,19 +18,23 @@ namespace Project.Games
         {
             if (random.NextDouble() >= 0.5)
             {
-                Console.WriteLine(t1.getName() + " wygrywa z " + t2.getName());
+                results += t1.getName() + " wygrywa z " + t2.getName()+"\n";
+                //Console.WriteLine(t1.getName() + " wygrywa z " + t2.getName());
                 t1.addScore();
             }
             else
             {
-                Console.WriteLine(t2.getName() + " wygrywa z " + t1.getName());
+                results += t2.getName() + " wygrywa z " + t1.getName()+"\n";
+                //Console.WriteLine(t2.getName() + " wygrywa z " + t1.getName());
                 t2.addScore();
             }
         }
-        public void playElimination()
+        public string playElimination()
         {
-            Console.WriteLine("Rozpoczynamy turniej dwóch ogni");
-            Console.WriteLine("---------------------------------------------------------------");
+            results = "";
+            results += "Rozpoczynamy turniej dwóch ogni\n";
+            //Console.WriteLine("Rozpoczynamy turniej dwóch ogni");
+            //Console.WriteLine("---------------------------------------------------------------");
             teams.ForEach(team => team.resetScore());
 
             for (int i = 0; i < teams.Count; i++)
@@ -43,21 +48,22 @@ namespace Project.Games
             Console.WriteLine("---------------------------------------------------------------");
             teams = teams.OrderBy(team => team.getScore()).ToList();
             teams.Reverse();
-            Console.WriteLine("Wyniki wszystkich drużyn:");
-            showResults();
+            results += "Wyniki wszystkich drużyn:\n";
+            //Console.WriteLine("Wyniki wszystkich drużyn:");
+            results+=showResults();
 
             if (teams[3].getScore() != teams[4].getScore())
             {
                 teams.RemoveRange(4, teams.Count - 4);
-                Console.WriteLine("Lista drużyn zakwalifikowanych: ");
-                showResults();
-                return;
+                results += "Lista drużyn zakwalifikowanych: \n";
+                //Console.WriteLine("Lista drużyn zakwalifikowanych: ");
+                results+=showResults();
+                return results;
             }
 
             List<Team> errorTeams = teams.FindAll(team => team.getScore() == teams[3].getScore());
             int qualified = teams.Where(team => team.getScore() > teams[3].getScore()).Count();
             teams.RemoveRange(qualified, teams.Count - qualified);
-
             Console.WriteLine("Lista zakwalifikowanych:");
             showResults();
             Console.WriteLine("\nLista z tą samą liczbą punktów:");
@@ -70,11 +76,14 @@ namespace Project.Games
                 teams.Add(errorTeams[chosen]);
                 errorTeams.RemoveAt(chosen);
             }
-            Console.WriteLine("Lista zakwalifikowanych:");
-            showResults();
+            results += "Lista zakwalifikowanych:\n";
+            //Console.WriteLine("Lista zakwalifikowanych:");
+            results+=showResults();
+            return results;
         }
-        public void playSemiFinal()
+        public string playSemiFinal()
         {
+            results = "";
             List<Team> final = new List<Team>();
             while (final.Count < 2)
             {
@@ -84,31 +93,48 @@ namespace Project.Games
                 int secondIndex = random.Next() % teams.Count;
                 Team secondTeam = teams[secondIndex];
                 teams.RemoveAt(secondIndex);
-
-                if (random.NextDouble() >= 0.5) final.Add(firstTeam);
-                else final.Add(secondTeam);
+                results += firstTeam.getName() + " vs " + secondTeam.getName() + "\n";
+                if (random.NextDouble() >= 0.5)
+                {
+                    final.Add(firstTeam);
+                    results+= firstTeam.getName() + " wygrywa\n";
+                }
+                else
+                {
+                    results += secondTeam.getName() + " wygrywa\n";
+                    final.Add(secondTeam);
+                }
             }
-
-            Console.WriteLine("Finaliści:");
+            results += "Finaliści:\n";
+            //Console.WriteLine("Finaliści:");
             final.ForEach(team => {
-                Console.WriteLine(team.getName());
+                results += team.getName() + "\n";
+                //Console.WriteLine(team.getName());
                 teams.Add(team);
             });
-
+            return results;
         }
-        public void playFinal()
+        public string playFinal()
         {
-            Console.WriteLine("\n");
-            Console.WriteLine("Rozpoczynamy finał w dwóch ogniach");
-            Console.WriteLine("W finale wystąpią " + teams[0].getName() + " i " + teams[1].getName());
+            results = "";
+            //Console.WriteLine("\n");
+            //Console.WriteLine("Rozpoczynamy finał w dwóch ogniach");
+            //Console.WriteLine("W finale wystąpią " + teams[0].getName() + " i " + teams[1].getName());
+            results += "Rozpoczynamy finał w dwóch ogniach\n";
+            results += "W finale wystąpią " + teams[0].getName() + " i " + teams[1].getName()+"\n";
             if (random.NextDouble() >= 0.5)
             {
-                Console.WriteLine("Turniej wygrywa " + teams[1].getName());
+                results += "Turniej wygrywa " + teams[1].getName();
+                teams.RemoveAt(0);
+                //Console.WriteLine("Turniej wygrywa " + teams[1].getName());
             }
             else
             {
-                Console.WriteLine("Turniej wygrywa " + teams[0].getName());
+                results += "Turniej wygrywa " + teams[1].getName();
+                teams.RemoveAt(1);
+                //Console.WriteLine("Turniej wygrywa " + teams[0].getName());
             }
+            return results;
         }
     }
 }

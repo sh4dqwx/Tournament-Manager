@@ -27,7 +27,7 @@ namespace Project.Games
                     set = 1;
                     d1 = 0;
                     d2 = 0;
-                    results += teams[i].getName() + " vs " + teams[j].getName()+"\n";
+                    results += teams[i].getName() + " vs " + teams[j].getName()+" sędziuje "+judges[random.Next()%judges.Count].getSurname()+"\n";
                     //Console.WriteLine(teams[i].getName() + " vs " + teams[j].getName());
                     for (int k = 0; k < 3; k++)
                     {
@@ -112,7 +112,7 @@ namespace Project.Games
                 int secondIndex = random.Next() % teams.Count;
                 Team secondTeam = teams[secondIndex];
                 teams.RemoveAt(secondIndex);
-                results += firstTeam.getName() + " vs " + secondTeam.getName()+"\n";
+                results += firstTeam.getName() + " vs " + secondTeam.getName()+" sędziuje " + judges[random.Next() % judges.Count].getSurname()+"\n";
                 int d1 = 0;
                 int d2 = 0;
                 for (int i = 1; i < 4; i++)
@@ -165,7 +165,7 @@ namespace Project.Games
             int d1 = 0;
             int d2 = 0;
             results += "Mecz finałowy:\n";
-            results += teams[0].getName() + " vs " + teams[1].getName()+"\n";
+            results += teams[0].getName() + " vs " + teams[1].getName() + " sędziuje " + judges[random.Next() % judges.Count].getSurname() + "\n";
             for (int i = 1; i < 4; i++)
             {
                 if (random.NextDouble() >= 0.5)
