@@ -94,9 +94,7 @@ namespace Project
                 }
             }
             loadStream.Close();
-            teamPage.refreshTeams();
-            judgePage.refreshJudges();
-            volleyballPage.refreshPoints();
+            refreshTables();
         }
 
         private void VolleyballButton_Clicked(object sender, RoutedEventArgs e)
@@ -153,11 +151,13 @@ namespace Project
             mainWindow.Close();
         }
 
-        public void refreshSports()
+        public void refreshTables()
         {
+            teamPage.refreshTeams();
+            judgePage.refreshJudges();
             volleyballPage.refreshPoints();
-            //Nie dodawać osobno, zrobimy to razem bo będą konflikty
-            //Tylko do testów można
+            tugOfWarPage.refreshPoints();
+            dodgeballPage.refreshPoints();
         }
     }
 }

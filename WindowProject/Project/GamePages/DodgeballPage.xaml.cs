@@ -41,7 +41,7 @@ namespace Project.GamePages
             }
             HEl.IsEnabled = true;
             HRo.IsEnabled = false;
-            refreshPoints();
+            _menu.refreshTables();
         }
         private void Elimination_Button(object sender, RoutedEventArgs e)
         {
@@ -51,7 +51,7 @@ namespace Project.GamePages
             string score = _menu.dodgeball.playElimination();
             Content content = new Content(score);
             content.Show();
-            refreshPoints();
+            _menu.refreshTables();
         }
         private void Semi_Button(object sender, RoutedEventArgs e)
         {
@@ -61,7 +61,7 @@ namespace Project.GamePages
             string score = _menu.dodgeball.playSemiFinal();
             Content content2 = new Content(score);
             content2.Show();
-            refreshPoints();
+            _menu.refreshTables();
 
         }
         private void Final_Button(object sender, RoutedEventArgs e)
@@ -72,7 +72,7 @@ namespace Project.GamePages
             string score = _menu.dodgeball.playFinal();
             Content content3 = new Content(score);
             content3.Show();
-            refreshPoints();
+            _menu.refreshTables();
         }
     }
 }

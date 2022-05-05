@@ -50,7 +50,7 @@ namespace Project.RegistrationPages
             addJudgeName.Text = "";
             addJudgeSurname.Text = "";
             addCategoryName.SelectedIndex = 0;
-            refreshJudges();
+            _menu.refreshTables();
         }
 
         private void removeJudgeButton(object sender, RoutedEventArgs e)
@@ -72,7 +72,7 @@ namespace Project.RegistrationPages
             removeJudgeName.Text = "";
             removeJudgeSurname.Text = "";
             removeCategoryName.SelectedIndex = 0;
-            refreshJudges();
+            _menu.refreshTables();
         }
     }
 }

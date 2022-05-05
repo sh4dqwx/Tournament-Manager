@@ -51,8 +51,7 @@ namespace Project.RegistrationPages
             }
             addTeamName.Text = "";
             addCategoryName.SelectedIndex = 0;
-            refreshTeams();
-            _menu.refreshSports();
+            _menu.refreshTables();
         }
 
         private void removeTeamButton(object sender, RoutedEventArgs e)
@@ -73,8 +72,7 @@ namespace Project.RegistrationPages
             }
             removeTeamName.Text = "";
             removeCategoryName.SelectedIndex = 0;
-            refreshTeams();
-            _menu.refreshSports();
+            _menu.refreshTables();
         }
     }
 }
