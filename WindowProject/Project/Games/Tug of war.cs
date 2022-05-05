@@ -97,11 +97,13 @@ namespace Project.Games
                 {
                     results += firstTeam.getName()+" wygrywa\n";
                     final.Add(firstTeam);
+                    firstTeam.addScore();
                 }
                 else
                 {
                     results += secondTeam.getName() + " wygrywa\n";
                     final.Add(secondTeam);
+                    secondTeam.addScore();
                 }
             }
             results += "Finaliści:\n";
