@@ -12,7 +12,6 @@ namespace Project.RegistrationPages
     {
         private MenuPage _menu;
         private TeamManager teamManager;
-        private List<Team> teams;
         public TeamPage(MenuPage menu)
         {
             InitializeComponent();
@@ -24,7 +23,7 @@ namespace Project.RegistrationPages
         {
             string names = "";
             string category = "";
-            teams = _menu.volleyball.getTeams();
+            List<Team> teams = _menu.volleyball.getTeams();
             teams.ForEach(team => { names += team.getName() + "\n"; category += "Siatkówka\n"; });
             teams = _menu.tugOfWar.getTeams();
             teams.ForEach(team => { names += team.getName() + "\n"; category += "Przeciąganie liny\n"; });
@@ -34,12 +33,12 @@ namespace Project.RegistrationPages
             teamCategory.Text = category;
         }
 
-        private void GoBackButton(object sender, RoutedEventArgs e)
+        private void GoBack_Button(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(_menu);
         }
 
-        private void addTeamButton(object sender, RoutedEventArgs e)
+        private void AddTeam_Button(object sender, RoutedEventArgs e)
         {
             try { teamManager.addTeam(_menu, addTeamName.Text, addCategoryName.SelectedIndex); }
             catch(EmptyNameException ex)
@@ -51,7 +50,7 @@ namespace Project.RegistrationPages
             _menu.refreshTables();
         }
 
-        private void removeTeamButton(object sender, RoutedEventArgs e)
+        private void RemoveTeam_Button(object sender, RoutedEventArgs e)
         {
             try { teamManager.removeTeam(_menu, removeTeamName.Text, removeCategoryName.SelectedIndex); }
             catch (EmptyNameException ex)

@@ -35,8 +35,8 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"  Text="Imię i nazwisko" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Text="Kategoria" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="JudgeName" Grid.Column="0" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
-                    <TextBox x:Name="JudgeCategory" Grid.Column="1" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
+                    <TextBox x:Name="judgeName" Grid.Column="0" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
+                    <TextBox x:Name="judgeCategory" Grid.Column="1" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
                 </Grid>
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,50">
                     <TextBlock Text="Dodaj jurora" FontSize="24" FontFamily="Constantia" Margin="0,0,0,10"/>

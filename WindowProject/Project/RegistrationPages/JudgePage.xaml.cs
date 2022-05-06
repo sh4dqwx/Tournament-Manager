@@ -3,16 +3,19 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using System.Collections.Generic;
 using Project.Registrations;
+using Project.Exceptions;
 
 namespace Project.RegistrationPages
 {
     public partial class JudgePage : Page
     {
         private MenuPage _menu;
+        private JudgeManager judgeManager;
         public JudgePage(MenuPage menu)
         {
             InitializeComponent();
             _menu = menu;
+            judgeManager = new JudgeManager();
         }
         public void refreshJudges()
         {
@@ -22,8 +25,10 @@ namespace Project.RegistrationPages
             judges.ForEach(judge => { names += judge.getName() + " " + judge.getSurname() + "\n"; category += "Siatkówka\n"; });
             judges = _menu.tugOfWar.getJudges();
             judges.ForEach(judge => { names += judge.getName() + " " + judge.getSurname() + "\n"; category += "Przeciąganie liny\n"; ; });
-            JudgeName.Text = names;
-            JudgeCategory.Text = category;
+            judges = _menu.dodgeball.getJudges();
+            judges.ForEach(judge => { names += judge.getName() + " " + judge.getSurname() + "\n"; category += "Dwa ognie\n"; ; });
+            judgeName.Text = names;
+            judgeCategory.Text = category;
         }
 
         private void GoBack_Button(object sender, RoutedEventArgs e)
@@ -33,19 +38,10 @@ namespace Project.RegistrationPages
 
         private void addJudgeButton(object sender, RoutedEventArgs e)
         {
-            if (addJudgeName.Text.Length == 0 || addJudgeSurname.Text.Length == 0) return;
-            switch (addCategoryName.SelectedIndex)
+            try { judgeManager.addJudge(_menu, addJudgeName.Text, addJudgeSurname.Text, addCategoryName.SelectedIndex); }
+            catch (EmptyNameException ex)
             {
-                case 0:
-                    _menu.volleyball.addJudge(new Judge(addJudgeName.Text, addJudgeSurname.Text));
-                    break;
-                case 1:
-                    _menu.tugOfWar.addJudge(new Judge(addJudgeName.Text, addJudgeSurname.Text));
-                    break;
-                case 2:
-                    break;
-                default:
-                    break;
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             addJudgeName.Text = "";
             addJudgeSurname.Text = "";
@@ -55,19 +51,10 @@ namespace Project.RegistrationPages
 
         private void removeJudgeButton(object sender, RoutedEventArgs e)
         {
-            if (removeJudgeName.Text.Length == 0 || removeJudgeSurname.Text.Length == 0) return;
-            switch (removeCategoryName.SelectedIndex)
+            try { judgeManager.removeJudge(_menu, removeJudgeName.Text, removeJudgeSurname.Text, removeCategoryName.SelectedIndex); }
+            catch (EmptyNameException ex)
             {
-                case 0:
-                    _menu.volleyball.removeJudge(new Judge(removeJudgeName.Text, removeJudgeSurname.Text));
-                    break;
-                case 1:
-                    _menu.tugOfWar.removeJudge(new Judge(removeJudgeName.Text, removeJudgeSurname.Text));
-                    break;
-                case 2:
-                    break;
-                default:
-                    break;
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             removeJudgeName.Text = "";
             removeJudgeSurname.Text = "";
