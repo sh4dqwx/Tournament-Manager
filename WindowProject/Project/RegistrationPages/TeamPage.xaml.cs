@@ -24,6 +24,8 @@ namespace Project.RegistrationPages
             teams.ForEach(team => { names += team.getName() + "\n"; category += "Siatkówka\n"; });
             teams = _menu.tugOfWar.getTeams();
             teams.ForEach(team => { names += team.getName() + "\n"; category += "Przeciąganie liny\n"; });
+            teams = _menu.dodgeball.getTeams();
+            teams.ForEach(team => { names += team.getName() + "\n"; category += "Dwa ognie\n"; });
             teamName.Text = names;
             teamCategory.Text = category;
         }
@@ -45,6 +47,7 @@ namespace Project.RegistrationPages
                     _menu.tugOfWar.addTeam(new Team(addTeamName.Text));
                     break;
                 case 2:
+                    _menu.dodgeball.addTeam(new Team(addTeamName.Text));
                     break;
                 default:
                     break;
@@ -66,6 +69,7 @@ namespace Project.RegistrationPages
                     _menu.tugOfWar.removeTeam(new Team(removeTeamName.Text));
                     break;
                 case 2:
+                    _menu.dodgeball.removeTeam(new Team(removeTeamName.Text));
                     break;
                 default:
                     break;
