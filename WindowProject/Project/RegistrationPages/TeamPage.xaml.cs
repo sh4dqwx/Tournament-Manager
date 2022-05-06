@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using Project.Registrations;
+using Project.Exceptions;
 
 namespace Project.RegistrationPages
 {
@@ -40,7 +41,11 @@ namespace Project.RegistrationPages
 
         private void addTeamButton(object sender, RoutedEventArgs e)
         {
-            teamManager.addTeam(_menu, addTeamName.Text, addCategoryName.SelectedIndex);
+            try { teamManager.addTeam(_menu, addTeamName.Text, addCategoryName.SelectedIndex); }
+            catch(EmptyNameException ex)
+            {
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
             addTeamName.Text = "";
             addCategoryName.SelectedIndex = 0;
             _menu.refreshTables();
@@ -48,7 +53,11 @@ namespace Project.RegistrationPages
 
         private void removeTeamButton(object sender, RoutedEventArgs e)
         {
-            teamManager.removeTeam(_menu, removeTeamName.Text, removeCategoryName.SelectedIndex);
+            try { teamManager.removeTeam(_menu, removeTeamName.Text, removeCategoryName.SelectedIndex); }
+            catch (EmptyNameException ex)
+            {
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
             removeTeamName.Text = "";
             removeCategoryName.SelectedIndex = 0;
             _menu.refreshTables();
