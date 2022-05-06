@@ -10,17 +10,20 @@ namespace Project.RegistrationPages
     public partial class TeamPage : Page
     {
         private MenuPage _menu;
+        private TeamManager teamManager;
+        private List<Team> teams;
         public TeamPage(MenuPage menu)
         {
             InitializeComponent();
             _menu = menu;
+            teamManager = new TeamManager();
         }
 
         public void refreshTeams()
         {
             string names = "";
             string category = "";
-            List<Team> teams = _menu.volleyball.getTeams();
+            teams = _menu.volleyball.getTeams();
             teams.ForEach(team => { names += team.getName() + "\n"; category += "Siatkówka\n"; });
             teams = _menu.tugOfWar.getTeams();
             teams.ForEach(team => { names += team.getName() + "\n"; category += "Przeciąganie liny\n"; });
@@ -37,21 +40,7 @@ namespace Project.RegistrationPages
 
         private void addTeamButton(object sender, RoutedEventArgs e)
         {
-            if (addTeamName.Text.Length == 0) return;
-            switch (addCategoryName.SelectedIndex)
-            {
-                case 0:
-                    _menu.volleyball.addTeam(new Team(addTeamName.Text));
-                    break;
-                case 1:
-                    _menu.tugOfWar.addTeam(new Team(addTeamName.Text));
-                    break;
-                case 2:
-                    _menu.dodgeball.addTeam(new Team(addTeamName.Text));
-                    break;
-                default:
-                    break;
-            }
+            teamManager.addTeam(_menu, addTeamName.Text, addCategoryName.SelectedIndex);
             addTeamName.Text = "";
             addCategoryName.SelectedIndex = 0;
             _menu.refreshTables();
@@ -59,21 +48,7 @@ namespace Project.RegistrationPages
 
         private void removeTeamButton(object sender, RoutedEventArgs e)
         {
-            if (removeTeamName.Text.Length == 0) return;
-            switch (removeCategoryName.SelectedIndex)
-            {
-                case 0:
-                    _menu.volleyball.removeTeam(new Team(removeTeamName.Text));
-                    break;
-                case 1:
-                    _menu.tugOfWar.removeTeam(new Team(removeTeamName.Text));
-                    break;
-                case 2:
-                    _menu.dodgeball.removeTeam(new Team(removeTeamName.Text));
-                    break;
-                default:
-                    break;
-            }
+            teamManager.removeTeam(_menu, removeTeamName.Text, removeCategoryName.SelectedIndex);
             removeTeamName.Text = "";
             removeCategoryName.SelectedIndex = 0;
             _menu.refreshTables();

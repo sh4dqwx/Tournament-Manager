@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project.Exceptions
 {
-    class EmptyNameException : Exception
+    public class EmptyNameException : Exception
     {
         public EmptyNameException() { }
         public EmptyNameException(string msg): base(msg) { }
