@@ -11,7 +11,7 @@ namespace Project.Registrations
     {
         public void addJudge(MenuPage _menu, string judgeName, string judgeSurname, int judgeCategory)
         {
-            if (judgeName.Length == 0 || judgeSurname.Length == 0) throw new EmptyNameException("Podaj imie i nazwisko sędziego");
+            if (judgeName.Length == 0 || judgeSurname.Length == 0) throw new EmptyNameException("Podaj imię i nazwisko sędziego");
             switch (judgeCategory)
             {
                 case 0:
@@ -29,7 +29,7 @@ namespace Project.Registrations
         }
         public void removeJudge(MenuPage _menu, string judgeName, string judgeSurname, int judgeCategory)
         {
-            if (judgeName.Length == 0 || judgeSurname.Length == 0) throw new EmptyNameException("Podaj imie i nazwisko sędziego");
+            if (judgeName.Length == 0 || judgeSurname.Length == 0) throw new EmptyNameException("Podaj imię i nazwisko sędziego");
             switch (judgeCategory)
             {
                 case 0:
