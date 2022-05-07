@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using Project.Registrations;
+using Project.Exceptions;
 
 namespace Project.Games
 {
@@ -10,7 +11,7 @@ namespace Project.Games
         //rozgrywanie elimiancji, dodatkowo algorytm przeprowadzający kolejne losowania jeżeli liczba drużyn z najwyższą punktacją jest większa niż 4
         public string playElimination()
         {
-            if(teams.Count <= 4) throw new Exception("Not enough teams");
+            if (teams.Count <= 4) throw new NotEnoughException("Za mało drużyn, minimalna liczba to 5");
             results = "";
             teams.ForEach(team => team.resetScore());
             int set;

@@ -4,6 +4,8 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using System.Collections.Generic;
 using Project.Registrations;
+using Project.Exceptions;
+
 namespace Project.GamePages
 {
     public partial class VolleyballPage : Page
@@ -41,23 +43,34 @@ namespace Project.GamePages
         private void ShowTeams_Button(object sender, RoutedEventArgs e)
         {
             if (content != null) content.Close();
-            if (_menu.volleyball.getTeams().Count <= 4)
+
+            try { if (_menu.volleyball.getTeams().Count <= 4) throw new NotEnoughException("Za mało drużyn, minimalna liczba to 5"); }
+            catch(NotEnoughException ex)
             {
-               MessageBox.Show("Za mało drużyn minimalna liczba to 5", "Uwaga", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
             HEl.IsEnabled = true;
             HRo.IsEnabled = false;
             _menu.refreshTables();
         }
         private void Elimination_Button(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                string score = _menu.volleyball.playElimination();
+                content = new Content(score);
+                content.Show();
+            }
+            catch(NotEnoughException ex)
+            {
+                MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             HCw.IsEnabled = true;
             HEl.IsEnabled = false;
-
-            string score =_menu.volleyball.playElimination();
-            content = new Content(score);
-            content.Show();
             _menu.refreshTables();
         }
         private void Semi_Button(object sender, RoutedEventArgs e)
