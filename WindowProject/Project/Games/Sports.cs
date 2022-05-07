@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Project.Registrations;
+using Project.Exceptions;
 
 namespace Project.Games
 {

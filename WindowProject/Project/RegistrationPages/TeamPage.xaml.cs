@@ -43,7 +43,16 @@ namespace Project.RegistrationPages
             try { teamManager.addTeam(_menu, addTeamName.Text, addCategoryName.SelectedIndex); }
             catch(EmptyNameException ex)
             {
-                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch(AddExistentTeamException ex)
+            {
+                MessageBoxResult error = MessageBox.Show(
+                    $"Drużyna {ex.getTeamName()} w kategorii {ex.getTeamCategory()} już istnieje", 
+                    "UWAGA", 
+                    MessageBoxButton.OK, 
+                    MessageBoxImage.Error
+                );
             }
             addTeamName.Text = "";
             addCategoryName.SelectedIndex = 0;

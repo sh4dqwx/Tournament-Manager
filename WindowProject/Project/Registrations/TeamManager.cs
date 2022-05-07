@@ -8,16 +8,20 @@ namespace Project.Registrations
         public void addTeam(MenuPage _menu, string teamName, int teamCategory)
         {
             if (teamName.Length == 0) throw new EmptyNameException("Podaj nazwę drużyny");
+            Team tmpTeam = new Team(teamName);
             switch (teamCategory)
             {
                 case 0:
-                    _menu.volleyball.addTeam(new Team(teamName));
+                    if (_menu.volleyball.getTeams().Contains(tmpTeam)) throw new AddExistentTeamException(teamName, "Siatkówka");
+                    _menu.volleyball.addTeam(tmpTeam);
                     break;
                 case 1:
-                    _menu.tugOfWar.addTeam(new Team(teamName));
+                    if (_menu.tugOfWar.getTeams().Contains(tmpTeam)) throw new AddExistentTeamException(teamName, "Przeciąganie liny");
+                    _menu.tugOfWar.addTeam(tmpTeam);
                     break;
                 case 2:
-                    _menu.dodgeball.addTeam(new Team(teamName));
+                    if (_menu.dodgeball.getTeams().Contains(tmpTeam)) throw new AddExistentTeamException(teamName, "Dwa ognie");
+                    _menu.dodgeball.addTeam(tmpTeam);
                     break;
                 default:
                     break;

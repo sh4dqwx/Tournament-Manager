@@ -8,12 +8,21 @@ namespace Project.Exceptions
 {
     public class AddExistentTeamException : Exception
     {
-        private string teamName;
+        private string teamName, teamCategory;
 
-        public AddExistentTeamException() { }
-        public AddExistentTeamException(string msg, string teamName) : base(msg)
+        public AddExistentTeamException(string teamName, string teamCategory) : base()
         {
             this.teamName = teamName;
+            this.teamCategory = teamCategory;
+        }
+
+        public string getTeamName()
+        {
+            return teamName;
+        }
+        public string getTeamCategory()
+        {
+            return teamCategory;
         }
     }
 }
