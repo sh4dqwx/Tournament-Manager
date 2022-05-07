@@ -39,9 +39,18 @@ namespace Project.RegistrationPages
         private void addJudgeButton(object sender, RoutedEventArgs e)
         {
             try { judgeManager.addJudge(_menu, addJudgeName.Text, addJudgeSurname.Text, addCategoryName.SelectedIndex); }
-            catch (EmptyNameException ex)
+            catch(EmptyNameException ex)
             {
                 MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch(AddExistentJudgeException ex)
+            {
+                MessageBoxResult error = MessageBox.Show(
+                    $"Sędzia {ex.getJudgeName()} {ex.getJudgeSurname()} w kategorii {ex.getJudgeCategory()} już istnieje",
+                    "UWAGA",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
             }
             addJudgeName.Text = "";
             addJudgeSurname.Text = "";
@@ -52,9 +61,18 @@ namespace Project.RegistrationPages
         private void removeJudgeButton(object sender, RoutedEventArgs e)
         {
             try { judgeManager.removeJudge(_menu, removeJudgeName.Text, removeJudgeSurname.Text, removeCategoryName.SelectedIndex); }
-            catch (EmptyNameException ex)
+            catch(EmptyNameException ex)
             {
                 MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch(RemoveNonExistentJudgeException ex)
+            {
+                MessageBoxResult error = MessageBox.Show(
+                    $"Sędzia {ex.getJudgeName()} {ex.getJudgeSurname()} w kategorii {ex.getJudgeCategory()} nie istnieje",
+                    "UWAGA",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
             }
             removeJudgeName.Text = "";
             removeJudgeSurname.Text = "";

@@ -8,13 +8,26 @@ namespace Project.Exceptions
 {
     public class AddExistentJudgeException : Exception
     {
-        private string judgeName, judgeSurname;
+        private string judgeName, judgeSurname, judgeCategory;
 
-        public AddExistentJudgeException() { }
-        public AddExistentJudgeException(string msg, string judgeName, string judgeSurname) : base(msg)
+        public AddExistentJudgeException(string judgeName, string judgeSurname, string judgeCategory) : base()
         {
             this.judgeName = judgeName;
             this.judgeSurname = judgeSurname;
+            this.judgeCategory = judgeCategory;
+        }
+
+        public string getJudgeName()
+        {
+            return judgeName;
+        }
+        public string getJudgeSurname()
+        {
+            return judgeSurname;
+        }
+        public string getJudgeCategory()
+        {
+            return judgeCategory;
         }
     }
 }
