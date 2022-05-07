@@ -34,17 +34,17 @@ namespace Project
             dodgeballPage = new DodgeballPage(this);
         }
 
-        private void TeamButton_Clicked(object sender, RoutedEventArgs e)
+        private void Team_Button(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(teamPage);
         }
 
-        private void JudgeButton_Clicked(object sender, RoutedEventArgs e)
+        private void Judge_Button(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(judgePage);
         }
 
-        private void LoadButton_Clicked(object sender, RoutedEventArgs e)
+        private void Load_Button(object sender, RoutedEventArgs e)
         {
             string[] folders = AppDomain.CurrentDomain.BaseDirectory.Split('\\');
             string folderPath = "";
@@ -97,17 +97,17 @@ namespace Project
             refreshTables();
         }
 
-        private void VolleyballButton_Clicked(object sender, RoutedEventArgs e)
+        private void Volleyball_Button(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(volleyballPage);
         }
 
-        private void TugOfWarButton_Clicked(object sender, RoutedEventArgs e)
+        private void TugOfWar_Button(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(tugOfWarPage);
         }
 
-        private void DodgeballButton_Clicked(object sender, RoutedEventArgs e)
+        private void Dodgeball_Button(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(dodgeballPage);
         }
