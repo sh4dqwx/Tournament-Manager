@@ -8,12 +8,21 @@ namespace Project.Exceptions
 {
     public class RemoveNonExistentTeamException : Exception
     {
-        private string teamName;
+        private string teamName, teamCategory;
 
-        public RemoveNonExistentTeamException() { }
-        public RemoveNonExistentTeamException(string msg, string teamName) : base(msg)
+        public RemoveNonExistentTeamException(string teamName, string teamCategory) : base()
         {
             this.teamName = teamName;
+            this.teamCategory = teamCategory;
+        }
+
+        public string getTeamName()
+        {
+            return teamName;
+        }
+        public string getTeamCategory()
+        {
+            return teamCategory;
         }
     }
 }

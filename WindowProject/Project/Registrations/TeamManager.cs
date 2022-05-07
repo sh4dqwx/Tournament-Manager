@@ -30,16 +30,20 @@ namespace Project.Registrations
         public void removeTeam(MenuPage _menu, string teamName, int teamCategory)
         {
             if (teamName.Length == 0) throw new EmptyNameException("Podaj nazwę drużyny");
+            Team tmpTeam = new Team(teamName);
             switch (teamCategory)
             {
                 case 0:
-                    _menu.volleyball.removeTeam(new Team(teamName));
+                    if (!_menu.volleyball.getTeams().Contains(tmpTeam)) throw new RemoveNonExistentTeamException(teamName, "Siatkówka");
+                    _menu.volleyball.removeTeam(tmpTeam);
                     break;
                 case 1:
-                    _menu.tugOfWar.removeTeam(new Team(teamName));
+                    if (!_menu.tugOfWar.getTeams().Contains(tmpTeam)) throw new RemoveNonExistentTeamException(teamName, "Przeciąganie liny");
+                    _menu.tugOfWar.removeTeam(tmpTeam);
                     break;
                 case 2:
-                    _menu.dodgeball.removeTeam(new Team(teamName));
+                    if (!_menu.dodgeball.getTeams().Contains(tmpTeam)) throw new RemoveNonExistentTeamException(teamName, "Dwa ognie");
+                    _menu.dodgeball.removeTeam(tmpTeam);
                     break;
                 default:
                     break;

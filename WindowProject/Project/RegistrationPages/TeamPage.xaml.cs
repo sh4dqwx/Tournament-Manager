@@ -62,9 +62,18 @@ namespace Project.RegistrationPages
         private void RemoveTeam_Button(object sender, RoutedEventArgs e)
         {
             try { teamManager.removeTeam(_menu, removeTeamName.Text, removeCategoryName.SelectedIndex); }
-            catch (EmptyNameException ex)
+            catch(EmptyNameException ex)
             {
                 MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch(RemoveNonExistentTeamException ex)
+            {
+                MessageBoxResult error = MessageBox.Show(
+                    $"Drużyna {ex.getTeamName()} w kategorii {ex.getTeamCategory()} nie istnieje",
+                    "UWAGA",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
             }
             removeTeamName.Text = "";
             removeCategoryName.SelectedIndex = 0;
