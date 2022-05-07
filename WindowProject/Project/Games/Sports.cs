@@ -9,6 +9,8 @@ namespace Project.Games
     {
         protected List<Team> teams = new List<Team>();
         protected List<Judge> judges = new List<Judge>();
+        protected Random random = new Random();
+        protected string results = "";
 
         public void addTeam(Team team)
         {

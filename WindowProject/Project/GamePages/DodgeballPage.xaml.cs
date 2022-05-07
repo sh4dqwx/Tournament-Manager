@@ -10,12 +10,14 @@ namespace Project.GamePages
     public partial class DodgeballPage : Page
     {
         private MenuPage _menu;
+        private Content content;
         public DodgeballPage(MenuPage menu)
         {
             InitializeComponent();
             _menu = menu;
         }
 
+        //Odświeżanie tablicy drużyn i wyników
         public void refreshPoints()
         {
             int lp = 1;
@@ -28,12 +30,18 @@ namespace Project.GamePages
             teamName.Text = names;
             teamPoints.Text = points;
         }
+
+        //Przycisk powrotu do menu
         private void GoBackButton(object sender, RoutedEventArgs e)
         {
+            if (content != null) content.Close();
             NavigationService.Navigate(_menu);
         }
+
+        //Przyciski do wywoływania metod przeprowadzających turniej
         private void ShowTeams_Button(object sender, RoutedEventArgs e)
         {
+            if (content != null) content.Close();
             if (_menu.dodgeball.getTeams().Count <= 4)
             {
                 MessageBox.Show("Za mało drużyn minimalna liczba to 5", "Uwaga", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -49,7 +57,7 @@ namespace Project.GamePages
             HEl.IsEnabled = false;
 
             string score = _menu.dodgeball.playElimination();
-            Content content = new Content(score);
+            content = new Content(score);
             content.Show();
             _menu.refreshTables();
         }
@@ -59,8 +67,9 @@ namespace Project.GamePages
             HCw.IsEnabled = false;
 
             string score = _menu.dodgeball.playSemiFinal();
-            Content content2 = new Content(score);
-            content2.Show();
+            content.Close();
+            content = new Content(score);
+            content.Show();
             _menu.refreshTables();
 
         }
@@ -70,8 +79,9 @@ namespace Project.GamePages
             HRo.IsEnabled = true;
 
             string score = _menu.dodgeball.playFinal();
-            Content content3 = new Content(score);
-            content3.Show();
+            content.Close();
+            content = new Content(score);
+            content.Show();
             _menu.refreshTables();
         }
     }

@@ -7,12 +7,6 @@ namespace Project.Games
 {
     public class Dodgeball : Sports
     {
-        private string results = "";
-        private Random random = new Random();
-        public Dodgeball()
-        {
-
-        }
         //rozgrywanie spotkania
         private void playMatch(Team t1, Team t2)
         {

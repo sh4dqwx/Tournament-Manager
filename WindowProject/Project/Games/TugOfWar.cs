@@ -5,14 +5,8 @@ using Project.Registrations;
 
 namespace Project.Games
 {
-    public class Tug_of_war: Sports
+    public class TugOfWar: Sports
     {
-        private Random random = new Random();
-        private string results = "";
-        public Tug_of_war()
-        {
-
-        }
         //rozgrywanie elimiancji, dodatkowo algorytm przeprowadzający kolejne losowania jeżeli liczba drużyn z najwyższą punktacją jest większa niż 4
         public string playElimination()
         {

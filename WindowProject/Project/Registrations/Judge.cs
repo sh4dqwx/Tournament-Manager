@@ -5,11 +5,6 @@ namespace Project.Registrations
     public class Judge
     {
         private string name, surname;
-        public Judge()
-        {
-            name = "";
-            surname = "";
-        }
         public Judge(string name, string surname)
         {
             this.name = name;

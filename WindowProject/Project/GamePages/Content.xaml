@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project.GamePages"
         mc:Ignorable="d"
-        Title="Content" Height="600" Width="500">
+        Title="Przebieg spotkania" Height="600" Width="500">
     <Window.Background>
         <ImageBrush ImageSource="/Background/cup.png" Stretch="Fill"/>
     </Window.Background>

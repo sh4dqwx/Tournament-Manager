@@ -7,12 +7,6 @@ namespace Project.Registrations
         private string name;
         private int score;
 
-        public Team()
-        {
-            name = "[Brak nazwy]";
-            score = 0;
-        }
-
         public Team(string name)
         {
             this.name = name;

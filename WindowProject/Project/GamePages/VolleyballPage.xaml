@@ -24,24 +24,25 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
-
-                <Grid Grid.Row="1" Grid.Column="2" Height="300" Width="250" Margin="0,0,0,50">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="60"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="60"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"  Text="Miejsce" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" Text="Drużyna" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
-                    <TextBlock Grid.Column="2"  Text="Punkty" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="teamPlace" Grid.Column="0" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
-                    <TextBox x:Name="teamName" Grid.Column="1" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
-                    <TextBox x:Name="teamPoints" Grid.Column="2" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
-                </Grid>
+                <ScrollViewer Grid.Row="1" Grid.Column="2" VerticalScrollBarVisibility="Auto">
+                    <Grid Grid.Row="1" Grid.Column="2" Height="300" Width="250" Margin="0,0,0,50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="60"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"  Text="Miejsce" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Drużyna" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2"  Text="Punkty" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBox x:Name="teamPlace" Grid.Column="0" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
+                        <TextBox x:Name="teamName" Grid.Column="1" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
+                        <TextBox x:Name="teamPoints" Grid.Column="2" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
+                    </Grid>
+                </ScrollViewer>
                 <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"  Margin="50,0,0,50">
                     <Label Grid.Column="0" Content="Opcje Turnieju" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" FontFamily="Constantia" />
                     <Button x:Name="HRo" Content="Rozpocznij" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="ShowTeams_Button"/>

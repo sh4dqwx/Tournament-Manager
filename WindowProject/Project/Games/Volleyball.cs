@@ -7,16 +7,11 @@ namespace Project.Games
 {
     public class Volleyball: Sports
     {
-        private Random random = new Random(); 
-        public Volleyball()
-        {
-            
-        }
         //rozgrywanie elimiancji, dodatkowo algorytm przeprowadzający kolejne losowania jeżeli liczba drużyn z najwyższą punktacją jest większa niż 4
         public string playElimination()
         {
             if(teams.Count <= 4) throw new Exception("Not enough teams");
-            string results = "";
+            results = "";
             teams.ForEach(team => team.resetScore());
             int set;
             int d1;
@@ -96,7 +91,7 @@ namespace Project.Games
         public string playSemiFinal()
         {
             if (teams.Count != 4) throw new Exception("Not enough teams");
-            string results = "";
+            results = "";
             List<Team> final = new List<Team>();
             while(final.Count < 2)
             {
@@ -151,7 +146,7 @@ namespace Project.Games
         public string playFinal()
         {
             if (teams.Count != 2) throw new Exception("Not enough teams");
-            string results = "";
+            results = "";
             int d1 = 0;
             int d2 = 0;
             results += "Mecz finałowy:\n";

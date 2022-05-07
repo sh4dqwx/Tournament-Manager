@@ -20,7 +20,7 @@ namespace Project
         private TugOfWarPage tugOfWarPage;
         private DodgeballPage dodgeballPage;
         public Volleyball volleyball = new Volleyball();
-        public Tug_of_war tugOfWar = new Tug_of_war();
+        public TugOfWar tugOfWar = new TugOfWar();
         public Dodgeball dodgeball = new Dodgeball();
 
         public MenuPage(MainWindow window)

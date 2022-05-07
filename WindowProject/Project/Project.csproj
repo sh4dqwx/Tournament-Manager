@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Cup.ico" />
+    <Resource Include="Cup.ico" />
   </ItemGroup>
 
   <ItemGroup>
