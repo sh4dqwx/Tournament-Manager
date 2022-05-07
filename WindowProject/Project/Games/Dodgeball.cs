@@ -13,28 +13,27 @@ namespace Project.Games
         {
 
         }
-
+        //rozgrywanie spotkania
         private void playMatch(Team t1, Team t2)
         {
+            results+= t1.getName() + " vs " + t2.getName() + " sędziuje " + judges[random.Next() % judges.Count].getSurname() + "\n";
             if (random.NextDouble() >= 0.5)
             {
-                results += t1.getName() + " wygrywa z " + t2.getName()+"\n";
-                //Console.WriteLine(t1.getName() + " wygrywa z " + t2.getName());
+                results += "Wygrywa " + t1.getName()+"\n";
                 t1.addScore();
             }
             else
             {
-                results += t2.getName() + " wygrywa z " + t1.getName()+"\n";
-                //Console.WriteLine(t2.getName() + " wygrywa z " + t1.getName());
+                results += "Wygrywa " + t2.getName()+"\n";
                 t2.addScore();
             }
+            results += "\n";
         }
+        //rozgrywanie elimiancji, dodatkowo algorytm przeprowadzający kolejne losowania jeżeli liczba drużyn z najwyższą punktacją jest większa niż 4
         public string playElimination()
         {
+            if (teams.Count <= 4) throw new Exception("Not enough teams");
             results = "";
-            results += "Rozpoczynamy turniej dwóch ogni\n";
-            //Console.WriteLine("Rozpoczynamy turniej dwóch ogni");
-            //Console.WriteLine("---------------------------------------------------------------");
             teams.ForEach(team => team.resetScore());
 
             for (int i = 0; i < teams.Count; i++)
@@ -44,19 +43,15 @@ namespace Project.Games
                     playMatch(teams[i], teams[j]);
                 }
             }
-
-            Console.WriteLine("---------------------------------------------------------------");
             teams = teams.OrderBy(team => team.getScore()).ToList();
             teams.Reverse();
-            results += "Wyniki wszystkich drużyn:\n";
-            //Console.WriteLine("Wyniki wszystkich drużyn:");
+            results += "Punktacja:\n";
             results+=showResults();
 
             if (teams[3].getScore() != teams[4].getScore())
             {
                 teams.RemoveRange(4, teams.Count - 4);
-                results += "Lista drużyn zakwalifikowanych: \n";
-                //Console.WriteLine("Lista drużyn zakwalifikowanych: ");
+                results += "Półfinaliści: \n";
                 results+=showResults();
                 return results;
             }
@@ -64,25 +59,22 @@ namespace Project.Games
             List<Team> errorTeams = teams.FindAll(team => team.getScore() == teams[3].getScore());
             int qualified = teams.Where(team => team.getScore() > teams[3].getScore()).Count();
             teams.RemoveRange(qualified, teams.Count - qualified);
-            Console.WriteLine("Lista zakwalifikowanych:");
-            showResults();
-            Console.WriteLine("\nLista z tą samą liczbą punktów:");
-            errorTeams.ForEach(team => Console.WriteLine(team.getName() + " " + team.getScore()));
 
             for (int i = 0; i < 4 - qualified; i++)
             {
                 int chosen = random.Next() % errorTeams.Count;
-
                 teams.Add(errorTeams[chosen]);
                 errorTeams.RemoveAt(chosen);
             }
-            results += "Lista zakwalifikowanych:\n";
-            //Console.WriteLine("Lista zakwalifikowanych:");
+            results += "\n";
+            results += "Półfinaliści:\n";
             results+=showResults();
             return results;
         }
+        //rozgrywanie półfinałów
         public string playSemiFinal()
         {
+            if (teams.Count != 4) throw new Exception("Not enough teams");
             results = "";
             List<Team> final = new List<Team>();
             while (final.Count < 2)
@@ -93,46 +85,41 @@ namespace Project.Games
                 int secondIndex = random.Next() % teams.Count;
                 Team secondTeam = teams[secondIndex];
                 teams.RemoveAt(secondIndex);
-                results += firstTeam.getName() + " vs " + secondTeam.getName() + "\n";
+                results += firstTeam.getName() + " vs " + secondTeam.getName() + " sędziuje " + judges[random.Next() % judges.Count].getSurname()+"\n";
                 if (random.NextDouble() >= 0.5)
                 {
                     final.Add(firstTeam);
-                    results+= firstTeam.getName() + " wygrywa\n";
+                    results+= "Spotkanie wygrywa "+firstTeam.getName() + "\n";
                 }
                 else
                 {
-                    results += secondTeam.getName() + " wygrywa\n";
+                    results += "Spotkanie wygrywa "+secondTeam.getName() + "\n";
                     final.Add(secondTeam);
                 }
             }
             results += "Finaliści:\n";
-            //Console.WriteLine("Finaliści:");
             final.ForEach(team => {
                 results += team.getName() + "\n";
-                //Console.WriteLine(team.getName());
                 teams.Add(team);
             });
             return results;
         }
+        //rozgrywanie finałów
         public string playFinal()
         {
+            if (teams.Count != 2) throw new Exception("Not enough teams");
             results = "";
-            //Console.WriteLine("\n");
-            //Console.WriteLine("Rozpoczynamy finał w dwóch ogniach");
-            //Console.WriteLine("W finale wystąpią " + teams[0].getName() + " i " + teams[1].getName());
-            results += "Rozpoczynamy finał w dwóch ogniach\n";
-            results += "W finale wystąpią " + teams[0].getName() + " i " + teams[1].getName()+"\n";
+            results += "Mecz finałowy:\n";
+            results += teams[0].getName() + " vs " + teams[1].getName() + " sędziuje " + judges[random.Next() % judges.Count].getSurname() + "\n";
             if (random.NextDouble() >= 0.5)
             {
-                results += "Turniej wygrywa " + teams[1].getName();
+                results += "Finał wygrywa " + teams[1].getName();
                 teams.RemoveAt(0);
-                //Console.WriteLine("Turniej wygrywa " + teams[1].getName());
             }
             else
             {
-                results += "Turniej wygrywa " + teams[1].getName();
+                results += "Finał wygrywa " + teams[1].getName();
                 teams.RemoveAt(1);
-                //Console.WriteLine("Turniej wygrywa " + teams[0].getName());
             }
             return results;
         }

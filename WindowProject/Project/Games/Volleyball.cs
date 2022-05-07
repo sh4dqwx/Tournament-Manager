@@ -7,11 +7,12 @@ namespace Project.Games
 {
     public class Volleyball: Sports
     {
-        private Random random = new Random();
+        private Random random = new Random(); 
         public Volleyball()
         {
             
         }
+        //rozgrywanie elimiancji, dodatkowo algorytm przeprowadzający kolejne losowania jeżeli liczba drużyn z najwyższą punktacją jest większa niż 4
         public string playElimination()
         {
             if(teams.Count <= 4) throw new Exception("Not enough teams");
@@ -28,21 +29,18 @@ namespace Project.Games
                     d1 = 0;
                     d2 = 0;
                     results += teams[i].getName() + " vs " + teams[j].getName()+" sędziuje "+judges[random.Next()%judges.Count].getSurname()+"\n";
-                    //Console.WriteLine(teams[i].getName() + " vs " + teams[j].getName());
                     for (int k = 0; k < 3; k++)
                     {
                         if(random.NextDouble() >= 0.5)
                         {
                             d1++;
                             results += set + " set wygrała " + teams[i].getName() + "\n";
-                            //Console.WriteLine(set + " set wygrała " + teams[i].getName());
                             set++;
                         }
                         else
                         {
                             d2++;
                             results += set + " set wygrała " + teams[j].getName() + "\n";
-                            //Console.WriteLine(set + " set wygrała " + teams[j].getName());
                             set++;
                         }
                         if(d1==2 || d2==2)
@@ -54,14 +52,12 @@ namespace Project.Games
                     {
                         results += "Wygrywa " + teams[i].getName() + "\n";
                         results += "\n";
-                        //Console.WriteLine("Wygrywa " + teams[i].getName());
                         teams[i].addScore();
                     }
                     else
                     {
                         results += "Wygrywa " + teams[j].getName() + "\n";
                         results += "\n";
-                        //Console.WriteLine("Wygrywa " + teams[j].getName());
                         teams[j].addScore();
                     }
                     Console.WriteLine("\n");
@@ -77,7 +73,6 @@ namespace Project.Games
                 teams.RemoveRange(4, teams.Count - 4);
                 results += "\n";
                 results += "Półfinaliści:\n";
-                //Console.WriteLine("Półfinaliści:");
                 results+=showResults();
                 return results;
             }
@@ -94,11 +89,10 @@ namespace Project.Games
             }
             results += "\n";
             results += "Półfinaliści:\n";
-            //Console.WriteLine("Półfinaliści:");
             results +=showResults();
             return results;
         }
-
+        //rozgrywanie półfinałów
         public string playSemiFinal()
         {
             if (teams.Count != 4) throw new Exception("Not enough teams");
@@ -121,7 +115,6 @@ namespace Project.Games
                     {
                         results += "Set " + i + " wygrywa " + firstTeam.getName() + "\n";
                         d1++;
-                        //final.Add(firstTeam);
                         if (d1 == 2)
                         {
                             results +="Spotkanie wygrywa "+firstTeam.getName() + "\n\n";
@@ -133,7 +126,6 @@ namespace Project.Games
                     else
                     {
                         results += "Set " + i + " wygrywa " + secondTeam.getName() + "\n";
-                        //final.Add(secondTeam);
                         d2++;
                         if (d2 == 2)
                         {
@@ -146,10 +138,8 @@ namespace Project.Games
                 }
             }
             results += "Finaliści:\n";
-            //Console.WriteLine("Finaliści:");
             final.ForEach(team => {
                 results+=team.getName()+"\n";
-                //Console.WriteLine(team.getName());
                 teams.Add(team);
             });
             teams = teams.OrderBy(team => team.getScore()).ToList();
@@ -157,7 +147,7 @@ namespace Project.Games
             return results;
 
         }
-
+        //rozgrywanie finałów
         public string playFinal()
         {
             if (teams.Count != 2) throw new Exception("Not enough teams");
@@ -193,16 +183,7 @@ namespace Project.Games
                     }
                 }
             }
-            return results;
-            /*
-            if (random.NextDouble() >= 0.5) teams.RemoveAt(0);
-            else teams.RemoveAt(1);
-
-            Console.WriteLine("\nZwycięzca:");
-            teams.ForEach(team => Console.WriteLine(team.getName()));
-            return results;
-            */
-            
+            return results;  
         }
 
 
