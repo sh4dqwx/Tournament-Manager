@@ -6,7 +6,7 @@ using Project.Exceptions;
 
 namespace Project.Games
 {
-    public class Volleyball: Sports
+    public class Volleyball: Sports, ISport
     {
         //rozgrywanie elimiancji, dodatkowo algorytm przeprowadzający kolejne losowania jeżeli liczba drużyn z najwyższą punktacją jest większa niż 4
         public string playElimination()
@@ -181,7 +181,5 @@ namespace Project.Games
             }
             return results;  
         }
-
-
     }
 }

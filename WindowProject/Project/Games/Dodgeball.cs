@@ -5,7 +5,7 @@ using Project.Registrations;
 
 namespace Project.Games
 {
-    public class Dodgeball : Sports
+    public class Dodgeball: Sports, ISport
     {
         //rozgrywanie spotkania
         private void playMatch(Team t1, Team t2)

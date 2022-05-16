@@ -5,7 +5,7 @@ using Project.Registrations;
 
 namespace Project.Games
 {
-    public class TugOfWar: Sports
+    public class TugOfWar: Sports, ISport
     {
         //rozgrywanie elimiancji, dodatkowo algorytm przeprowadzający kolejne losowania jeżeli liczba drużyn z najwyższą punktacją jest większa niż 4
         public string playElimination()
