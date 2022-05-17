@@ -6,6 +6,11 @@ namespace Project
     {
         private List<string> tournaments;
 
+        public Program()
+        {
+            tournaments = new List<string>();
+        }
+
         public string[] getTournaments()
         {
             return tournaments.ToArray();
