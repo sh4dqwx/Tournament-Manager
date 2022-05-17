@@ -10,6 +10,17 @@
       Background="White">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Wielki Turniej Kopakabana" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+        </Grid>
     </Grid>
 </Page>
