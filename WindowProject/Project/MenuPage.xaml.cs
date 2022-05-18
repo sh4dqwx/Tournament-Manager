@@ -52,6 +52,7 @@ namespace Project
         private void moveToTournament(object sender, SelectionChangedEventArgs e)
         {
             Tournament t = program.getTournament(tournamentList.SelectedIndex);
+            //NavigationService.Nagivate(gdzieś); nie ma strony na razie
             MessageBoxResult result = MessageBox.Show(t.getName(), "yes", MessageBoxButton.OK);
         }
     }
