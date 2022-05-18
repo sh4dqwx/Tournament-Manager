@@ -8,6 +8,7 @@ namespace Project.Logic
         protected List<Team> teams = new List<Team>();
         protected List<Judge> judges = new List<Judge>();
         protected List<Game> games = new List<Game>();
+        protected string name = "";
         protected int state = 1;
 
         public void addTeam(Team team)

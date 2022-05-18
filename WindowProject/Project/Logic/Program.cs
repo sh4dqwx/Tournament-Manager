@@ -1,25 +1,25 @@
 ﻿using System.Collections.Generic;
 
-namespace Project
+namespace Project.Logic
 {
     public class Program
     {
-        private List<string> tournaments;
+        private List<Tournament> tournaments;
 
         public Program()
         {
-            tournaments = new List<string>();
+            tournaments = new List<Tournament>();
         }
 
-        public string[] getTournaments()
+        public Tournament[] getTournaments()
         {
             return tournaments.ToArray();
         }
-        public void addTournament(string tournament)
+        public void addTournament(Tournament tournament)
         {
             tournaments.Add(tournament);
         }
-        public void removeTournament(string tournament)
+        public void removeTournament(Tournament tournament)
         {
             tournaments.Remove(tournament);
         }
