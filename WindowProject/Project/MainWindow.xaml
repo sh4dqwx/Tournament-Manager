@@ -4,12 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project"
-        mc:Ignorable="d"
-        Title="Turniej Kopakabana" Height="450" Width="800"
-        MinHeight="450" MinWidth="800"
+        mc:Ignorable="d" Height="485" Width="800"
         WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
         Closing="MainWindowClosing">
     <Grid>
-        <Frame x:Name="Main" NavigationUIVisibility="Hidden"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Background="#252525"/>
+        <Label Content="Turniej Kopakabana" VerticalAlignment="Center" Foreground="LightGray" FontWeight="SemiBold"/>
+        <Border Background="Transparent" MouseDown="Border_MouseDown"/>
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Width="30" Height="30" Content="🗕" Background="Transparent" BorderThickness="0" Foreground="LightGray" FontWeight="Bold" Margin="0,0,0,1" Click="MinimizeButton"/>
+            <Button Width="30" Height="30" Content="✕" Background="Transparent" BorderThickness="0" Foreground="LightGray" FontWeight="Bold" Click="CloseButton"/>
+        </StackPanel>
+        <Frame Grid.Row="1" x:Name="PageFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
