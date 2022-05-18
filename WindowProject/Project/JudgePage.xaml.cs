@@ -14,20 +14,16 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Project.Logic;
 using Project.Exceptions;
-using Project.Registrations;
-using Project;
-namespace Project.RegistrationPages
+namespace Project
 {
     public partial class JudgePage : Page
     {
         private MenuPage _menu;
-        private JudgeManager judgeManager;
         private Tournament tournament;
         public JudgePage(MenuPage menu)
         {
             InitializeComponent();
             _menu = menu;
-            judgeManager = new JudgeManager();
         }
         public void loadTournament(Tournament tournament)
         {
@@ -37,7 +33,7 @@ namespace Project.RegistrationPages
         {
             string names = "";
             string category = "";
-            List<Judge> judges = _menu.volleyball.getJudges();
+            List<Judge> judges = tournament.getJudges();
             judges.ForEach(judge => { names += judge.getName() + " " + judge.getSurname() + "\n"; category += "Siatkówka\n"; });
             judges = _menu.tugOfWar.getJudges();
             judges.ForEach(judge => { names += judge.getName() + " " + judge.getSurname() + "\n"; category += "Przeciąganie liny\n"; ; });
