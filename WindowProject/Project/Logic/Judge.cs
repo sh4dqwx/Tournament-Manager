@@ -2,8 +2,11 @@
 
 namespace Project.Logic
 {
-    public class Judge
+    public class Judge:Person
     {
-        //Potrzebowałem żeby ta klasa istaniała poprostu xd
+        public Judge(string name, string surname):base(name,surname)
+        { }
+        public Judge(Judge copy) : base(copy)
+        { }
     }
 }
