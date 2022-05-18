@@ -1,6 +1,6 @@
-﻿using Project.Logic;
-using System;
+﻿using System;
 using System.Windows.Controls;
+using Project.Logic;
 
 namespace Project
 {
