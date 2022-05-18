@@ -30,40 +30,40 @@ namespace Project.Logic
             return tournaments[index];
         }
 
-        public void addTournament(string tName, int tCategory)
+        public void addTournament(string TName, int TCategory)
         {
             Tournament tmp;
-            switch (tCategory)
+            switch (TCategory)
             {
                 case 0:
-                    tmp = new Volleyball(tName);
+                    tmp = new Volleyball(TName);
                     tournaments.Add(tmp);
                     break;
                 case 1:
-                    tmp = new TugOfWar(tName);
+                    tmp = new TugOfWar(TName);
                     tournaments.Add(tmp);
                     break;
                 case 2:
-                    tmp = new Dodgeball(tName);
+                    tmp = new Dodgeball(TName);
                     tournaments.Add(tmp);
                     break;
             }
         }
-        public void removeTournament(string tName, int tCategory)
+        public void removeTournament(string TName, int TCategory)
         {
             Tournament tmp;
-            switch (tCategory)
+            switch (TCategory)
             {
                 case 0:
-                    tmp = new Volleyball(tName);
+                    tmp = new Volleyball(TName);
                     tournaments.Remove(tmp);
                     break;
                 case 1:
-                    tmp = new TugOfWar(tName);
+                    tmp = new TugOfWar(TName);
                     tournaments.Remove(tmp);
                     break;
                 case 2:
-                    tmp = new Dodgeball(tName);
+                    tmp = new Dodgeball(TName);
                     tournaments.Remove(tmp);
                     break;
             }
@@ -71,9 +71,9 @@ namespace Project.Logic
         public void save(string fileName)
         {
             StreamWriter saveStream = new StreamWriter(fileName);
-            foreach(Tournament t in tournaments)
+            foreach(Tournament T in tournaments)
             {
-                saveStream.Write(t.ToString());
+                saveStream.Write(T.ToString());
             }
             saveStream.Close();
         }

@@ -6,6 +6,11 @@ namespace Project.Logic
     {
         public Dodgeball(string name): base(name) { }
 
+        public override string getCategory()
+        {
+            return "Dwa ognie";
+        }
+
         public void generateElimination()
         {
             for (int i = 0; i < teams.Count; i++)

@@ -79,7 +79,7 @@ namespace Project
         {
             Tournament t = program.getTournament(tournamentList.SelectedIndex);
             //NavigationService.Nagivate(gdzieś); nie ma strony na razie
-            MessageBoxResult result = MessageBox.Show(t.getName(), "yes", MessageBoxButton.OK);
+            MessageBoxResult result = MessageBox.Show(t.getCategory(), "yes", MessageBoxButton.OK);
         }
     }
 }

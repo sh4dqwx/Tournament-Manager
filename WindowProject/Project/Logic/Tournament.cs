@@ -41,6 +41,10 @@ namespace Project.Logic
             state++;
         }
 
+        public virtual string getCategory()
+        {
+            return "";
+        }
         public string getName()
         {
             return name;
@@ -50,12 +54,12 @@ namespace Project.Logic
             return state;
         }
 
-        public string save()
+        public override string ToString()
         {
-            string toSave = "";
-            foreach(Team team in teams)
+            string toSave = $"T,{name},{getCategory()}\n";
+            foreach(Team t in teams)
             {
-                toSave += team.ToString();
+                toSave += t.ToString();
             }
             return toSave;
         }
