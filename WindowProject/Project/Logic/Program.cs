@@ -13,24 +13,24 @@ namespace Project.Logic
 
         public string[] getTournamentList()
         {
-            Tournament[] tmpTournaments = tournaments.ToArray();
-            string[] tournamentsString = new string[tmpTournaments.Length];
-            for(int i = 0; i < tmpTournaments.Length; i++)
+            string[] toSend = new string[tournaments.Count];
+            for(int i = 0; i < tournaments.Count; i++)
             {
-                tournamentsString[i] = tmpTournaments[i].getName();
-                if (tmpTournaments[i] is Volleyball) tournamentsString[i] += " - Siatkówka";
-                else if (tmpTournaments[i] is TugOfWar) tournamentsString[i] += " - Przeciąganie liny";
-                else if (tmpTournaments[i] is Dodgeball) tournamentsString[i] += " - Dwa ognie";
+                toSend[i] = tournaments[i].getName();
             }
-            return tournamentsString;
+            return toSend;
         }
-        public void addTournament(Tournament tournament)
+        public Tournament getTournament(string tName)
         {
-            tournaments.Add(tournament);
+            return tournaments.Find(t => t.getName().Equals(tName));
         }
-        public void removeTournament(Tournament tournament)
+        public void addTournament(Tournament t)
         {
-            tournaments.Remove(tournament);
+            tournaments.Add(t);
+        }
+        public void removeTournament(Tournament t)
+        {
+            tournaments.Remove(t);
         }
         public void save(string fileName)
         {
