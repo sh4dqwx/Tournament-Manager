@@ -20,10 +20,12 @@ namespace Project.Logic
             }
             return toSend;
         }
-        public Tournament getTournament(int i)
+
+        public Tournament getTournament(int index)
         {
-            return tournaments[i];
+            return tournaments[index];
         }
+
         public void addTournament(string tName, int tCategory)
         {
             Tournament tmp;
