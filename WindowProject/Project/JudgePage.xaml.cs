@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Project.Logic;
-using Project.Exceptions;
 namespace Project
 {
     public partial class JudgePage : Page
     {
-        private MenuPage _menu;
+        private RegistrationPage _reg;
         private Tournament tournament;
-        public JudgePage(MenuPage menu)
+        public JudgePage(RegistrationPage reg)
         {
             InitializeComponent();
-            _menu = menu;
+            _reg = reg;
         }
         public void loadTournament(Tournament tournament)
         {
@@ -32,63 +31,33 @@ namespace Project
         public void refreshJudges()
         {
             string names = "";
-            string category = "";
             string[] judges = tournament.getJudges();
             for(int i = 0; i < judges.Length; i++)
             {
-
+                names+=judges[i]+"\n";
             }
-            judges.ForEach(judge => { names += judge.getName() + " " + judge.getSurname() + "\n"; category += "Siatkówka\n"; });
             judgeName.Text = names;
         }
 
         private void GoBack_Button(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(_menu);
+            NavigationService.Navigate(_reg);
         }
 
         private void addJudgeButton(object sender, RoutedEventArgs e)
         {
-            try { judgeManager.addJudge(_menu, addJudgeName.Text, addJudgeSurname.Text, addCategoryName.SelectedIndex); }
-            catch (EmptyNameException ex)
-            {
-                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            catch (AddExistentJudgeException ex)
-            {
-                MessageBoxResult error = MessageBox.Show(
-                    $"Sędzia {ex.getJudgeName()} {ex.getJudgeSurname()} w kategorii {ex.getJudgeCategory()} już istnieje",
-                    "UWAGA",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error
-                );
-            }
+            tournament.addJudge(new Judge(addJudgeName.Text, addJudgeSurname.Text));
             addJudgeName.Text = "";
             addJudgeSurname.Text = "";
-            addCategoryName.SelectedIndex = 0;
-            _menu.refreshTables();
+            refreshJudges();
         }
 
         private void removeJudgeButton(object sender, RoutedEventArgs e)
         {
-            try { judgeManager.removeJudge(_menu, removeJudgeName.Text, removeJudgeSurname.Text, removeCategoryName.SelectedIndex); }
-            catch (EmptyNameException ex)
-            {
-                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            catch (RemoveNonExistentJudgeException ex)
-            {
-                MessageBoxResult error = MessageBox.Show(
-                    $"Sędzia {ex.getJudgeName()} {ex.getJudgeSurname()} w kategorii {ex.getJudgeCategory()} nie istnieje",
-                    "UWAGA",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error
-                );
-            }
+            tournament.removeJudge(new Judge(addJudgeName.Text, addJudgeSurname.Text));
             removeJudgeName.Text = "";
             removeJudgeSurname.Text = "";
-            removeCategoryName.SelectedIndex = 0;
-            _menu.refreshTables();
+            refreshJudges();
         }
     }
 }

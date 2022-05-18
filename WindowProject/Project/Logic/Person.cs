@@ -8,7 +8,7 @@ namespace Project.Logic
 {
     public abstract class Person
     {
-        private string name, surname;
+        protected string name, surname;
         public Person(string name, string surname)
         {
             this.name = name;

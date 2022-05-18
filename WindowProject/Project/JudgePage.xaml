@@ -28,23 +28,10 @@
                     <RowDefinition Height="20"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="100"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"  Text="Imię i nazwisko" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" Text="Kategoria" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
-                </Grid>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Imię i nazwisko" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
+
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <TextBox x:Name="judgeName" Grid.Column="0" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
-                        <TextBox x:Name="judgeCategory" Grid.Column="1" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
-                    </Grid>
+                    <TextBox x:Name="judgeName" Grid.Column="0" Grid.Row="1" BorderThickness="3" BorderBrush="Gray" IsEnabled="False"/>
                 </ScrollViewer>
             </Grid>
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,50">
