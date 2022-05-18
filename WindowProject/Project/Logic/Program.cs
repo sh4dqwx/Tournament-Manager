@@ -20,9 +20,9 @@ namespace Project.Logic
             }
             return toSend;
         }
-        public Tournament getTournament(string tName)
+        public Tournament getTournament(int i)
         {
-            return tournaments.Find(t => t.getName().Equals(tName));
+            return tournaments[i];
         }
         public void addTournament(string tName, int tCategory)
         {
