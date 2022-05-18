@@ -10,7 +10,7 @@ namespace Project
         private Program program;
         private void refresh()
         {
-            tournamentsList.ItemsSource = program.getTournaments();
+            tournamentsList.ItemsSource = program.getTournamentList();
         }
         public MenuPage(MainWindow window)
         {
@@ -19,8 +19,14 @@ namespace Project
             program.addTournament(new Volleyball("a"));
             program.addTournament(new TugOfWar("a"));
             program.addTournament(new Dodgeball("a"));
-            tournamentsList.ItemsSource = program.getTournaments();
+            refresh();
             _window = window;
+        }
+
+        private void Add_Button(object sender, RoutedEventArgs e)
+        {
+            program.addTournament(new TugOfWar("b"));
+            refresh();
         }
     }
 }

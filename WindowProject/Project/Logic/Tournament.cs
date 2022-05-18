@@ -41,6 +41,10 @@ namespace Project.Logic
             state++;
         }
 
+        public string getName()
+        {
+            return name;
+        }
         public int getState()
         {
             return state;
