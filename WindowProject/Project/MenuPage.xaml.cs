@@ -82,7 +82,6 @@ namespace Project
             Tournament t = program.getTournament(tournamentList.SelectedIndex);
             registrationPage.loadTournament(t);
             NavigationService.Navigate(registrationPage);
-            MessageBoxResult result = MessageBox.Show(t.getCategory(), "yes", MessageBoxButton.OK);
         }
     }
 }
