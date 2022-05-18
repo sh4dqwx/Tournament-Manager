@@ -13,6 +13,9 @@
     <Compile Update="MenuPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="RegistrationPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="JudgePage.xaml">
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MenuPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="RegistrationPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

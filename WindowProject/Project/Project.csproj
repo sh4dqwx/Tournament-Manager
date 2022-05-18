@@ -8,16 +8,34 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Backgrounds\judge.png" />
+    <Compile Remove="Exceptions\**" />
+    <EmbeddedResource Remove="Exceptions\**" />
+    <None Remove="Exceptions\**" />
+    <Page Remove="Exceptions\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Exceptions\" />
+    <None Remove="Backgrounds\cup.png" />
+    <None Remove="Backgrounds\dodgeball.png" />
+    <None Remove="Backgrounds\judge.png" />
+    <None Remove="Backgrounds\menu.png" />
+    <None Remove="Backgrounds\team.png" />
+    <None Remove="Backgrounds\tug_of_war.png" />
+    <None Remove="Backgrounds\volleyball.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="saved\" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Backgrounds\cup.png" />
+    <Resource Include="Backgrounds\dodgeball.png" />
     <Resource Include="Backgrounds\judge.png" />
+    <Resource Include="Backgrounds\menu.png" />
+    <Resource Include="Backgrounds\team.png" />
+    <Resource Include="Backgrounds\tug_of_war.png" />
+    <Resource Include="Backgrounds\volleyball.png" />
   </ItemGroup>
 
 </Project>
