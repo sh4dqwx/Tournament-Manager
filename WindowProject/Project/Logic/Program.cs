@@ -26,7 +26,22 @@ namespace Project.Logic
         }
         public void addTournament(string tName, int tCategory)
         {
-            tournaments.Add(t);
+            Tournament tmp;
+            switch (tCategory)
+            {
+                case 0:
+                    tmp = new Volleyball(tName);
+                    tournaments.Add(tmp);
+                    break;
+                case 1:
+                    tmp = new TugOfWar(tName);
+                    tournaments.Add(tmp);
+                    break;
+                case 2:
+                    tmp = new Dodgeball(tName);
+                    tournaments.Add(tmp);
+                    break;
+            }
         }
         public void removeTournament(Tournament t)
         {
