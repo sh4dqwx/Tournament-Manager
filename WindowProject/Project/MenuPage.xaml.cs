@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using Microsoft.Win32;
+using System.Windows;
 using System.Windows.Controls;
 using Project.Logic;
 
@@ -8,6 +10,18 @@ namespace Project
     {
         private Window mainWindow;
         private Program program;
+        private string savedFolderPath;
+        private string getSavedFolderPath()
+        {
+            string[] folders = AppDomain.CurrentDomain.BaseDirectory.Split('\\');
+            string folderPath = "";
+            for (int i = 0; i < folders.Length - 4; i++)
+            {
+                folderPath += $@"{folders[i]}\";
+            }
+            folderPath += "saved";
+            return folderPath;
+        }
         private void refresh()
         {
             tournamentList.ItemsSource = program.getTournamentList();
@@ -17,6 +31,7 @@ namespace Project
             InitializeComponent();
             mainWindow = window;
             program = new Program();
+            savedFolderPath = getSavedFolderPath();
             refresh();
         }
 
@@ -38,11 +53,22 @@ namespace Project
         }
         private void Load_Button(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog loadFile = new OpenFileDialog();
+            loadFile.InitialDirectory = savedFolderPath;
+            loadFile.Filter = "txt files (*.txt)|*.txt";
+            loadFile.CheckFileExists = true;
 
+            if (loadFile.ShowDialog() == false) return;
+            program.load(loadFile.FileName);
         }
         private void Save_Button(object sender, RoutedEventArgs e)
         {
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.InitialDirectory = savedFolderPath;
+            saveFile.Filter = "txt files (*.txt)|*.txt";
 
+            if (saveFile.ShowDialog() == false) return;
+            program.save(saveFile.FileName);
         }
         private void Exit_Button(object sender, RoutedEventArgs e)
         {

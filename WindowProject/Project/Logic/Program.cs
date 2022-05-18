@@ -1,11 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System.IO;
+using System.Collections.Generic;
 
 namespace Project.Logic
 {
     public class Program
     {
         private List<Tournament> tournaments;
+        private void clear()
+        {
 
+        }
         public Program()
         {
             tournaments = new List<Tournament>();
@@ -66,11 +70,19 @@ namespace Project.Logic
         }
         public void save(string fileName)
         {
-            
+            StreamWriter saveStream = new StreamWriter(fileName);
+            foreach(Tournament t in tournaments)
+            {
+                saveStream.Write(t.ToString());
+            }
+            saveStream.Close();
         }
         public void load(string fileName)
         {
+            clear();
+            StreamReader loadStream = new StreamReader(fileName);
 
+            loadStream.Close();
         }
     }
 }
