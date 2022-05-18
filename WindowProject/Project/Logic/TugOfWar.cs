@@ -4,6 +4,8 @@ namespace Project.Logic
 {
     public class TugOfWar: Tournament, ISport
     {
+        public TugOfWar(string name): base(name) { }
+
         public void generateElimination()
         {
             for (int i = 0; i < teams.Count; i++)

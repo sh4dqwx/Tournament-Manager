@@ -4,6 +4,8 @@ namespace Project.Logic
 {
     public class Dodgeball: Tournament, ISport
     {
+        public Dodgeball(string name): base(name) { }
+
         public void generateElimination()
         {
             for (int i = 0; i < teams.Count; i++)

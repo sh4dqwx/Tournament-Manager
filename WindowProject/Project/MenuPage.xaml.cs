@@ -16,9 +16,9 @@ namespace Project
         {
             InitializeComponent();
             program = new Program();
-            program.addTournament("a");
-            program.addTournament("a");
-            program.addTournament("a");
+            program.addTournament(new Volleyball("a"));
+            program.addTournament(new TugOfWar("a"));
+            program.addTournament(new Dodgeball("a"));
             tournamentsList.ItemsSource = program.getTournaments();
             _window = window;
         }

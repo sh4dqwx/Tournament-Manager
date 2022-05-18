@@ -11,6 +11,11 @@ namespace Project.Logic
         protected string name = "";
         protected int state = 1;
 
+        public Tournament(string name)
+        {
+            this.name = name;
+        }
+
         public void addTeam(Team team)
         {
             teams.Add(team);
