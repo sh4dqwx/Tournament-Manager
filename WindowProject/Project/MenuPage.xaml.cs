@@ -9,6 +9,7 @@ namespace Project
     public partial class MenuPage : Page
     {
         private Window mainWindow;
+        private RegistrationPage registrationPage;
         private Program program;
         private string savedFolderPath;
         private string getSavedFolderPath()
@@ -30,6 +31,7 @@ namespace Project
         {
             InitializeComponent();
             mainWindow = window;
+            registrationPage = new RegistrationPage(this);
             program = new Program();
             savedFolderPath = getSavedFolderPath();
             refresh();
@@ -78,7 +80,8 @@ namespace Project
         private void moveToTournament(object sender, SelectionChangedEventArgs e)
         {
             Tournament t = program.getTournament(tournamentList.SelectedIndex);
-            //NavigationService.Nagivate(gdzieś); nie ma strony na razie
+            registrationPage.loadTournament(t);
+            NavigationService.Navigate(registrationPage);
             MessageBoxResult result = MessageBox.Show(t.getCategory(), "yes", MessageBoxButton.OK);
         }
     }
