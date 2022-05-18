@@ -25,7 +25,15 @@ namespace Project.Logic
         {
             judges.Add(judge);
         }
-
+        public string[] getJudges()
+        {
+            string[] result = new string[judges.Count];
+            for(int i=0; i < result.Length; i++)
+            {
+                result[i] = judges[i].getName() + judges[i].getSurname();
+            }
+            return result;
+        }
         public void removeTeam(Team team)
         {
             teams.Remove(team);

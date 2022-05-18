@@ -33,14 +33,13 @@ namespace Project
         {
             string names = "";
             string category = "";
-            List<Judge> judges = tournament.getJudges();
+            string[] judges = tournament.getJudges();
+            for(int i = 0; i < judges.Length; i++)
+            {
+
+            }
             judges.ForEach(judge => { names += judge.getName() + " " + judge.getSurname() + "\n"; category += "Siatkówka\n"; });
-            judges = _menu.tugOfWar.getJudges();
-            judges.ForEach(judge => { names += judge.getName() + " " + judge.getSurname() + "\n"; category += "Przeciąganie liny\n"; ; });
-            judges = _menu.dodgeball.getJudges();
-            judges.ForEach(judge => { names += judge.getName() + " " + judge.getSurname() + "\n"; category += "Dwa ognie\n"; ; });
             judgeName.Text = names;
-            judgeCategory.Text = category;
         }
 
         private void GoBack_Button(object sender, RoutedEventArgs e)
