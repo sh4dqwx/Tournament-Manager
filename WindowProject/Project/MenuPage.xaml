@@ -20,7 +20,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <ListBox x:Name="tournamentsList" Grid.Column="1"/>
+            <ListBox Grid.Column="1" Name="tournamentList" SelectionChanged="moveToTournament"/>
             <Button Content="Dodaj" HorizontalAlignment="Left" Height="35" Margin="69,65,0,0" VerticalAlignment="Top" Width="112" Click="Add_Button"/>
         </Grid>
     </Grid>

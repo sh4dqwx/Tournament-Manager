@@ -10,23 +10,30 @@ namespace Project
         private Program program;
         private void refresh()
         {
-            tournamentsList.ItemsSource = program.getTournamentList();
+            tournamentList.ItemsSource = program.getTournamentList();
         }
         public MenuPage(MainWindow window)
         {
             InitializeComponent();
             program = new Program();
             program.addTournament(new Volleyball("a"));
-            program.addTournament(new TugOfWar("a"));
-            program.addTournament(new Dodgeball("a"));
+            program.addTournament(new TugOfWar("b"));
+            program.addTournament(new Dodgeball("c"));
             refresh();
             _window = window;
         }
 
         private void Add_Button(object sender, RoutedEventArgs e)
         {
-            program.addTournament(new TugOfWar("b"));
+            program.addTournament(new TugOfWar("d"));
             refresh();
+        }
+
+        private void moveToTournament(object sender, SelectionChangedEventArgs e)
+        {
+            string tName = tournamentList.SelectedItem.ToString();
+            
+            //MessageBoxResult result = MessageBox.Show(tournamentName, "yes", MessageBoxButton.OK);
         }
     }
 }
