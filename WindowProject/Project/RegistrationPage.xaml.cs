@@ -9,21 +9,38 @@ namespace Project
         private MenuPage _menu;
         private Tournament tournament;
         private JudgePage judgePage;
-        public RegistrationPage(MenuPage _menu)
+        public RegistrationPage(MenuPage menu)
         {
-            this._menu = _menu;
             InitializeComponent();
+            _menu = menu;
+            judgePage = new JudgePage(this);
         }
 
         public void loadTournament(Tournament tournament)
         {
             this.tournament = tournament;
+
         }
 
-        public void buttonPressed()
+        private void Exit_Button(object sender, System.Windows.RoutedEventArgs e)
+        {
+            NavigationService.Navigate(_menu);
+        }
+
+        private void Team_Button(object sender, System.Windows.RoutedEventArgs e)
+        {
+            //Nie ma strony teamPage
+        }
+
+        private void Judge_Button(object sender, System.Windows.RoutedEventArgs e)
         {
             judgePage.loadTournament(tournament);
             NavigationService.Navigate(judgePage);
+        }
+
+        private void Play_Button(object sender, System.Windows.RoutedEventArgs e)
+        {
+            //Nie ma strony rozgrywek
         }
     }
 }

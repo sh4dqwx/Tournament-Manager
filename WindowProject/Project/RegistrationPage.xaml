@@ -6,10 +6,35 @@
       xmlns:local="clr-namespace:Project"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="RegistrationPage"
-      Background="White">
+      Title="RegistrationPage">
+
+    <Page.Background>
+        <ImageBrush ImageSource="/Backgrounds/menu.png" Stretch="Fill"/>
+    </Page.Background>
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="Title" Grid.Row="0" Content="Wielki Turniej Kopakabana" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
+        <Button Grid.Column="2" Grid.Row="2"  Content="Wyjście" Margin="10" Height="24" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#FFCCE6FF" Click="Exit_Button"/>
+        <Grid Grid.Row="1" MinWidth="750">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,0,50">
+                <Label Grid.Column="0" Content="Rejestracje" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" FontFamily="Constantia" />
+                <Button Content="Drużyny" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="Team_Button" />
+                <Button Content="Sędziowie" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="Judge_Button"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="0,0,0,50">
+                <Label Grid.Column="0" Content="Rozgrywka" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" FontFamily="Constantia" />
+                <Button Content="Rozpocznij" Margin="20" Height="24" Width="120"  Background="#FFCCE6FF" Click="Play_Button"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
