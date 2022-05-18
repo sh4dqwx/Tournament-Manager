@@ -27,6 +27,7 @@ namespace Project
         public void loadTournament(Tournament tournament)
         {
             this.tournament = tournament;
+            refreshJudges();
         }
         public void refreshJudges()
         {
