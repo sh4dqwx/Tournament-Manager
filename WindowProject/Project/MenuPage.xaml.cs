@@ -29,22 +29,7 @@ namespace Project
         }
         private void Remove_Button(object sender, RoutedEventArgs e)
         {
-            Tournament tmp;
-            switch (removeTournamentCategory.SelectedIndex)
-            {
-                case 0:
-                    tmp = new Volleyball(removeTournamentName.Text);
-                    program.removeTournament(tmp);
-                    break;
-                case 1:
-                    tmp = new TugOfWar(removeTournamentName.Text);
-                    program.removeTournament(tmp);
-                    break;
-                case 2:
-                    tmp = new Dodgeball(removeTournamentName.Text);
-                    program.removeTournament(tmp);
-                    break;
-            }
+            program.removeTournament(removeTournamentName.Text, removeTournamentCategory.SelectedIndex);
             removeTournamentName.Text = "";
             removeTournamentCategory.SelectedIndex = 0;
             refresh();
