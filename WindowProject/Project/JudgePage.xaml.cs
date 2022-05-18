@@ -16,7 +16,7 @@ using Project.Logic;
 using Project.Exceptions;
 using Project.Registrations;
 using Project;
-namespace Project.RegistrationPages
+namespace Project
 {
     public partial class JudgePage : Page
     {
