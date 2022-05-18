@@ -43,9 +43,24 @@ namespace Project.Logic
                     break;
             }
         }
-        public void removeTournament(Tournament t)
+        public void removeTournament(string tName, int tCategory)
         {
-            tournaments.Remove(t);
+            Tournament tmp;
+            switch (tCategory)
+            {
+                case 0:
+                    tmp = new Volleyball(tName);
+                    tournaments.Remove(tmp);
+                    break;
+                case 1:
+                    tmp = new TugOfWar(tName);
+                    tournaments.Remove(tmp);
+                    break;
+                case 2:
+                    tmp = new Dodgeball(tName);
+                    tournaments.Remove(tmp);
+                    break;
+            }
         }
         public void save(string fileName)
         {
