@@ -49,9 +49,8 @@ namespace Project
 
         private void moveToTournament(object sender, SelectionChangedEventArgs e)
         {
-            string tName = tournamentList.SelectedItem.ToString();
-            
-            //MessageBoxResult result = MessageBox.Show(tournamentName, "yes", MessageBoxButton.OK);
+            Tournament t = program.getTournament(tournamentList.SelectedIndex);
+            MessageBoxResult result = MessageBox.Show(t.getName(), "yes", MessageBoxButton.OK);
         }
     }
 }
