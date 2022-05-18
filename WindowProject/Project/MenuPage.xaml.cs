@@ -22,6 +22,7 @@ namespace Project
 
         private void Add_Button(object sender, RoutedEventArgs e)
         {
+            if (addTournamentName.Text.Length == 0) return;
             program.addTournament(addTournamentName.Text, addTournamentCategory.SelectedIndex);
             addTournamentName.Text = "";
             addTournamentCategory.SelectedIndex = 0;
@@ -29,6 +30,7 @@ namespace Project
         }
         private void Remove_Button(object sender, RoutedEventArgs e)
         {
+            if (removeTournamentName.Text.Length == 0) return;
             program.removeTournament(removeTournamentName.Text, removeTournamentCategory.SelectedIndex);
             removeTournamentName.Text = "";
             removeTournamentCategory.SelectedIndex = 0;
