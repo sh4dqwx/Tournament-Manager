@@ -7,7 +7,7 @@ namespace Project.Logic
     {
         private List<Player> players = new List<Player>();
         private string name;
-        private int win, lose;
+        private int win = 0, lose = 0;
         public Team(List<Player> players, string name)
         {
             this.players = players;
@@ -43,6 +43,11 @@ namespace Project.Logic
         {
             if(result==true)win++;
             else lose++;
+        }
+        public override string ToString()
+        {
+            string toSave = $"t,{name},{win},{lose}\n";
+            return toSave;
         }
     }
 }

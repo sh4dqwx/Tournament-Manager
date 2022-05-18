@@ -54,16 +54,6 @@ namespace Project.Logic
             return state;
         }
 
-        public override string ToString()
-        {
-            string toSave = $"T,{name},{getCategory()}\n";
-            foreach(Team t in teams)
-            {
-                toSave += t.ToString();
-            }
-            return toSave;
-        }
-
         public string showResults()
         {
             string result = "";
@@ -72,6 +62,19 @@ namespace Project.Logic
                 result += team.ToString();
             }
             return result;
+        }
+        public override string ToString()
+        {
+            string toSave = $"T,{name},{getCategory()}\n";
+            foreach (Team t in teams)
+            {
+                toSave += t.ToString();
+            }
+            foreach (Judge j in judges)
+            {
+                toSave += j.ToString();
+            }
+            return toSave;
         }
     }
 }
