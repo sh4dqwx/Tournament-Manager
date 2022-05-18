@@ -24,7 +24,7 @@ namespace Project.Logic
         {
             return tournaments.Find(t => t.getName().Equals(tName));
         }
-        public void addTournament(Tournament t)
+        public void addTournament(string tName, int tCategory)
         {
             tournaments.Add(t);
         }

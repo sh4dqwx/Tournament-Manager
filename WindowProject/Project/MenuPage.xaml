@@ -20,8 +20,38 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Button Content="Dodaj" HorizontalAlignment="Center" Height="25" Width="150" Click="Add_Button"/>
+                <Grid Height="25">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" x:Name="addTournamentName"/>
+                    <ComboBox Grid.Column="1" Width="100" x:Name="addTournamentCategory">
+                        <ComboBoxItem Content="Siatkówka" IsSelected="true"/>
+                        <ComboBoxItem Content="Przeciąganie liny"/>
+                        <ComboBoxItem Content="Dwa ognie"/>
+                    </ComboBox>
+                </Grid>
+                <Button Content="Usuń" HorizontalAlignment="Center" Height="25" Width="150" Click="Remove_Button"/>
+                <Grid Height="25">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" x:Name="removeTournamentName"/>
+                    <ComboBox Grid.Column="1" Width="100" x:Name="removeTournamentCategory">
+                        <ComboBoxItem Content="Siatkówka" IsSelected="true"/>
+                        <ComboBoxItem Content="Przeciąganie liny"/>
+                        <ComboBoxItem Content="Dwa ognie"/>
+                    </ComboBox>
+                </Grid>
+                <Button Content="Wczytaj" HorizontalAlignment="Center" Height="25" Width="150" Click="Load_Button"/>
+                <Button Content="Zapisz" HorizontalAlignment="Center" Height="25" Width="150" Click="Save_Button"/>
+                <Button Content="Wyjdź z programu" HorizontalAlignment="Center" Height="25" Width="150" Click="Exit_Button"/>
+            </StackPanel>
             <ListBox Grid.Column="1" x:Name="tournamentList" SelectionChanged="moveToTournament"/>
-            <Button Content="Dodaj" HorizontalAlignment="Left" Height="35" Margin="69,65,0,0" VerticalAlignment="Top" Width="112" Click="Add_Button"/>
         </Grid>
     </Grid>
 </Page>
