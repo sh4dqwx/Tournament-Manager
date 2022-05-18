@@ -30,7 +30,7 @@ namespace Project.Logic
             string[] result = new string[judges.Count];
             for(int i=0; i < result.Length; i++)
             {
-                result[i] = judges[i].getName() + judges[i].getSurname();
+                result[i] = judges[i].getName() +" "+ judges[i].getSurname();
             }
             return result;
         }
