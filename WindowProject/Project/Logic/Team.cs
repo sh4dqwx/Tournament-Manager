@@ -7,7 +7,7 @@ namespace Project.Logic
     {
         private List<Player> players = new List<Player>();
         private string name;
-        private int win, lost;
+        private int win, lose;
         public Team(List<Player> players, string name)
         {
             this.players = players;
@@ -22,9 +22,14 @@ namespace Project.Logic
         {
             return name;
         }
-        public List<Player> getPlayers()
+        public string[] getPlayers()
         {
-            return players;
+            string[] toSend = new string[players.Count];
+            for(int i = 0; i < toSend.Length; i++)
+            {
+                toSend[i] = players[i].getName() + players[i].getSurname();
+            }
+            return toSend;
         }
         public int getWin()
         {
@@ -32,18 +37,12 @@ namespace Project.Logic
         }
         public int getLost()
         {
-            return lost;
+            return lose;
         }
         public void addScore(bool result)
         {
-            if(result==true)
-            {
-                win++;
-            }
-            else 
-            { 
-                lost++;
-            }
+            if(result==true)win++;
+            else lose++;
         }
     }
 }
