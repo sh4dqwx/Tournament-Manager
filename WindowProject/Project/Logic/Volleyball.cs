@@ -23,5 +23,12 @@ namespace Project.Logic
         {
             games.Add(new Game(teams[0], teams[1]));
         }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Volleyball)) return false;
+            Volleyball vTeam = (Volleyball)obj;
+            return name.Equals(vTeam.name);
+        }
     }
 }

@@ -23,5 +23,12 @@ namespace Project.Logic
         {
             games.Add(new Game(teams[0], teams[1]));
         }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is TugOfWar)) return false;
+            TugOfWar tTeam = (TugOfWar)obj;
+            return name.Equals(tTeam.name);
+        }
     }
 }
