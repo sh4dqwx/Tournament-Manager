@@ -6,6 +6,11 @@ namespace Project.Logic
     {
         public TugOfWar(string name): base(name) { }
 
+        public override string getCategory()
+        {
+            return "Przeciąganie liny";
+        }
+
         public void generateElimination()
         {
             for (int i = 0; i < teams.Count; i++)

@@ -28,5 +28,10 @@ namespace Project.Logic
         {
             return surname;
         }
+        public override string ToString()
+        {
+            string toSave = $"j,{name},{surname}\n";
+            return toSave;
+        }
     }
 }

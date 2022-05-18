@@ -41,6 +41,10 @@ namespace Project.Logic
             state++;
         }
 
+        public virtual string getCategory()
+        {
+            return "";
+        }
         public string getName()
         {
             return name;
@@ -50,17 +54,7 @@ namespace Project.Logic
             return state;
         }
 
-        public string save()
-        {
-            string toSave = "";
-            foreach(Team team in teams)
-            {
-                toSave += team.ToString();
-            }
-            return toSave;
-        }
-
-        public string showResoults()
+        public string showResults()
         {
             string result = "";
             foreach (Team team in teams)
@@ -68,6 +62,19 @@ namespace Project.Logic
                 result += team.ToString();
             }
             return result;
+        }
+        public override string ToString()
+        {
+            string toSave = $"T,{name},{getCategory()}\n";
+            foreach (Team t in teams)
+            {
+                toSave += t.ToString();
+            }
+            foreach (Judge j in judges)
+            {
+                toSave += j.ToString();
+            }
+            return toSave;
         }
     }
 }

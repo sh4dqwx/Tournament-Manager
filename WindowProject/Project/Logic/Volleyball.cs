@@ -6,6 +6,10 @@ namespace Project.Logic
     {
         public Volleyball(string name): base(name) { }
 
+        public override string getCategory()
+        {
+            return "Siatkówka";
+        }
         public void generateElimination()
         {
             for(int i = 0; i < teams.Count; i++)

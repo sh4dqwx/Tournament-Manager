@@ -1,0 +1,2 @@
+T,TurniejSiatkówka,Siatkówka
+T,TurniejPrzeciąganieLiny,Przeciąganie liny
