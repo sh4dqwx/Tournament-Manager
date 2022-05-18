@@ -60,7 +60,7 @@ namespace Project.Logic
             return toSave;
         }
 
-        public string showResoults()
+        public string showResults()
         {
             string result = "";
             foreach (Team team in teams)
