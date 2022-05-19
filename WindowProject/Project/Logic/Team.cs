@@ -49,5 +49,11 @@ namespace Project.Logic
             string toSave = $"t,{name},{win},{lose}\n";
             return toSave;
         }
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Team)) return false;
+            Team team = (Team)obj;
+            return players.Equals(team.players) && name.Equals(team.name);
+        }
     }
 }
