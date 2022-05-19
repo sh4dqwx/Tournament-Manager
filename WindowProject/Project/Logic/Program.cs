@@ -6,6 +6,23 @@ namespace Project.Logic
     public class Program
     {
         private List<Tournament> tournaments;
+        private Tournament newTournament(string TName, string TCategory)
+        {
+            Tournament tmp = null;
+            switch (TCategory)
+            {
+                case "Siatkówka":
+                    tmp = new Volleyball(TName);
+                    break;
+                case "Przeciąganie liny":
+                    tmp = new TugOfWar(TName);
+                    break;
+                case "Dwa ognie":
+                    tmp = new Dodgeball(TName);
+                    break;
+            }
+            return tmp;
+        }
         private void clear()
         {
 
@@ -30,43 +47,19 @@ namespace Project.Logic
             return tournaments[index];
         }
 
-        public void addTournament(string TName, int TCategory)
+        public void addTournament(Tournament T)
         {
-            Tournament tmp;
-            switch (TCategory)
-            {
-                case 0:
-                    tmp = new Volleyball(TName);
-                    tournaments.Add(tmp);
-                    break;
-                case 1:
-                    tmp = new TugOfWar(TName);
-                    tournaments.Add(tmp);
-                    break;
-                case 2:
-                    tmp = new Dodgeball(TName);
-                    tournaments.Add(tmp);
-                    break;
-            }
+            tournaments.Add(T);
         }
-        public void removeTournament(string TName, int TCategory)
+        public void addTournament(string TName, string TCategory)
         {
-            Tournament tmp;
-            switch (TCategory)
-            {
-                case 0:
-                    tmp = new Volleyball(TName);
-                    tournaments.Remove(tmp);
-                    break;
-                case 1:
-                    tmp = new TugOfWar(TName);
-                    tournaments.Remove(tmp);
-                    break;
-                case 2:
-                    tmp = new Dodgeball(TName);
-                    tournaments.Remove(tmp);
-                    break;
-            }
+            Tournament tmp = newTournament(TName, TCategory);
+            tournaments.Add(tmp);
+        }
+        public void removeTournament(string TName, string TCategory)
+        {
+            Tournament tmp = newTournament(TName, TCategory);
+            tournaments.Remove(tmp);
         }
         public void save(string fileName)
         {
@@ -81,7 +74,24 @@ namespace Project.Logic
         {
             clear();
             StreamReader loadStream = new StreamReader(fileName);
+            Tournament tmp = null;
+            while(!loadStream.EndOfStream)
+            {
+                string[] dane = loadStream.ReadLine().Split(',');
+                switch (dane[0])
+                {
+                    case "T":
+                        if (tmp is Tournament) addTournament(tmp);
+                        tmp = newTournament(dane[1], dane[2]);
+                        break;
+                    case "t":
 
+                        break;
+                    case "j":
+
+                        break;
+                }
+            }
             loadStream.Close();
         }
     }

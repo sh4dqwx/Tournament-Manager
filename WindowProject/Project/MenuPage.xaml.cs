@@ -40,7 +40,7 @@ namespace Project
         private void Add_Button(object sender, RoutedEventArgs e)
         {
             if (addTournamentName.Text.Length == 0) return;
-            program.addTournament(addTournamentName.Text, addTournamentCategory.SelectedIndex);
+            program.addTournament(addTournamentName.Text, addTournamentCategory.SelectedValue.ToString());
             addTournamentName.Text = "";
             addTournamentCategory.SelectedIndex = 0;
             refresh();
@@ -48,7 +48,7 @@ namespace Project
         private void Remove_Button(object sender, RoutedEventArgs e)
         {
             if (removeTournamentName.Text.Length == 0) return;
-            program.removeTournament(removeTournamentName.Text, removeTournamentCategory.SelectedIndex);
+            program.removeTournament(removeTournamentName.Text, removeTournamentCategory.SelectedValue.ToString());
             removeTournamentName.Text = "";
             removeTournamentCategory.SelectedIndex = 0;
             refresh();
@@ -62,6 +62,7 @@ namespace Project
 
             if (loadFile.ShowDialog() == false) return;
             program.load(loadFile.FileName);
+            refresh();
         }
         private void Save_Button(object sender, RoutedEventArgs e)
         {
