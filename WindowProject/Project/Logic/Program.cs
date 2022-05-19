@@ -82,16 +82,14 @@ namespace Project.Logic
                         tmp = newTournament(dane[1], Convert.ToInt32(dane[2]));
                         break;
                     case "t":
-                        //tmp.loadTeam(dane);
-                        List<Player> tmpPlayerList = new List<Player>();
-                        for(int i=2; i<dane.Length; i++) { tmpPlayerList.Add(new Player(dane[i].Split('-')[0], dane[i].Split('-')[1])); }
-                        tmp.addTeam(new Team(tmpPlayerList, dane[1]));
+                        tmp.addTeam(dane);
                         break;
                     case "j":
-                        tmp.addJudge(new Judge(dane[1].Split('-')[0], dane[1].Split('-')[1]));
+                        tmp.addJudge(dane);
                         break;
                 }
             }
+            addTournament(tmp);
             loadStream.Close();
         }
     }
