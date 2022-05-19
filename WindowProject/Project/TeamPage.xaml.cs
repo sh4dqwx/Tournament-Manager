@@ -20,10 +20,12 @@ namespace Project
         private List<Player> player = new List<Player>();
         private RegistrationPage _reg;
         private Tournament tournament;
+        private PlayersPage playersPage;
         public TeamPage(RegistrationPage reg)
         {
             InitializeComponent();
             _reg = reg;
+            playersPage = new PlayersPage(this);
         }
         public void loadTournament(Tournament tournament)
         {
@@ -32,24 +34,33 @@ namespace Project
         }
         public void refreshTeams()
         {
+            string captains="";
             string names = "";
             string[] teams = tournament.getTeams();
+            string[] captain = tournament.getCaptain();
             for (int i = 0; i < teams.Length; i++)
             {
                 names += teams[i] + "\n";
+                captains+=captain[i] + "\n";
             }
+            teamCaptain.Text = captains;
             teamName.Text = names;
         }
         private void GoBack_Button(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(_reg);
         }
+        private void addPlayerButton(object sender, RoutedEventArgs e)
+        {
+            playersPage.loadPlayers(player);
+            NavigationService.Navigate(playersPage);
+            addButton.IsEnabled = true;
+        }
         private void addTeamButton(object sender, RoutedEventArgs e)
         {
-            player.Add(new Player("Jakub", "Modzelewski"));
-            player.Add(new Player("Jan", "Testowy"));
             tournament.addTeam(new Team(player,addTeamName.Text));
             addTeamName.Text = "";
+            addButton.IsEnabled = false;
             refreshTeams();
         }
 

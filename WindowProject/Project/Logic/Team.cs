@@ -27,7 +27,7 @@ namespace Project.Logic
             string[] toSend = new string[players.Count];
             for(int i = 0; i < toSend.Length; i++)
             {
-                toSend[i] = players[i].getName() + players[i].getSurname();
+                toSend[i] = players[i].getName() +" "+ players[i].getSurname();
             }
             return toSend;
         }

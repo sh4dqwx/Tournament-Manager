@@ -28,10 +28,22 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" >
-                    <TextBlock Grid.Column="0"  Grid.Row="1" Text="Nazwa" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"  Text="Nazwa" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="Kapitan" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
                 </Grid>
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                    <TextBox x:Name="teamName" Grid.Row="1" Grid.Column="0" BorderThickness="3" BorderBrush="Gray" AcceptsReturn="True" IsEnabled="False"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="teamName" Grid.Row="1" Grid.Column="0" BorderThickness="3" BorderBrush="Gray" AcceptsReturn="True" IsEnabled="False"/>
+                        <TextBox x:Name="teamCaptain" Grid.Row="1" Grid.Column="1" BorderThickness="3" BorderBrush="Gray" AcceptsReturn="True" IsEnabled="False"/>
+                    </Grid>
                 </ScrollViewer>
             </Grid>
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,50">
@@ -46,7 +58,8 @@
                     <TextBlock Grid.Column="0" Text="Nazwa: " FontSize="16"/>
                     <TextBox Grid.Column="1" x:Name="addTeamName" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>
                 </Grid>
-                <Button Content="Dodaj" Height="24" Width="60" HorizontalAlignment="Left" Margin="0,10,0,0" Background="#FFCCE6FF" Click="addTeamButton" />
+                <Button Content="Dodaj zawodników" Height="24" Width="110" HorizontalAlignment="Left" Margin="0,10,0,0" Background="#FFCCE6FF" Click="addPlayerButton" />
+                <Button x:Name="addButton" Content="Dodaj" Height="24" Width="60" HorizontalAlignment="Left" Margin="0,10,0,0" Background="#FFCCE6FF" Click="addTeamButton" IsEnabled="False"/>
                 <Separator Margin="0,15"/>
                 <TextBlock Text="Usuń drużynę" FontSize="24" FontFamily="Constantia" Margin="0,0,0,10"/>
                 <Grid>

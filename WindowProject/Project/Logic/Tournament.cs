@@ -43,6 +43,15 @@ namespace Project.Logic
             }
             return result;
         }
+        public string[] getCaptain()
+        {
+            string[] results = new string[teams.Count];
+            for(int i=0;i<results.Length;i++)
+            {
+                results[i] = teams[i].getPlayers()[0];
+            }
+            return results;
+        }
         public void removeTeam(Team team)
         {
             teams.Remove(team);

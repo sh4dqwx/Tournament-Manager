@@ -1,0 +1,84 @@
+﻿<Page x:Class="Project.PlayersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Project"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TeamPage">
+    <Page.Background>
+        <ImageBrush ImageSource="/Backgrounds/team.png" Stretch="Fill"/>
+    </Page.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Dodaj zawodników" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,50">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Kapitan: " FontSize="16"/>
+                    <TextBox Grid.Column="1" x:Name="addCaptain" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="25,0,0,0"/>
+                    <TextBox Grid.Column="2" x:Name="addCaptainS" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>   
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Zawodnik: " FontSize="16"/>
+                    <TextBox Grid.Column="1" x:Name="player1" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>
+                    <TextBox Grid.Column="2" x:Name="player1S" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Zawodnik: " FontSize="16"/>
+                    <TextBox Grid.Column="1" x:Name="player2" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>
+                    <TextBox Grid.Column="2" x:Name="player2S" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Zawodnik: " FontSize="16"/>
+                    <TextBox Grid.Column="1" x:Name="player3" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>
+                    <TextBox Grid.Column="2" x:Name="player3S" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Zawodnik: " FontSize="16"/>
+                    <TextBox Grid.Column="1" x:Name="player4" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>
+                    <TextBox Grid.Column="2" x:Name="player4S" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>
+                </Grid>
+                <Button Content="Utwórz drużynę" Height="24" Width="100" HorizontalAlignment="Left" Margin="0,10,0,0" Background="#FFCCE6FF" Click="createTeamButton" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
