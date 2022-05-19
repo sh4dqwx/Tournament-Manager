@@ -9,11 +9,13 @@ namespace Project
         private MenuPage _menu;
         private Tournament tournament;
         private JudgePage judgePage;
+        private TeamPage teamPage;
         public RegistrationPage(MenuPage menu)
         {
             InitializeComponent();
             _menu = menu;
             judgePage = new JudgePage(this);
+            teamPage = new TeamPage(this);
         }
 
         public void loadTournament(Tournament tournament)
@@ -29,7 +31,8 @@ namespace Project
 
         private void Team_Button(object sender, System.Windows.RoutedEventArgs e)
         {
-            //Nie ma strony teamPage
+            teamPage.loadTournament(tournament);
+            NavigationService.Navigate(teamPage);
         }
 
         private void Judge_Button(object sender, System.Windows.RoutedEventArgs e)

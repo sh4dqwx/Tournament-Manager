@@ -34,6 +34,15 @@ namespace Project.Logic
             }
             return result;
         }
+        public string[] getTeams()
+        {
+            string[] result = new string[teams.Count];
+            for(int i=0; i<result.Length;i++)
+            {
+                result[i] = teams[i].getName();
+            }
+            return result;
+        }
         public void removeTeam(Team team)
         {
             teams.Remove(team);
