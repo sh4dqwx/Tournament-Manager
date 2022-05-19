@@ -6,18 +6,18 @@ namespace Project.Logic
     public class Program
     {
         private List<Tournament> tournaments;
-        private Tournament newTournament(string TName, string TCategory)
+        private Tournament newTournament(string TName, int TCategory)
         {
             Tournament tmp = null;
             switch (TCategory)
             {
-                case "Siatkówka":
+                case 0:
                     tmp = new Volleyball(TName);
                     break;
-                case "Przeciąganie liny":
+                case 1:
                     tmp = new TugOfWar(TName);
                     break;
-                case "Dwa ognie":
+                case 2:
                     tmp = new Dodgeball(TName);
                     break;
             }
@@ -25,7 +25,7 @@ namespace Project.Logic
         }
         private void clear()
         {
-
+            tournaments.Clear();
         }
         public Program()
         {
@@ -51,12 +51,12 @@ namespace Project.Logic
         {
             tournaments.Add(T);
         }
-        public void addTournament(string TName, string TCategory)
+        public void addTournament(string TName, int TCategory)
         {
             Tournament tmp = newTournament(TName, TCategory);
             tournaments.Add(tmp);
         }
-        public void removeTournament(string TName, string TCategory)
+        public void removeTournament(string TName, int TCategory)
         {
             Tournament tmp = newTournament(TName, TCategory);
             tournaments.Remove(tmp);
@@ -82,7 +82,6 @@ namespace Project.Logic
                 {
                     case "T":
                         if (tmp is Tournament) addTournament(tmp);
-                        tmp = newTournament(dane[1], dane[2]);
                         break;
                     case "t":
 

@@ -19,7 +19,7 @@ namespace Project
         public void loadTournament(Tournament tournament)
         {
             this.tournament = tournament;
-
+            Title.Content = tournament.getName();
         }
 
         private void Exit_Button(object sender, System.Windows.RoutedEventArgs e)

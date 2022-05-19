@@ -6,9 +6,9 @@ namespace Project.Logic
     {
         public Dodgeball(string name): base(name) { }
 
-        public override string getCategory()
+        public override int getCategory()
         {
-            return "Dwa ognie";
+            return 2;
         }
 
         public void generateElimination()

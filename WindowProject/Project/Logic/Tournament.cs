@@ -49,9 +49,9 @@ namespace Project.Logic
             state++;
         }
 
-        public virtual string getCategory()
+        public virtual int getCategory()
         {
-            return "";
+            return -1;
         }
         public string getName()
         {

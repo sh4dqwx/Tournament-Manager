@@ -6,9 +6,9 @@ namespace Project.Logic
     {
         public TugOfWar(string name): base(name) { }
 
-        public override string getCategory()
+        public override int getCategory()
         {
-            return "Przeciąganie liny";
+            return 1;
         }
 
         public void generateElimination()
