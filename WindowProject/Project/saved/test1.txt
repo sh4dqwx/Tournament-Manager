@@ -1,12 +1,12 @@
-T,TurniejSiatkówka,Siatkówka
-t,Drużyna1,0,0
-t,Drużyna2,0,0
-t,Drużyna3,0,0
+T,TurniejSiatkówka,0
+t,Drużyna1
+t,Drużyna2
+t,Drużyna3
 j,Sędzia,1
 j,Sędzia,2
-T,TurniejPrzeciąganieLiny,Przeciąganie liny
-t,Drużyna4,0,0
-t,Drużyna5,0,0
+T,TurniejPrzeciąganieLiny,1
+t,Drużyna4
+t,Drużyna5
 j,Sędzia,3
 j,Sędzia,4
 j,Sędzia,5
