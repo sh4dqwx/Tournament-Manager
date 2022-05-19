@@ -13,7 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Project.Logic;
-namespace Project
+using Project.Logic.Registrations;
+using Project.Logic.Tournaments;
+
+namespace Project.Interface
 {
     public partial class TeamPage : Page
     {

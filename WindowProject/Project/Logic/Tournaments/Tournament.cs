@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Project.Logic.Registrations;
+using System;
 using System.Collections.Generic;
 
-namespace Project.Logic
+namespace Project.Logic.Tournaments
 {
     public abstract class Tournament
     {
@@ -28,16 +29,16 @@ namespace Project.Logic
         public string[] getJudges()
         {
             string[] result = new string[judges.Count];
-            for(int i=0; i < result.Length; i++)
+            for (int i = 0; i < result.Length; i++)
             {
-                result[i] = judges[i].getName() +" "+ judges[i].getSurname();
+                result[i] = judges[i].getName() + " " + judges[i].getSurname();
             }
             return result;
         }
         public string[] getTeams()
         {
             string[] result = new string[teams.Count];
-            for(int i=0; i<result.Length;i++)
+            for (int i = 0; i < result.Length; i++)
             {
                 result[i] = teams[i].getName();
             }
@@ -46,7 +47,7 @@ namespace Project.Logic
         public string[] getCaptain()
         {
             string[] results = new string[teams.Count];
-            for(int i=0;i<results.Length;i++)
+            for (int i = 0; i < results.Length; i++)
             {
                 results[i] = teams[i].getPlayers()[0];
             }

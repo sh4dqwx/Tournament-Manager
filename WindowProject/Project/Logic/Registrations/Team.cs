@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Project.Logic
+namespace Project.Logic.Registrations
 {
     public class Team
     {
@@ -25,9 +25,9 @@ namespace Project.Logic
         public string[] getPlayers()
         {
             string[] toSend = new string[players.Count];
-            for(int i = 0; i < toSend.Length; i++)
+            for (int i = 0; i < toSend.Length; i++)
             {
-                toSend[i] = players[i].getName() +" "+ players[i].getSurname();
+                toSend[i] = players[i].getName() + " " + players[i].getSurname();
             }
             return toSend;
         }
@@ -41,7 +41,7 @@ namespace Project.Logic
         }
         public void addScore(bool result)
         {
-            if(result==true)win++;
+            if (result == true) win++;
             else lose++;
         }
         public override string ToString()

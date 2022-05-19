@@ -7,39 +7,39 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="JudgePage.xaml.cs">
+    <Compile Update="Interface\JudgePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MenuPage.xaml.cs">
+    <Compile Update="Interface\MenuPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="PlayersPage.xaml.cs">
+    <Compile Update="Interface\PlayersPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="RegistrationPage.xaml.cs">
+    <Compile Update="Interface\RegistrationPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="TeamPage.xaml.cs">
+    <Compile Update="Interface\TeamPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="JudgePage.xaml">
+    <Page Update="Interface\JudgePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MenuPage.xaml">
+    <Page Update="Interface\MenuPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="PlayersPage.xaml">
+    <Page Update="Interface\PlayersPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="RegistrationPage.xaml">
+    <Page Update="Interface\RegistrationPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="TeamPage.xaml">
+    <Page Update="Interface\TeamPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

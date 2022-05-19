@@ -12,8 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Project.Logic;
-namespace Project
+using Project.Logic.Tournaments;
+using Project.Logic.Registrations;
+
+namespace Project.Interface
 {
     public partial class JudgePage : Page
     {

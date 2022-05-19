@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Controls;
-using Project.Logic;
+using Project.Logic.Tournaments;
 
-namespace Project
+namespace Project.Interface
 {
     public partial class RegistrationPage : Page
     {

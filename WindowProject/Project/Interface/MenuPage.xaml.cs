@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Project.Logic;
 
-namespace Project
+namespace Project.Interface
 {
     public partial class MenuPage : Page
     {

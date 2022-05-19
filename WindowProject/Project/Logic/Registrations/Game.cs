@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Project.Logic
+namespace Project.Logic.Registrations
 {
     public class Game
     {
@@ -24,7 +24,7 @@ namespace Project.Logic
 
         public Team playRandom()
         {
-            if(random.NextDouble() >= 0.5) winner = firstTeam;
+            if (random.NextDouble() >= 0.5) winner = firstTeam;
             else winner = secondTeam;
             return winner;
         }

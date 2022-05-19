@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using System.ComponentModel;
+using Project.Interface;
 
 namespace Project
 {

@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Project.Logic
+namespace Project.Logic.Registrations
 {
-    public class Judge:Person
+    public class Judge : Person
     {
-        public Judge(string name, string surname):base(name,surname)
+        public Judge(string name, string surname) : base(name, surname)
         { }
         public Judge(Judge copy) : base(copy)
         { }

@@ -1,16 +1,16 @@
 ﻿using System;
+using Project.Logic.Registrations;
 
-namespace Project.Logic
+namespace Project.Logic.Tournaments
 {
-    public class Dodgeball: Tournament, ISport
+    public class Volleyball : Tournament, ISport
     {
-        public Dodgeball(string name): base(name) { }
+        public Volleyball(string name) : base(name) { }
 
         public override int getCategory()
         {
-            return 2;
+            return 0;
         }
-
         public void generateElimination()
         {
             for (int i = 0; i < teams.Count; i++)
@@ -31,9 +31,9 @@ namespace Project.Logic
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Dodgeball)) return false;
-            Dodgeball dTeam = (Dodgeball)obj;
-            return name.Equals(dTeam.name);
+            if (!(obj is Volleyball)) return false;
+            Volleyball vTeam = (Volleyball)obj;
+            return name.Equals(vTeam.name);
         }
     }
 }

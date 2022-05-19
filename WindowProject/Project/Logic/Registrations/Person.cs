@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.Logic
+namespace Project.Logic.Registrations
 {
     public abstract class Person
     {
@@ -16,8 +16,8 @@ namespace Project.Logic
         }
         public Person(Person copy)
         {
-            this.name = copy.name;
-            this.surname = copy.surname;
+            name = copy.name;
+            surname = copy.surname;
         }
 
         public string getName()

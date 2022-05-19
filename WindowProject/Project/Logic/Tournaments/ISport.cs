@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Project.Logic
+namespace Project.Logic.Tournaments
 {
     public interface ISport
     {

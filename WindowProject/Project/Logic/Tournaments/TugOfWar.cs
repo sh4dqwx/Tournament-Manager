@@ -1,19 +1,21 @@
 ﻿using System;
+using Project.Logic.Registrations;
 
-namespace Project.Logic
+namespace Project.Logic.Tournaments
 {
-    public class Volleyball: Tournament, ISport
+    public class TugOfWar : Tournament, ISport
     {
-        public Volleyball(string name): base(name) { }
+        public TugOfWar(string name) : base(name) { }
 
         public override int getCategory()
         {
-            return 0;
+            return 1;
         }
+
         public void generateElimination()
         {
-            for(int i = 0; i < teams.Count; i++)
-                for(int j = i + 1; j < teams.Count; j++)
+            for (int i = 0; i < teams.Count; i++)
+                for (int j = i + 1; j < teams.Count; j++)
                     games.Add(new Game(teams[i], teams[j]));
         }
 
@@ -30,9 +32,9 @@ namespace Project.Logic
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Volleyball)) return false;
-            Volleyball vTeam = (Volleyball)obj;
-            return name.Equals(vTeam.name);
+            if (!(obj is TugOfWar)) return false;
+            TugOfWar tTeam = (TugOfWar)obj;
+            return name.Equals(tTeam.name);
         }
     }
 }
