@@ -8,7 +8,16 @@ namespace Project.Logic
     public class Program
     {
         private List<Tournament> tournaments;
-        private Tournament newTournament(string TName, int TCategory)
+        private void clear()
+        {
+            tournaments.Clear();
+        }
+
+        public Program()
+        {
+            tournaments = new List<Tournament>();
+        }
+        public Tournament newTournament(string TName, int TCategory)
         {
             Tournament tmp = null;
             switch (TCategory)
@@ -25,14 +34,6 @@ namespace Project.Logic
             }
             return tmp;
         }
-        private void clear()
-        {
-            tournaments.Clear();
-        }
-        public Program()
-        {
-            tournaments = new List<Tournament>();
-        }
 
         public string[] getTournamentList()
         {
@@ -43,7 +44,6 @@ namespace Project.Logic
             }
             return toSend;
         }
-
         public Tournament getTournament(int index)
         {
             return tournaments[index];
@@ -53,15 +53,9 @@ namespace Project.Logic
         {
             tournaments.Add(T);
         }
-        public void addTournament(string TName, int TCategory)
+        public void removeTournament(Tournament T)
         {
-            Tournament tmp = newTournament(TName, TCategory);
-            tournaments.Add(tmp);
-        }
-        public void removeTournament(string TName, int TCategory)
-        {
-            Tournament tmp = newTournament(TName, TCategory);
-            tournaments.Remove(tmp);
+            tournaments.Remove(T);
         }
         public void save(string fileName)
         {

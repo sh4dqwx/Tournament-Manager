@@ -29,6 +29,7 @@ namespace Project.Interface
             tournamentList.ItemsSource = program.getTournamentList();
             tournamentList.SelectedIndex = -1;
         }
+
         public MenuPage(MainWindow window)
         {
             InitializeComponent();
@@ -42,7 +43,7 @@ namespace Project.Interface
         private void Add_Button(object sender, RoutedEventArgs e)
         {
             if (addTournamentName.Text.Length == 0) return;
-            program.addTournament(addTournamentName.Text, addTournamentCategory.SelectedIndex);
+            program.addTournament(program.newTournament(addTournamentName.Text, addTournamentCategory.SelectedIndex));
             addTournamentName.Text = "";
             addTournamentCategory.SelectedIndex = 0;
             refresh();
@@ -50,7 +51,7 @@ namespace Project.Interface
         private void Remove_Button(object sender, RoutedEventArgs e)
         {
             if (removeTournamentName.Text.Length == 0) return;
-            program.removeTournament(removeTournamentName.Text, removeTournamentCategory.SelectedIndex);
+            program.removeTournament(program.newTournament(removeTournamentName.Text, removeTournamentCategory.SelectedIndex));
             removeTournamentName.Text = "";
             removeTournamentCategory.SelectedIndex = 0;
             refresh();
