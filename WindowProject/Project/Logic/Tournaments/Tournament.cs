@@ -95,11 +95,11 @@ namespace Project.Logic.Tournaments
             string toSave = $"T,{name},{getCategory()}\n";
             foreach (Team t in teams)
             {
-                toSave += t.ToString();
+                toSave += $"{t.ToString()}\n";
             }
             foreach (Judge j in judges)
             {
-                toSave += j.ToString();
+                toSave += $"{j.ToString()}\n";
             }
             return toSave;
         }

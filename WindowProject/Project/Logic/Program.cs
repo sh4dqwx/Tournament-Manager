@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using Project.Logic.Tournaments;
+using Project.Logic.Registrations;
 
 namespace Project.Logic
 {
@@ -81,10 +82,13 @@ namespace Project.Logic
                         tmp = newTournament(dane[1], Convert.ToInt32(dane[2]));
                         break;
                     case "t":
-                        tmp.addTeam(new Team(dane[1]));
+                        //tmp.loadTeam(dane);
+                        List<Player> tmpPlayerList = new List<Player>();
+                        for(int i=2; i<dane.Length; i++) { tmpPlayerList.Add(new Player(dane[i].Split('-')[0], dane[i].Split('-')[1])); }
+                        tmp.addTeam(new Team(tmpPlayerList, dane[1]));
                         break;
                     case "j":
-                        //tmp.addJudge();
+                        tmp.addJudge(new Judge(dane[1].Split('-')[0], dane[1].Split('-')[1]));
                         break;
                 }
             }

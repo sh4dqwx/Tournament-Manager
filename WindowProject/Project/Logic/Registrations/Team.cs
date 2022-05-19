@@ -51,7 +51,6 @@ namespace Project.Logic.Registrations
             {
                 toSave += $",{p.ToString()}";
             }
-            toSave += "\n";
             return toSave;
         }
         public override bool Equals(object obj)
