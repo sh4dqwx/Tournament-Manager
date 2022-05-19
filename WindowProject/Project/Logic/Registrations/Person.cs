@@ -30,8 +30,7 @@ namespace Project.Logic.Registrations
         }
         public override string ToString()
         {
-            string toSave = $"j,{name},{surname}\n";
-            return toSave;
+            return $"{name}-{surname}";
         }
     }
 }

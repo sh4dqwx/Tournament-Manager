@@ -46,7 +46,12 @@ namespace Project.Logic.Registrations
         }
         public override string ToString()
         {
-            string toSave = $"t,{name},{win},{lose}\n";
+            string toSave = $"t,{name}";
+            foreach(Player p in players)
+            {
+                toSave += $",{p.ToString()}";
+            }
+            toSave += "\n";
             return toSave;
         }
         public override bool Equals(object obj)

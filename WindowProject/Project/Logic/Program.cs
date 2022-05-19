@@ -81,7 +81,7 @@ namespace Project.Logic
                         tmp = newTournament(dane[1], Convert.ToInt32(dane[2]));
                         break;
                     case "t":
-                        //tmp.addTeam(new Team(dane[1]));
+                        tmp.addTeam(new Team(dane[1]));
                         break;
                     case "j":
                         //tmp.addJudge();

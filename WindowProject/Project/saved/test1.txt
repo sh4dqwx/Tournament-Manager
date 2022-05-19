@@ -1,5 +1,5 @@
 T,TurniejSiatkówka,0
-t,Drużyna1
+t,Drużyna1,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4,Zawodnik-5
 t,Drużyna2
 t,Drużyna3
 j,Sędzia,1
