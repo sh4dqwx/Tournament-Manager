@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 using Project.Logic;
 
 namespace Project
@@ -26,6 +27,7 @@ namespace Project
         private void refresh()
         {
             tournamentList.ItemsSource = program.getTournamentList();
+            tournamentList.SelectedIndex = -1;
         }
         public MenuPage(MainWindow window)
         {
@@ -80,8 +82,7 @@ namespace Project
 
         private void moveToTournament(object sender, SelectionChangedEventArgs e)
         {
-            Tournament t = program.getTournament(tournamentList.SelectedIndex);
-            registrationPage.loadTournament(t);
+            registrationPage.loadTournament(program.getTournament(tournamentList.SelectedIndex));
             NavigationService.Navigate(registrationPage);
         }
     }
