@@ -35,7 +35,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Nazwa: " FontSize="14" Margin="0,0,0,5"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="addTournamentName" Height="25" Width="150" Margin="0,0,0,5"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="addTournamentName" Height="25" Width="150" FontSize="14" Margin="0,0,0,5"/>
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Kategoria: " FontSize="14" Margin="0,0,0,5"/>
                     <ComboBox Grid.Row="1" Grid.Column="1" Width="100" x:Name="addTournamentCategory" Margin="0,0,0,5">
                         <ComboBoxItem Content="Siatkówka" IsSelected="true"/>
@@ -55,7 +55,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Nazwa: " FontSize="14" Margin="0,0,0,5"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="removeTournamentName" Height="25" Width="150" Margin="0,0,0,5"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="removeTournamentName" Height="25" Width="150" FontSize="14" Margin="0,0,0,5"/>
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Kategoria: " FontSize="14" Margin="0,0,0,5"/>
                     <ComboBox Grid.Row="1" Grid.Column="1" Width="100" x:Name="removeTournamentCategory" Margin="0,0,0,5">
                         <ComboBoxItem Content="Siatkówka" IsSelected="true"/>
@@ -74,7 +74,20 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Content="Wybierz turniej" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Constantia"/>
-                <ListBox Grid.Row="1" x:Name="tournamentList" BorderThickness="3" BorderBrush="Gray" SelectionChanged="moveToTournament"/>
+                <ListBox Grid.Row="1" x:Name="tournamentList" ItemsSource="{Binding}" BorderThickness="3" BorderBrush="Gray" SelectionChanged="moveToTournament">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Category}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </Grid>
         </Grid>
     </Grid>
