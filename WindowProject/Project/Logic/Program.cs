@@ -2,7 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using Project.Logic.Tournaments;
-using Project.Logic.Registrations;
+using Project.Interface;
 
 namespace Project.Logic
 {
@@ -36,12 +36,12 @@ namespace Project.Logic
             return tmp;
         }
 
-        public string[] getTournamentList()
+        public TournamentDisplay[] getTournamentList()
         {
-            string[] toSend = new string[tournaments.Count];
+            TournamentDisplay[] toSend = new TournamentDisplay[tournaments.Count];
             for(int i = 0; i < tournaments.Count; i++)
             {
-                toSend[i] = tournaments[i].getName();
+                toSend[i] = new TournamentDisplay(tournaments[i].getName(), tournaments[i].getCategory());
             }
             return toSend;
         }
