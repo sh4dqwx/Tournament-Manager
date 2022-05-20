@@ -49,6 +49,7 @@ namespace Project.Interface
 
         private void addJudgeButton(object sender, RoutedEventArgs e)
         {
+            if (addJudgeName.Text == "" || addJudgeSurname.Text == "") return;
             tournament.addJudge(new Judge(addJudgeName.Text, addJudgeSurname.Text));
             addJudgeName.Text = "";
             addJudgeSurname.Text = "";
