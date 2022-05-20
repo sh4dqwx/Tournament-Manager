@@ -31,6 +31,10 @@ namespace Project.Logic.Registrations
             }
             return toSend;
         }
+        public string getCaptain()
+        {
+            return players[0].getName() + " " + players[0].getSurname();
+        }
         public int getWin()
         {
             return win;

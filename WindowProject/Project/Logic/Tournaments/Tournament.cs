@@ -60,7 +60,7 @@ namespace Project.Logic.Tournaments
             string[] results = new string[teams.Count];
             for (int i = 0; i < results.Length; i++)
             {
-                results[i] = teams[i].getPlayers()[0];
+                results[i] = teams[i].getCaptain();
             }
             return results;
         }

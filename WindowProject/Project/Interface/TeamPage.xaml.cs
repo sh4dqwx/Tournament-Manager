@@ -55,12 +55,13 @@ namespace Project.Interface
         }
         private void addPlayerButton(object sender, RoutedEventArgs e)
         {
-            playersPage.loadPlayers(player);
+            //playersPage.loadPlayers(player);
             NavigationService.Navigate(playersPage);
             addButton.IsEnabled = true;
         }
         private void addTeamButton(object sender, RoutedEventArgs e)
         {
+            player = playersPage.getPlayers();
             tournament.addTeam(new Team(player,addTeamName.Text));
             addTeamName.Text = "";
             addButton.IsEnabled = false;

@@ -28,36 +28,36 @@ namespace Project.Interface
         public void loadPlayers(List<Player> players)
         {
             player = players;
-            addCaptain.Text = "";
-            addCaptainS.Text = "";
-            player1.Text = "";
-            player1S.Text = "";
-            player2.Text = "";
-            player2S.Text = "";
-            player3.Text = "";
-            player3S.Text = "";
-            player4.Text = "";
-            player4S.Text = "";
+        }
+        public List<Player> getPlayers()
+        {
+            return player;
         }
         public void createTeamButton(object sender, RoutedEventArgs e)
         {
-            if(addCaptain.Text!="" || addCaptainS.Text = "" )
-            player.Add(new Player(addCaptain.Text, addCaptainS.Text));
-            player.Add(new Player(player1.Text, player1S.Text));
-            player.Add(new Player(player2.Text, player2S.Text));
-            player.Add(new Player(player3.Text, player3S.Text));
-            player.Add(new Player(player4.Text, player4S.Text));
-            addCaptain.Text = "";
-            addCaptainS.Text = "";
-            player1.Text = "";
-            player1S.Text = "";
-            player2.Text = "";
-            player2S.Text = "";
-            player3.Text = "";
-            player3S.Text = "";
-            player4.Text = "";
-            player4S.Text = "";
-            NavigationService.Navigate(_team);
+            if(addCaptain.Text.Trim()==String.Empty || addCaptainS.Text.Trim() == String.Empty || player1.Text.Trim() == String.Empty || player1S.Text.Trim() == String.Empty || player2.Text.Trim() == String.Empty || player2S.Text.Trim() == String.Empty || player3.Text.Trim() == String.Empty || player3S.Text.Trim() == String.Empty || player4.Text.Trim() == String.Empty || player4S.Text.Trim() == String.Empty)
+            {
+                MessageBox.Show("Wprowadź dane");
+            }
+            else
+            {
+                player.Add(new Player(addCaptain.Text, addCaptainS.Text));
+                player.Add(new Player(player1.Text, player1S.Text));
+                player.Add(new Player(player2.Text, player2S.Text));
+                player.Add(new Player(player3.Text, player3S.Text));
+                player.Add(new Player(player4.Text, player4S.Text));
+                addCaptain.Text = "";
+                addCaptainS.Text = "";
+                player1.Text = "";
+                player1S.Text = "";
+                player2.Text = "";
+                player2S.Text = "";
+                player3.Text = "";
+                player3S.Text = "";
+                player4.Text = "";
+                player4S.Text = "";
+                NavigationService.Navigate(_team);
+            }
         }
     }
 }
