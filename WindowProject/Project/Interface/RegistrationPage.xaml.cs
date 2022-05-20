@@ -26,6 +26,8 @@ namespace Project.Interface
 
         private void Exit_Button(object sender, System.Windows.RoutedEventArgs e)
         {
+            this.tournament = null;
+            _menu.unselect();
             NavigationService.Navigate(_menu);
         }
 
