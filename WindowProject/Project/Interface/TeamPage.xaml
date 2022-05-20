@@ -52,8 +52,6 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Nazwa: " FontSize="16"/>
                     <TextBox Grid.Column="1" x:Name="addTeamName" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>
@@ -64,8 +62,6 @@
                 <TextBlock Text="Usuń drużynę" FontSize="24" FontFamily="Constantia" Margin="0,0,0,10"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>

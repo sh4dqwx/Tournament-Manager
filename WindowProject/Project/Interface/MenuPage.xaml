@@ -6,35 +6,45 @@
       xmlns:local="clr-namespace:Project.Interface"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MenuPage"
-      Background="White">
-
+      Title="MenuPage">
+    
+    <Page.Background>
+        <ImageBrush ImageSource="/Backgrounds/menu.png" Stretch="Fill"/>
+    </Page.Background>
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Wielki Turniej Kopakabana" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
+        <Label Grid.Row="0" Content="Wielki Turniej Kopakabana" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0">
-                <Button Content="Dodaj" HorizontalAlignment="Center" Height="25" Width="150" Click="Add_Button"/>
-                <Grid Height="25">
+            <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0">
+                <TextBlock Text="Dodaj turniej" FontSize="20" FontFamily="Constantia" Margin="0,0,0,10"/>
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" x:Name="addTournamentName"/>
-                    <ComboBox Grid.Column="1" Width="100" x:Name="addTournamentCategory">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Nazwa: " FontSize="14"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="addTournamentName" Width="150"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Kategoria: " FontSize="14"/>
+                    <ComboBox Grid.Row="1" Grid.Column="1" Width="100" x:Name="addTournamentCategory">
                         <ComboBoxItem Content="Siatkówka" IsSelected="true"/>
                         <ComboBoxItem Content="Przeciąganie liny"/>
                         <ComboBoxItem Content="Dwa ognie"/>
                     </ComboBox>
                 </Grid>
-                <Button Content="Usuń" HorizontalAlignment="Center" Height="25" Width="150" Click="Remove_Button"/>
+                <Button Content="Dodaj" HorizontalAlignment="Center" Height="25" Width="150" Click="Add_Button"/>
+                <TextBlock Text="Usuń turniej" FontSize="20" FontFamily="Constantia" Margin="0,0,0,10"/>
                 <Grid Height="25">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -47,6 +57,7 @@
                         <ComboBoxItem Content="Dwa ognie"/>
                     </ComboBox>
                 </Grid>
+                <Button Content="Usuń" HorizontalAlignment="Center" Height="25" Width="150" Click="Remove_Button"/>
                 <Button Content="Wczytaj" HorizontalAlignment="Center" Height="25" Width="150" Click="Load_Button"/>
                 <Button Content="Zapisz" HorizontalAlignment="Center" Height="25" Width="150" Click="Save_Button"/>
                 <Button Content="Wyjdź z programu" HorizontalAlignment="Center" Height="25" Width="150" Click="Exit_Button"/>

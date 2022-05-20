@@ -41,7 +41,7 @@ namespace Project.Interface
         }
         public void createTeamButton(object sender, RoutedEventArgs e)
         {
-            if(addCaptain.Text!="" || addCaptainS.Text = "" )
+            if((addCaptain.Text != "") || (addCaptainS.Text == ""))
             player.Add(new Player(addCaptain.Text, addCaptainS.Text));
             player.Add(new Player(player1.Text, player1S.Text));
             player.Add(new Player(player2.Text, player2S.Text));
