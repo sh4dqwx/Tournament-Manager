@@ -74,7 +74,20 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Content="Wybierz turniej" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Constantia"/>
-                <ListBox Grid.Row="1" x:Name="tournamentList" BorderThickness="3" BorderBrush="Gray" SelectionChanged="moveToTournament"/>
+                <ListBox Grid.Row="1" x:Name="tournamentList" ItemsSource="{Binding}" BorderThickness="3" BorderBrush="Gray" SelectionChanged="moveToTournament">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Category}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </Grid>
         </Grid>
     </Grid>
