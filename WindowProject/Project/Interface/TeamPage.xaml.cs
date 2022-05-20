@@ -20,10 +20,9 @@ namespace Project.Interface
 {
     public partial class TeamPage : Page
     {
-        private List<Player> player = new List<Player>();
-        private RegistrationPage _reg;
         private Tournament tournament;
         private PlayersPage playersPage;
+        private RegistrationPage _reg;
         public TeamPage(RegistrationPage reg)
         {
             InitializeComponent();
@@ -35,7 +34,7 @@ namespace Project.Interface
             this.tournament = tournament;
             refreshTeams();
         }
-        public void refreshTeams()
+        private void refreshTeams()
         {
             string captains="";
             string names = "";
@@ -55,22 +54,23 @@ namespace Project.Interface
         }
         private void addPlayerButton(object sender, RoutedEventArgs e)
         {
-            //playersPage.loadPlayers(player);
             NavigationService.Navigate(playersPage);
             addButton.IsEnabled = true;
         }
         private void addTeamButton(object sender, RoutedEventArgs e)
         {
-            player = playersPage.getPlayers();
-            tournament.addTeam(new Team(player,addTeamName.Text));
+            if (addTeamName.Text.Length == 0) return;
+            Player[] players = playersPage.getPlayers();
+            tournament.addTeam(new Team(players, addTeamName.Text));
             addTeamName.Text = "";
             addButton.IsEnabled = false;
+            playersPage.clearBoxes();
             refreshTeams();
         }
 
         private void removeTeamButton(object sender, RoutedEventArgs e)
         {
-            tournament.removeTeam(new Team(player,removeTeamName.Text));
+            tournament.removeTeam(new Team(removeTeamName.Text));
             removeTeamName.Text = "";
             refreshTeams();
         }

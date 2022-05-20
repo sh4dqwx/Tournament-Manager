@@ -19,45 +19,55 @@ namespace Project.Interface
     public partial class PlayersPage : Page
     {
         private TeamPage _team;
-        private List<Player> player = new List<Player>();
         public PlayersPage(TeamPage team)
         {
             InitializeComponent();
             _team = team;
         }
-        public void loadPlayers(List<Player> players)
+
+        public Player[] getPlayers()
         {
-            player = players;
+            if (isEmpty()) throw new Exception("No players names");
+            Player[] players = {
+                new Player(addCaptain.Text, addCaptainS.Text),
+                new Player(player1.Text, player1S.Text),
+                new Player(player2.Text, player2S.Text),
+                new Player(player3.Text, player3S.Text),
+                new Player(player4.Text, player4S.Text),
+            };
+            return players;
         }
-        public List<Player> getPlayers()
+
+        public void clearBoxes()
         {
-            return player;
+            addCaptain.Text = "";
+            addCaptainS.Text = "";
+            player1.Text = "";
+            player1S.Text = "";
+            player2.Text = "";
+            player2S.Text = "";
+            player3.Text = "";
+            player3S.Text = "";
+            player4.Text = "";
+            player4S.Text = "";
         }
-        public void createTeamButton(object sender, RoutedEventArgs e)
+
+        private bool isEmpty()
         {
-            if(addCaptain.Text.Trim()==String.Empty || addCaptainS.Text.Trim() == String.Empty || player1.Text.Trim() == String.Empty || player1S.Text.Trim() == String.Empty || player2.Text.Trim() == String.Empty || player2S.Text.Trim() == String.Empty || player3.Text.Trim() == String.Empty || player3S.Text.Trim() == String.Empty || player4.Text.Trim() == String.Empty || player4S.Text.Trim() == String.Empty)
+            if (addCaptain.Text.Trim() == String.Empty || addCaptainS.Text.Trim() == String.Empty || player1.Text.Trim() == String.Empty || player1S.Text.Trim() == String.Empty || player2.Text.Trim() == String.Empty || player2S.Text.Trim() == String.Empty || player3.Text.Trim() == String.Empty || player3S.Text.Trim() == String.Empty || player4.Text.Trim() == String.Empty || player4S.Text.Trim() == String.Empty)
+            {
+                return true;
+            }
+            else return false;
+        }
+
+        private void createTeamButton(object sender, RoutedEventArgs e)
+        {
+            if(isEmpty())
             {
                 MessageBox.Show("Wprowadź dane");
             }
-            else
-            {
-                player.Add(new Player(addCaptain.Text, addCaptainS.Text));
-                player.Add(new Player(player1.Text, player1S.Text));
-                player.Add(new Player(player2.Text, player2S.Text));
-                player.Add(new Player(player3.Text, player3S.Text));
-                player.Add(new Player(player4.Text, player4S.Text));
-                addCaptain.Text = "";
-                addCaptainS.Text = "";
-                player1.Text = "";
-                player1S.Text = "";
-                player2.Text = "";
-                player2S.Text = "";
-                player3.Text = "";
-                player3S.Text = "";
-                player4.Text = "";
-                player4S.Text = "";
-                NavigationService.Navigate(_team);
-            }
+            else NavigationService.Navigate(_team);
         }
     }
 }

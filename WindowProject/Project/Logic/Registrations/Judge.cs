@@ -6,8 +6,6 @@ namespace Project.Logic.Registrations
     {
         public Judge(string name, string surname) : base(name, surname)
         { }
-        public Judge(Judge copy) : base(copy)
-        { }
         public override bool Equals(object obj)
         {
             if (!(obj is Judge)) return false;

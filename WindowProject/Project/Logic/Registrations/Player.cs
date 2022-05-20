@@ -11,7 +11,5 @@ namespace Project.Logic.Registrations
         public Player(string name, string surname) : base(name, surname)
         {
         }
-        public Player(Player copy) : base(copy)
-        { }
     }
 }

@@ -14,11 +14,6 @@ namespace Project.Logic.Registrations
             this.name = name;
             this.surname = surname;
         }
-        public Person(Person copy)
-        {
-            name = copy.name;
-            surname = copy.surname;
-        }
 
         public string getName()
         {

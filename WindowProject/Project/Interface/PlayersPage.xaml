@@ -77,7 +77,7 @@
                     <TextBox Grid.Column="1" x:Name="player4" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>
                     <TextBox Grid.Column="2" x:Name="player4S" Width="120" Height="25" FontSize="16" MaxLength="15" Margin="10,0,0,0"/>
                 </Grid>
-                <Button Content="Utwórz drużynę" Height="24" Width="100" HorizontalAlignment="Left" Margin="0,10,0,0" Background="#FFCCE6FF" Click="createTeamButton" />
+                <Button Content="Zatwierdź" Height="24" Width="100" HorizontalAlignment="Left" Margin="0,10,0,0" Background="#FFCCE6FF" Click="createTeamButton" />
             </StackPanel>
         </Grid>
     </Grid>

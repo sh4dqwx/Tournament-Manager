@@ -82,10 +82,10 @@ namespace Project.Logic
                         tmp = newTournament(dane[1], Convert.ToInt32(dane[2]));
                         break;
                     case "t":
-                        tmp.addTeam(dane);
+                        tmp.loadTeams(dane);
                         break;
                     case "j":
-                        tmp.addJudge(dane);
+                        tmp.loadJudges(dane);
                         break;
                 }
             }

@@ -5,18 +5,19 @@ namespace Project.Logic.Registrations
 {
     public class Team
     {
-        private List<Player> players = new List<Player>();
+        private List<Player> players;
         private string name;
         private int win = 0, lose = 0;
-        public Team(List<Player> players, string name)
+
+        public Team(string name)
         {
-            this.players = players;
+            this.players = new List<Player>();
             this.name = name;
         }
-        public Team(Team copy)
+        public Team(Player[] players, string name)
         {
-            players = copy.players;
-            name = copy.name;
+            this.players = new List<Player>(players);
+            this.name = name;
         }
         public string getName()
         {
@@ -61,7 +62,7 @@ namespace Project.Logic.Registrations
         {
             if (!(obj is Team)) return false;
             Team team = (Team)obj;
-            return players.Equals(team.players) && name.Equals(team.name);
+            return name.Equals(team.name);
         }
     }
 }

@@ -21,20 +21,10 @@ namespace Project.Logic.Tournaments
         {
             teams.Add(team);
         }
-        public void addTeam(string[] dane)
-        {
-            List<Player> players = new List<Player>();
-            for (int i = 2; i < dane.Length; i++) { players.Add(new Player(dane[i].Split('-')[0], dane[i].Split('-')[1])); }
-            teams.Add(new Team(players, dane[1]));
-        }
 
         public void addJudge(Judge judge)
         {
             judges.Add(judge);
-        }
-        public void addJudge(string[] dane)
-        {
-            judges.Add(new Judge(dane[1].Split('-')[0], dane[1].Split('-')[1]));
         }
 
         public string[] getJudges()
@@ -101,6 +91,19 @@ namespace Project.Logic.Tournaments
             }
             return result;
         }
+
+        public void loadTeams(string[] dane)
+        {
+            List<Player> players = new List<Player>();
+            for (int i = 2; i < dane.Length; i++) { players.Add(new Player(dane[i].Split('-')[0], dane[i].Split('-')[1])); }
+            teams.Add(new Team(players.ToArray(), dane[1]));
+        }
+
+        public void loadJudges(string[] dane)
+        {
+            judges.Add(new Judge(dane[1].Split('-')[0], dane[1].Split('-')[1]));
+        }
+
         public override string ToString()
         {
             string toSave = $"T,{name},{getCategory()}\n";
