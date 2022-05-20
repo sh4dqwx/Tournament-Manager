@@ -28,9 +28,20 @@ namespace Project.Interface
         public void loadPlayers(List<Player> players)
         {
             player = players;
+            addCaptain.Text = "";
+            addCaptainS.Text = "";
+            player1.Text = "";
+            player1S.Text = "";
+            player2.Text = "";
+            player2S.Text = "";
+            player3.Text = "";
+            player3S.Text = "";
+            player4.Text = "";
+            player4S.Text = "";
         }
         public void createTeamButton(object sender, RoutedEventArgs e)
         {
+            if(addCaptain.Text!="" || addCaptainS.Text = "" )
             player.Add(new Player(addCaptain.Text, addCaptainS.Text));
             player.Add(new Player(player1.Text, player1S.Text));
             player.Add(new Player(player2.Text, player2S.Text));
