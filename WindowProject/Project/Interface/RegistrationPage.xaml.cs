@@ -7,13 +7,15 @@ namespace Project.Interface
     public partial class RegistrationPage : Page
     {
         private MenuPage _menu;
+        private GameplayPage _gameplay;
         private Tournament tournament;
         private JudgePage judgePage;
         private TeamPage teamPage;
-        public RegistrationPage(MenuPage menu)
+        public RegistrationPage(MenuPage menu, GameplayPage gameplay)
         {
             InitializeComponent();
             _menu = menu;
+            _gameplay = gameplay;
             judgePage = new JudgePage(this);
             teamPage = new TeamPage(this);
         }
@@ -26,8 +28,6 @@ namespace Project.Interface
 
         private void Exit_Button(object sender, System.Windows.RoutedEventArgs e)
         {
-            this.tournament = null;
-            _menu.unselect();
             NavigationService.Navigate(_menu);
         }
 
@@ -45,7 +45,7 @@ namespace Project.Interface
 
         private void Play_Button(object sender, System.Windows.RoutedEventArgs e)
         {
-            //Nie ma strony rozgrywek
+            NavigationService.Navigate(_gameplay);
         }
     }
 }

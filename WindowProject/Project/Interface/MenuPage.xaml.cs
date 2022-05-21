@@ -12,6 +12,7 @@ namespace Project.Interface
     {
         private Window mainWindow;
         private RegistrationPage registrationPage;
+        private GameplayPage gameplayPage;
         private Program program;
         private string savedFolderPath;
         private string getSavedFolderPath()
@@ -34,7 +35,8 @@ namespace Project.Interface
         {
             InitializeComponent();
             mainWindow = window;
-            registrationPage = new RegistrationPage(this);
+            gameplayPage = new GameplayPage(this);
+            registrationPage = new RegistrationPage(this, gameplayPage);
             program = new Program();
             savedFolderPath = getSavedFolderPath();
             refresh();
@@ -85,10 +87,6 @@ namespace Project.Interface
         {
             registrationPage.loadTournament(program.getTournament(tournamentList.SelectedIndex));
             NavigationService.Navigate(registrationPage);
-        }
-        public void unselect()
-        {
-            tournamentList.SelectedIndex = -1;
         }
     }
 }
