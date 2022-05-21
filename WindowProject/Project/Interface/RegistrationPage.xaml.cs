@@ -7,7 +7,7 @@ namespace Project.Interface
     public partial class RegistrationPage : Page
     {
         private MenuPage _menu;
-        private GameplayPage _gameplay;
+        private GameplayPage gameplayPage;
         private Tournament tournament;
         private JudgePage judgePage;
         private TeamPage teamPage;
@@ -15,7 +15,7 @@ namespace Project.Interface
         {
             InitializeComponent();
             _menu = menu;
-            _gameplay = gameplay;
+            gameplayPage = gameplay;
             judgePage = new JudgePage(this);
             teamPage = new TeamPage(this);
         }
@@ -45,7 +45,8 @@ namespace Project.Interface
 
         private void Play_Button(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Navigate(_gameplay);
+            gameplayPage.loadTournament(tournament);
+            NavigationService.Navigate(gameplayPage);
         }
     }
 }

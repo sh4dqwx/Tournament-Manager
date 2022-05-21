@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Project.Logic.Tournaments;
 
 namespace Project.Interface
 {
@@ -21,10 +22,16 @@ namespace Project.Interface
     public partial class GameplayPage : Page
     {
         private MenuPage _menu;
+        private Tournament tournament;
         public GameplayPage(MenuPage menu)
         {
             InitializeComponent();
             _menu = menu;
+        }
+
+        public void loadTournament(Tournament tournament)
+        {
+            this.tournament = tournament;
         }
     }
 }
