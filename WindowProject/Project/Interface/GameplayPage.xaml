@@ -13,6 +13,32 @@
     </Page.Background>
     
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" x:Name="gameplayPhase" Content="Eliminacje" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListBox Grid.Column="1" x:Name="gamesList" ItemsSource="{Binding}" BorderThickness="3" BorderBrush="Gray">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding Team1}" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="vs."/>
+                            <TextBlock Grid.Column="2" Text="{Binding Team2}" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
     </Grid>
 </Page>

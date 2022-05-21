@@ -32,6 +32,7 @@ namespace Project.Interface
         public void loadTournament(Tournament tournament)
         {
             this.tournament = tournament;
+            gamesList.ItemsSource = tournament.getGames();
         }
     }
 }

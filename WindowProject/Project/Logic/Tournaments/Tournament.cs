@@ -1,6 +1,7 @@
 ﻿using Project.Logic.Registrations;
 using System;
 using System.Collections.Generic;
+using Project.Interface;
 
 namespace Project.Logic.Tournaments
 {
@@ -44,6 +45,15 @@ namespace Project.Logic.Tournaments
                 result[i] = teams[i].getName();
             }
             return result;
+        }
+        public GameDisplay[] getGames()
+        {
+            GameDisplay[] toSend = new GameDisplay[games.Count];
+            for (int i = 0; i < games.Count; i++)
+            {
+                toSend[i] = new GameDisplay(games[i].getFirstTeam().getName(), games[i].getSecondTeam().getName());
+            }
+            return toSend;
         }
         public string[] getCaptain()
         {
@@ -98,7 +108,6 @@ namespace Project.Logic.Tournaments
             for (int i = 2; i < dane.Length; i++) { players.Add(new Player(dane[i].Split('-')[0], dane[i].Split('-')[1])); }
             teams.Add(new Team(players.ToArray(), dane[1]));
         }
-
         public void loadJudges(string[] dane)
         {
             judges.Add(new Judge(dane[1].Split('-')[0], dane[1].Split('-')[1]));

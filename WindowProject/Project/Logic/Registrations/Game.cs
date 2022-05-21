@@ -14,6 +14,19 @@ namespace Project.Logic.Registrations
             this.secondTeam = secondTeam;
         }
 
+        public Team getFirstTeam()
+        {
+            return firstTeam;
+        }
+        public Team getSecondTeam()
+        {
+            return secondTeam;
+        }
+        public Team getWinner()
+        {
+            return winner;
+        }
+
         public Team playManual(int chosen)
         {
             if (chosen == 1) winner = firstTeam;
@@ -26,11 +39,6 @@ namespace Project.Logic.Registrations
         {
             if (random.NextDouble() >= 0.5) winner = firstTeam;
             else winner = secondTeam;
-            return winner;
-        }
-
-        public Team getWinner()
-        {
             return winner;
         }
     }
