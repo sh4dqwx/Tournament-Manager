@@ -32,6 +32,21 @@ namespace Project.Interface
         public void loadTournament(Tournament tournament)
         {
             this.tournament = tournament;
+            if(tournament is Volleyball)
+            {
+                Volleyball vT = (Volleyball)tournament;
+                vT.generateElimination();
+            }
+            else if (tournament is TugOfWar)
+            {
+                TugOfWar tT = (TugOfWar)tournament;
+                tT.generateElimination();
+            }
+            else if (tournament is Dodgeball)
+            {
+                Dodgeball dT = (Dodgeball)tournament;
+                dT.generateElimination();
+            }
             gamesList.ItemsSource = tournament.getGames();
         }
     }

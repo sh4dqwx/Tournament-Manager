@@ -51,7 +51,8 @@ namespace Project.Logic.Tournaments
             GameDisplay[] toSend = new GameDisplay[games.Count];
             for (int i = 0; i < games.Count; i++)
             {
-                toSend[i] = new GameDisplay(games[i].getFirstTeam().getName(), games[i].getSecondTeam().getName());
+                if (games[i].getWinner() is null) toSend[i] = new GameDisplay(games[i].getFirstTeam().getName(), games[i].getSecondTeam().getName(), "");
+                else toSend[i] = new GameDisplay(games[i].getFirstTeam().getName(), games[i].getSecondTeam().getName(), "/gameFinished.png");
             }
             return toSend;
         }

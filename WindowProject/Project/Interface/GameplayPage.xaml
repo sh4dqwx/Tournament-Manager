@@ -23,7 +23,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <ListBox Grid.Column="1" x:Name="gamesList" ItemsSource="{Binding}" BorderThickness="3" BorderBrush="Gray">
+            <ListBox Grid.Column="1" x:Name="gamesList" ItemsSource="{Binding}" Width="300" BorderThickness="3" BorderBrush="Gray">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -31,10 +31,12 @@
                                 <ColumnDefinition Width="100"/>
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="20"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="{Binding Team1}" HorizontalAlignment="Center"/>
-                            <TextBlock Grid.Column="1" Text="vs."/>
+                            <TextBlock Grid.Column="1" Text="vs." HorizontalAlignment="Center"/>
                             <TextBlock Grid.Column="2" Text="{Binding Team2}" HorizontalAlignment="Center"/>
+                            <Image Grid.Column="3" Source="{Binding Picture}" Height="20" Width="20" IsEnabled="False"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
