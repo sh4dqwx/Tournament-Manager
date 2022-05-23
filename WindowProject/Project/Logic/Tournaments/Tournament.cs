@@ -56,6 +56,15 @@ namespace Project.Logic.Tournaments
             }
             return toSend;
         }
+        public ResultsDisplay[] getResults()
+        {
+            ResultsDisplay[] toSend = new ResultsDisplay[teams.Count];
+            for(int i=0;i<teams.Count;i++)
+            {
+                toSend[i] = new ResultsDisplay(teams[i].getName());
+            }
+            return toSend;
+        }
         public string[] getCaptain()
         {
             string[] results = new string[teams.Count];

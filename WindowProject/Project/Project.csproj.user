@@ -22,6 +22,9 @@
     <Compile Update="Interface\RegistrationPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Interface\Results.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Interface\TeamPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -31,6 +34,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Interface\JudgePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Interface\Results.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
