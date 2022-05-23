@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using Project.Logic.Tournaments;
 using Project.Interface;
+using Project.Exceptions;
 
 namespace Project.Logic
 {
@@ -20,6 +21,7 @@ namespace Project.Logic
         }
         public Tournament newTournament(string TName, int TCategory)
         {
+            if (TName.Length == 0) throw new EmptyStringException();
             Tournament tmp = null;
             switch (TCategory)
             {

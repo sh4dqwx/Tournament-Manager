@@ -9,13 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Exceptions\**" />
-    <EmbeddedResource Remove="Exceptions\**" />
-    <None Remove="Exceptions\**" />
-    <Page Remove="Exceptions\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Backgrounds\cup.png" />
     <None Remove="Backgrounds\dodgeball.png" />
     <None Remove="Backgrounds\judge.png" />

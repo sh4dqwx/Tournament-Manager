@@ -63,7 +63,7 @@
                         <ComboBoxItem Content="Dwa ognie"/>
                     </ComboBox>
                 </Grid>
-                <Button Content="Usuń" HorizontalAlignment="Left" Height="24" Width="150" Background="#FFCCE6FF" Click="Add_Button" Margin="0,0,0,30"/>
+                <Button Content="Usuń" HorizontalAlignment="Left" Height="24" Width="150" Background="#FFCCE6FF" Click="Remove_Button" Margin="0,0,0,30"/>
                 <Button Content="Wczytaj" HorizontalAlignment="Left" Height="24" Width="150" Background="#FFCCE6FF" Click="Load_Button" Margin="0,0,0,5"/>
                 <Button Content="Zapisz" HorizontalAlignment="Left" Height="24" Width="150" Background="#FFCCE6FF" Click="Save_Button" Margin="0,0,0,5"/>
                 <Button Content="Wyjdź z programu" HorizontalAlignment="Left" Height="24" Background="#FFCCE6FF" Width="150" Click="Exit_Button"/>

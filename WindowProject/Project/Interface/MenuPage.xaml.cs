@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Project.Logic;
 using Project.Logic.Tournaments;
+using Project.Exceptions;
 
 namespace Project.Interface
 {
@@ -44,16 +45,30 @@ namespace Project.Interface
 
         private void Add_Button(object sender, RoutedEventArgs e)
         {
-            if (addTournamentName.Text.Length == 0) return;
-            program.addTournament(program.newTournament(addTournamentName.Text, addTournamentCategory.SelectedIndex));
+            try
+            {
+                program.addTournament(program.newTournament(addTournamentName.Text, addTournamentCategory.SelectedIndex));
+            }
+            catch(EmptyStringException)
+            {
+                MessageBoxResult error = MessageBox.Show("Podaj nazwę drużyny", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             addTournamentName.Text = "";
             addTournamentCategory.SelectedIndex = 0;
             refresh();
         }
         private void Remove_Button(object sender, RoutedEventArgs e)
         {
-            if (removeTournamentName.Text.Length == 0) return;
-            program.removeTournament(program.newTournament(removeTournamentName.Text, removeTournamentCategory.SelectedIndex));
+            try
+            {
+                program.removeTournament(program.newTournament(removeTournamentName.Text, removeTournamentCategory.SelectedIndex));
+            }
+            catch (EmptyStringException)
+            {
+                MessageBoxResult error = MessageBox.Show("Podaj nazwę drużyny", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             removeTournamentName.Text = "";
             removeTournamentCategory.SelectedIndex = 0;
             refresh();
