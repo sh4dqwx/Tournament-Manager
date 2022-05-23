@@ -40,12 +40,12 @@ namespace Project.Logic
 
         public TournamentDisplay[] getTournamentList()
         {
-            TournamentDisplay[] toSend = new TournamentDisplay[tournaments.Count];
+            List<TournamentDisplay> toSend = new List<TournamentDisplay>();
             for(int i = 0; i < tournaments.Count; i++)
             {
-                toSend[i] = new TournamentDisplay(tournaments[i].getName(), tournaments[i].getCategory());
+                toSend.Add(new TournamentDisplay(tournaments[i].getName(), tournaments[i].getCategory()));
             }
-            return toSend;
+            return toSend.ToArray();
         }
         public Tournament getTournament(int index)
         {
