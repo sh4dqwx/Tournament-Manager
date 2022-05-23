@@ -19,19 +19,19 @@ namespace Project.Logic
         {
             tournaments = new List<Tournament>();
         }
-        public Tournament newTournament(string TName, int TCategory)
+        public Tournament newTournament(string TName, string TCategory)
         {
             if (TName.Length == 0) throw new EmptyStringException();
             Tournament tmp = null;
             switch (TCategory)
             {
-                case 0:
+                case "Siatkówka":
                     tmp = new Volleyball(TName);
                     break;
-                case 1:
+                case "Przeciąganie liny":
                     tmp = new TugOfWar(TName);
                     break;
-                case 2:
+                case "Dwa ognie":
                     tmp = new Dodgeball(TName);
                     break;
             }
@@ -43,7 +43,7 @@ namespace Project.Logic
             TournamentDisplay[] toSend = new TournamentDisplay[tournaments.Count];
             for(int i = 0; i < tournaments.Count; i++)
             {
-                toSend[i] = new TournamentDisplay(tournaments[i].getName(), tournaments[i].getCategoryString());
+                toSend[i] = new TournamentDisplay(tournaments[i].getName(), tournaments[i].getCategory());
             }
             return toSend;
         }
@@ -54,12 +54,12 @@ namespace Project.Logic
 
         public void addTournament(Tournament T)
         {
-            if (tournaments.Contains(T)) throw new ExistsException(T.getName(), T.getCategoryString());
+            if (tournaments.Contains(T)) throw new ExistsException(T.getName(), T.getCategory());
             tournaments.Add(T);
         }
         public void removeTournament(Tournament T)
         {
-            if(!tournaments.Contains(T)) throw new NotExistsException(T.getName(), T.getCategoryString());
+            if(!tournaments.Contains(T)) throw new NotExistsException(T.getName(), T.getCategory());
             tournaments.Remove(T);
         }
         public void save(string fileName)
@@ -83,7 +83,7 @@ namespace Project.Logic
                 {
                     case "T":
                         if (tmp is Tournament) addTournament(tmp);
-                        tmp = newTournament(dane[1], Convert.ToInt32(dane[2]));
+                        tmp = newTournament(dane[1], dane[2]);
                         break;
                     case "t":
                         tmp.loadTeams(dane);

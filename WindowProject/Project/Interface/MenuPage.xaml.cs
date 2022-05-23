@@ -51,7 +51,7 @@ namespace Project.Interface
         {
             try
             {
-                program.addTournament(program.newTournament(addTournamentName.Text, addTournamentCategory.SelectedIndex));
+                program.addTournament(program.newTournament(addTournamentName.Text, addTournamentCategory.SelectedItem.ToString()));
                 refresh();
             }
             catch(EmptyStringException)
@@ -71,7 +71,7 @@ namespace Project.Interface
         {
             try
             {
-                program.removeTournament(program.newTournament(removeTournamentName.Text, removeTournamentCategory.SelectedIndex));
+                program.removeTournament(program.newTournament(removeTournamentName.Text, removeTournamentCategory.SelectedItem.ToString()));
                 refresh();
             }
             catch (EmptyStringException)

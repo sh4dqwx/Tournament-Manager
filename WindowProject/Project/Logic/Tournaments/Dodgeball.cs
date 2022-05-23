@@ -7,11 +7,7 @@ namespace Project.Logic.Tournaments
     {
         public Dodgeball(string name) : base(name) { }
 
-        public override int getCategoryInt()
-        {
-            return 2;
-        }
-        public override string getCategoryString()
+        public override string getCategory()
         {
             return "Dwa ognie";
         }

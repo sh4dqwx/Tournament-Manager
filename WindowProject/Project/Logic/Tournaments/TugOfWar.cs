@@ -7,11 +7,7 @@ namespace Project.Logic.Tournaments
     {
         public TugOfWar(string name) : base(name) { }
 
-        public override int getCategoryInt()
-        {
-            return 1;
-        }
-        public override string getCategoryString()
+        public override string getCategory()
         {
             return "Przeciąganie liny";
         }
