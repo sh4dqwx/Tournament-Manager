@@ -1,0 +1,33 @@
+T,TurniejSiatkówka,Siatkówka
+t,Modena Volley,Kapitan-1,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
+t,CSKA Moscow,Kapitan-2,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
+t,Dynamo Moscow,Kapitan-3,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
+t,Olympiacos,Kapitan-4,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
+t,Pallavolo Parma,Kapitan-5,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
+j,Bartłomiej-Adamczyk
+j,Ryszard-Adamczyk
+j,Piotr-Andraka
+j,Marta-Aneszko
+j,Mirosław-Arentowicz
+T,TurniejPrzeciąganieLiny,Przeciąganie liny
+t,Atlanta Hawks,Kapitan-1,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
+t,Boston Celtics,Kapitan-2,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
+t,Brooklyn Nets,Kapitan-3,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
+t,Charlotte Hornets,Kapitan-4,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
+t,Chicago Bulls,Kapitan-5,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
+j,Adam-Awiżeń
+j,Leszek-Bajorek
+j,Tomasz-Bałabański
+j,Anna-Banaś
+j,Jan-Baniak
+T,TurniejDwaOgnie,Dwa ognie
+t,Dodge Lube,Kapitan-1,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
+t,Dodge Treviso,Kapitan-2,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
+t,Panathinaikos Athens,Kapitan-3,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
+t,Dallas Mavericks
+t,Denver Nuggets
+j,Adam-Biernat
+j,Piotr-Bilkowski
+j,Marek-Błażejewski
+j,Albert-Błażewicz
+j,Bogusław-Bober
