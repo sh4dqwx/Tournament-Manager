@@ -30,6 +30,10 @@ namespace Project.Interface
         private void refresh()
         {
             tournamentList.ItemsSource = program.getTournamentList();
+            addTournamentName.Text = "";
+            removeTournamentName.Text = "";
+            addTournamentCategory.SelectedIndex = 0;
+            removeTournamentCategory.SelectedIndex = 0;
         }
 
         public MenuPage(MainWindow window)
@@ -48,30 +52,40 @@ namespace Project.Interface
             try
             {
                 program.addTournament(program.newTournament(addTournamentName.Text, addTournamentCategory.SelectedIndex));
+                refresh();
             }
             catch(EmptyStringException)
             {
-                MessageBoxResult error = MessageBox.Show("Podaj nazwę drużyny", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult error = MessageBox.Show("Podaj nazwę turnieju", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                refresh();
                 return;
             }
-            addTournamentName.Text = "";
-            addTournamentCategory.SelectedIndex = 0;
-            refresh();
+            catch(ExistsException ex)
+            {
+                MessageBoxResult error = MessageBox.Show($"Turniej {ex.getName()} w kategorii {ex.getCategory()} już istnieje", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                refresh();
+                return;
+            }
         }
         private void Remove_Button(object sender, RoutedEventArgs e)
         {
             try
             {
                 program.removeTournament(program.newTournament(removeTournamentName.Text, removeTournamentCategory.SelectedIndex));
+                refresh();
             }
             catch (EmptyStringException)
             {
-                MessageBoxResult error = MessageBox.Show("Podaj nazwę drużyny", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult error = MessageBox.Show("Podaj nazwę turniej", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                refresh();
                 return;
             }
-            removeTournamentName.Text = "";
-            removeTournamentCategory.SelectedIndex = 0;
-            refresh();
+            catch(NotExistsException ex)
+            {
+                MessageBoxResult error = MessageBox.Show($"Turniej {ex.getName()} w kategorii {ex.getCategory()} nie istnieje", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                refresh();
+                return;
+            }
         }
         private void Load_Button(object sender, RoutedEventArgs e)
         {

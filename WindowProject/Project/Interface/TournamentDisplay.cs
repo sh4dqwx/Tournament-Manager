@@ -8,21 +8,10 @@ namespace Project.Interface
 {
     public class TournamentDisplay
     {
-        public TournamentDisplay(string name, int category)
+        public TournamentDisplay(string name, string category)
         {
             Name = name;
-            switch (category)
-            {
-                case 0:
-                    Category = "Siatkówka";
-                    break;
-                case 1:
-                    Category = "Przeciąganie liny";
-                    break;
-                case 2:
-                    Category = "Dwa ognie";
-                    break;
-            }
+            Category = category;
         }
         public string Name { get; set; }
         public string Category { get; set; }

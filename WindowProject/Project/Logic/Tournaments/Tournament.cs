@@ -80,9 +80,13 @@ namespace Project.Logic.Tournaments
             state++;
         }
 
-        public virtual int getCategory()
+        public virtual int getCategoryInt()
         {
             return -1;
+        }
+        public virtual string getCategoryString()
+        {
+            return "";
         }
         public string getName()
         {
@@ -116,7 +120,7 @@ namespace Project.Logic.Tournaments
 
         public override string ToString()
         {
-            string toSave = $"T,{name},{getCategory()}\n";
+            string toSave = $"T,{name},{getCategoryInt()}\n";
             foreach (Team t in teams)
             {
                 toSave += $"{t.ToString()}\n";

@@ -7,9 +7,13 @@ namespace Project.Logic.Tournaments
     {
         public Volleyball(string name) : base(name) { }
 
-        public override int getCategory()
+        public override int getCategoryInt()
         {
             return 0;
+        }
+        public override string getCategoryString()
+        {
+            return "Siatkówka";
         }
         public void generateElimination()
         {
