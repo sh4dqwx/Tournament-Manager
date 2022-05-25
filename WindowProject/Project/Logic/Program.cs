@@ -41,9 +41,9 @@ namespace Project.Logic
         public TournamentDisplay[] getTournamentList()
         {
             List<TournamentDisplay> toSend = new List<TournamentDisplay>();
-            for(int i = 0; i < tournaments.Count; i++)
+            foreach(Tournament T in tournaments)
             {
-                toSend.Add(new TournamentDisplay(tournaments[i]));
+                toSend.Add(new TournamentDisplay(T));
             }
             return toSend.ToArray();
         }
