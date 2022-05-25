@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Project.Logic.Registrations;
+using Project.Exceptions;
 
 namespace Project.Interface
 {
@@ -63,11 +64,15 @@ namespace Project.Interface
 
         private void createTeamButton(object sender, RoutedEventArgs e)
         {
-            if(isEmpty())
+            try
             {
-                MessageBox.Show("Wprowadź dane");
+                if (isEmpty()) throw new EmptyStringException();
+                NavigationService.Navigate(_team);
             }
-            else NavigationService.Navigate(_team);
+            catch(EmptyStringException)
+            {
+                MessageBoxResult error = MessageBox.Show("Podaj dane zawodników", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
