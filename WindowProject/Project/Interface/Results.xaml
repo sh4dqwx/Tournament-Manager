@@ -1,0 +1,34 @@
+﻿<Page x:Class="Project.Interface.Results"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Project.Interface"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GameplayPage">
+
+    <Page.Background>
+        <ImageBrush ImageSource="/Backgrounds/menu.png" Stretch="Fill"/>
+    </Page.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Wyniki" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
+        <Grid Grid.Row="1">
+            <ListBox Grid.Column="1" x:Name="teamsList" ItemsSource="{Binding}" Width="150" Margin="30,0,0,0" BorderThickness="3" BorderBrush="Gray" Opacity="0.7" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock Text="{Binding Team}" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Content="Menu główne" Width="100" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10"></Button>
+        </Grid>
+    </Grid>
+</Page>

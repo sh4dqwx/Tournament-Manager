@@ -16,6 +16,18 @@ namespace Project.Interface
         private GameplayPage gameplayPage;
         private Program program;
         private string savedFolderPath;
+
+        public MenuPage(MainWindow window)
+        {
+            InitializeComponent();
+            mainWindow = window;
+            gameplayPage = new GameplayPage(this);
+            registrationPage = new RegistrationPage(this, gameplayPage);
+            program = new Program();
+            savedFolderPath = getSavedFolderPath();
+            refresh();
+        }
+
         private string getSavedFolderPath()
         {
             string[] folders = AppDomain.CurrentDomain.BaseDirectory.Split('\\');
@@ -36,22 +48,11 @@ namespace Project.Interface
             removeTournamentCategory.SelectedIndex = 0;
         }
 
-        public MenuPage(MainWindow window)
-        {
-            InitializeComponent();
-            mainWindow = window;
-            gameplayPage = new GameplayPage(this);
-            registrationPage = new RegistrationPage(this, gameplayPage);
-            program = new Program();
-            savedFolderPath = getSavedFolderPath();
-            refresh();
-        }
-
         private void Add_Button(object sender, RoutedEventArgs e)
         {
             try
             {
-                program.addTournament(program.newTournament(addTournamentName.Text, addTournamentCategory.SelectedItem.ToString()));
+                program.addTournament(program.newTournament(addTournamentName.Text, addTournamentCategory.SelectedItem.ToString().Remove(0,38)));
                 refresh();
             }
             catch(EmptyStringException)
