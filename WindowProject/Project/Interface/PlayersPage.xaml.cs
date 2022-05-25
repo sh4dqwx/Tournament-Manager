@@ -72,6 +72,7 @@ namespace Project.Interface
             catch(EmptyStringException)
             {
                 MessageBoxResult error = MessageBox.Show("Podaj dane zawodników", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
         }
     }

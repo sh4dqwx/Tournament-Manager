@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Project.Logic;
 using Project.Logic.Registrations;
 using Project.Logic.Tournaments;
+using Project.Exceptions;
 
 namespace Project.Interface
 {
@@ -59,9 +60,18 @@ namespace Project.Interface
         }
         private void addTeamButton(object sender, RoutedEventArgs e)
         {
-            if (addTeamName.Text.Length == 0) return;
-            Player[] players = playersPage.getPlayers();
-            tournament.addTeam(new Team(players, addTeamName.Text));
+            try
+            {
+                if (addTeamName.Text.Length == 0) throw new EmptyStringException();
+                Player[] players = playersPage.getPlayers();
+                tournament.addTeam(new Team(players, addTeamName.Text));
+            }
+            catch(EmptyStringException)
+            {
+                MessageBoxResult error = MessageBox.Show("Podaj nazwę drużyny", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             addTeamName.Text = "";
             addButton.IsEnabled = false;
             playersPage.clearBoxes();
