@@ -24,18 +24,20 @@ namespace Project.Logic.Tournaments
             if (teams.Contains(t)) throw new TeamExistsException(t.getName());
             teams.Add(t);
         }
-        public void addJudge(Judge judge)
+        public void addJudge(Judge j)
         {
-            judges.Add(judge);
+            if (judges.Contains(j)) throw new JudgeExistsException(j.getName(), j.getSurname());
+            judges.Add(j);
         }
         public void removeTeam(Team t)
         {
             if(!teams.Contains(t)) throw new TeamNotExistsException(t.getName());
             teams.Remove(t);
         }
-        public void removeJudge(Judge judge)
+        public void removeJudge(Judge j)
         {
-            judges.Remove(judge);
+            if (!judges.Contains(j)) throw new JudgeNotExistsException(j.getName(), j.getSurname());
+            judges.Remove(j);
         }
 
         public string[] getJudges()

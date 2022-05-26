@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Project.Logic.Tournaments;
 using Project.Logic.Registrations;
+using Project.Exceptions;
 
 namespace Project.Interface
 {
@@ -33,6 +34,10 @@ namespace Project.Interface
         }
         public void refreshJudges()
         {
+            addJudgeName.Text = "";
+            addJudgeSurname.Text = "";
+            removeJudgeName.Text = "";
+            removeJudgeSurname.Text = "";
             string names = "";
             string[] judges = tournament.getJudges();
             for(int i = 0; i < judges.Length; i++)
@@ -49,18 +54,45 @@ namespace Project.Interface
 
         private void addJudgeButton(object sender, RoutedEventArgs e)
         {
-            if (addJudgeName.Text == "" || addJudgeSurname.Text == "") return;
-            tournament.addJudge(new Judge(addJudgeName.Text, addJudgeSurname.Text));
-            addJudgeName.Text = "";
-            addJudgeSurname.Text = "";
+            try
+            {
+                if (addJudgeName.Text == "" || addJudgeSurname.Text == "") throw new EmptyStringException();
+                tournament.addJudge(new Judge(addJudgeName.Text, addJudgeSurname.Text));
+            }
+            catch(EmptyStringException)
+            {
+                MessageBoxResult error = MessageBox.Show("Podaj dane sędziego", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                refreshJudges();
+                return;
+            }
+            catch(JudgeExistsException ex)
+            {
+                MessageBoxResult error = MessageBox.Show($"Sędzia {ex.getName()} {ex.getSurname()} już istnieje", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                refreshJudges();
+                return;
+            }
             refreshJudges();
         }
 
         private void removeJudgeButton(object sender, RoutedEventArgs e)
         {
-            tournament.removeJudge(new Judge(addJudgeName.Text, addJudgeSurname.Text));
-            removeJudgeName.Text = "";
-            removeJudgeSurname.Text = "";
+            try
+            {
+                if (removeJudgeName.Text == "" || removeJudgeSurname.Text == "") throw new EmptyStringException();
+                tournament.removeJudge(new Judge(removeJudgeName.Text, removeJudgeSurname.Text));
+            }
+            catch(EmptyStringException)
+            {
+                MessageBoxResult error = MessageBox.Show("Podaj dane sędziego", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                refreshJudges();
+                return;
+            }
+            catch(JudgeNotExistsException ex)
+            {
+                MessageBoxResult error = MessageBox.Show($"Sędzia {ex.getName()} {ex.getSurname()} nie istnieje", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                refreshJudges();
+                return;
+            }
             refreshJudges();
         }
     }
