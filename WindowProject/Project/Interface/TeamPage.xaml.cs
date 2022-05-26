@@ -37,6 +37,8 @@ namespace Project.Interface
         }
         private void refreshTeams()
         {
+            addTeamName.Text = "";
+            removeTeamName.Text = "";
             string captains="";
             string names = "";
             string[] teams = tournament.getTeams();
@@ -69,10 +71,15 @@ namespace Project.Interface
             catch(EmptyStringException)
             {
                 MessageBoxResult error = MessageBox.Show("Podaj nazwę drużyny", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                refreshTeams();
                 return;
             }
-
-            addTeamName.Text = "";
+            catch(TeamExistsException ex)
+            {
+                MessageBoxResult error = MessageBox.Show($"Drużyna {ex.getName()} już istnieje", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                refreshTeams();
+                return;
+            }
             addButton.IsEnabled = false;
             playersPage.clearBoxes();
             refreshTeams();
@@ -80,8 +87,23 @@ namespace Project.Interface
 
         private void removeTeamButton(object sender, RoutedEventArgs e)
         {
-            tournament.removeTeam(new Team(removeTeamName.Text));
-            removeTeamName.Text = "";
+            try
+            {
+                if (removeTeamName.Text.Length == 0) throw new EmptyStringException();
+                tournament.removeTeam(new Team(removeTeamName.Text));
+            }
+            catch(EmptyStringException)
+            {
+                MessageBoxResult error = MessageBox.Show("Podaj nazwę drużyny", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                refreshTeams();
+                return;
+            }
+            catch(TeamNotExistsException ex)
+            {
+                MessageBoxResult error = MessageBox.Show($"Drużyna {ex.getName()} nie istnieje", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                refreshTeams();
+                return;
+            }
             refreshTeams();
         }
     }

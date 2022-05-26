@@ -54,12 +54,12 @@ namespace Project.Logic
 
         public void addTournament(Tournament T)
         {
-            if (tournaments.Contains(T)) throw new ExistsException(T.getName(), T.getCategory());
+            if (tournaments.Contains(T)) throw new TournamentExistsException(T.getName(), T.getCategory());
             tournaments.Add(T);
         }
         public void removeTournament(Tournament T)
         {
-            if(!tournaments.Contains(T)) throw new NotExistsException(T.getName(), T.getCategory());
+            if(!tournaments.Contains(T)) throw new TournamentNotExistsException(T.getName(), T.getCategory());
             tournaments.Remove(T);
         }
         public void save(string fileName)

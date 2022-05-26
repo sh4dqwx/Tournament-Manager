@@ -61,7 +61,7 @@ namespace Project.Interface
                 refresh();
                 return;
             }
-            catch(ExistsException ex)
+            catch(TournamentExistsException ex)
             {
                 MessageBoxResult error = MessageBox.Show($"Turniej {ex.getName()} w kategorii {ex.getCategory()} już istnieje", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
                 refresh();
@@ -72,7 +72,7 @@ namespace Project.Interface
         {
             try
             {
-                program.removeTournament(program.newTournament(removeTournamentName.Text, removeTournamentCategory.SelectedItem.ToString()));
+                program.removeTournament(program.newTournament(removeTournamentName.Text, removeTournamentCategory.SelectedItem.ToString().Remove(0,38)));
                 refresh();
             }
             catch (EmptyStringException)
@@ -81,7 +81,7 @@ namespace Project.Interface
                 refresh();
                 return;
             }
-            catch(NotExistsException ex)
+            catch(TournamentNotExistsException ex)
             {
                 MessageBoxResult error = MessageBox.Show($"Turniej {ex.getName()} w kategorii {ex.getCategory()} nie istnieje", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
                 refresh();

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Project.Interface;
+using Project.Exceptions;
 
 namespace Project.Logic.Tournaments
 {
@@ -18,14 +19,23 @@ namespace Project.Logic.Tournaments
             this.name = name;
         }
 
-        public void addTeam(Team team)
+        public void addTeam(Team t)
         {
-            teams.Add(team);
+            if (teams.Contains(t)) throw new TeamExistsException(t.getName());
+            teams.Add(t);
         }
-
         public void addJudge(Judge judge)
         {
             judges.Add(judge);
+        }
+        public void removeTeam(Team t)
+        {
+            if(!teams.Contains(t)) throw new TeamNotExistsException(t.getName());
+            teams.Remove(t);
+        }
+        public void removeJudge(Judge judge)
+        {
+            judges.Remove(judge);
         }
 
         public string[] getJudges()
@@ -73,15 +83,6 @@ namespace Project.Logic.Tournaments
                 results[i] = teams[i].getCaptain();
             }
             return results;
-        }
-        public void removeTeam(Team team)
-        {
-            teams.Remove(team);
-        }
-
-        public void removeJudge(Judge judge)
-        {
-            judges.Remove(judge);
         }
 
         public void changeState()
