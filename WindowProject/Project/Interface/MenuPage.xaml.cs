@@ -77,7 +77,7 @@ namespace Project.Interface
             }
             catch (EmptyStringException)
             {
-                MessageBoxResult error = MessageBox.Show("Podaj nazwę turniej", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult error = MessageBox.Show("Podaj nazwę turnieju", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
                 refresh();
                 return;
             }
