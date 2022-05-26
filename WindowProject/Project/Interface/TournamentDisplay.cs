@@ -14,11 +14,7 @@ namespace Project.Interface
             Name = T.getName();
             Category = T.getCategory();
         }
-        public TournamentDisplay(TournamentDisplay tD)
-        {
-            Name = tD.Name;
-            Category = tD.Category;
-        }
+
         public string Name { get; }
         public string Category { get; }
     }
