@@ -115,8 +115,9 @@ namespace Project.Interface
 
         private void moveToTournament(object sender, SelectionChangedEventArgs e)
         {
-            int index = tournamentList.SelectedIndex;
-            registrationPage.loadTournament(program.getTournament(index));
+            if (tournamentList.SelectedIndex == -1) return;
+            registrationPage.loadTournament(program.getTournament(tournamentList.SelectedIndex));
+            tournamentList.SelectedIndex = -1;
             NavigationService.Navigate(registrationPage);
         }
     }

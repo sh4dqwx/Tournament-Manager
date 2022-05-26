@@ -24,8 +24,8 @@ T,TurniejDwaOgnie,Dwa ognie
 t,Dodge Lube,Kapitan-1,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
 t,Dodge Treviso,Kapitan-2,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
 t,Panathinaikos Athens,Kapitan-3,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
-t,Dallas Mavericks
-t,Denver Nuggets
+t,Dallas Mavericks,Kapitan-4,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
+t,Denver Nuggets,Kapitan-5,Zawodnik-1,Zawodnik-2,Zawodnik-3,Zawodnik-4
 j,Adam-Biernat
 j,Piotr-Bilkowski
 j,Marek-Błażejewski
