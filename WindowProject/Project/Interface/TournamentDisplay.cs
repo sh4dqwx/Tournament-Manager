@@ -19,7 +19,7 @@ namespace Project.Interface
             Name = tD.Name;
             Category = tD.Category;
         }
-        public string Name { get; set; }
-        public string Category { get; set; }
+        public string Name { get; }
+        public string Category { get; }
     }
 }
