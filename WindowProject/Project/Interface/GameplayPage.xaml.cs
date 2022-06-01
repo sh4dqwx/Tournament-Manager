@@ -49,5 +49,10 @@ namespace Project.Interface
             }
             gamesList.ItemsSource = tournament.getGames();
         }
+
+        private void RandomScore_Button(object sender, RoutedEventArgs e)
+        {
+            ;
+        }
     }
 }
