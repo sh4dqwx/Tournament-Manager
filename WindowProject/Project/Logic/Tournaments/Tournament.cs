@@ -58,7 +58,7 @@ namespace Project.Logic.Tournaments
             }
             return result;
         }
-        public GameDisplay[] getGames()
+        public GameDisplay[] getGameList()
         {
             GameDisplay[] toSend = new GameDisplay[games.Count];
             for (int i = 0; i < games.Count; i++)
@@ -67,6 +67,10 @@ namespace Project.Logic.Tournaments
                 else toSend[i] = new GameDisplay(games[i].getFirstTeam().getName(), games[i].getSecondTeam().getName(), "/gameFinished.png");
             }
             return toSend;
+        }
+        public Game getGame(int i)
+        {
+            return games[i];
         }
         public ResultsDisplay[] getResults()
         {
