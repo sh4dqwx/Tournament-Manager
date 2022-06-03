@@ -13,6 +13,10 @@ namespace Project.Logic.Tournaments
         protected List<Game> games = new List<Game>();
         protected string name = "";
         protected int state = 1;
+        protected void generateSemiFinal()
+        {
+
+        }
 
         public Tournament(string name)
         {
@@ -143,6 +147,12 @@ namespace Project.Logic.Tournaments
             for (int i = 0; i < teams.Count; i++)
                 for (int j = i + 1; j < teams.Count; j++)
                     games.Add(new Game(teams[i], teams[j]));
+        }
+        public void prepareSemiFinal()
+        {
+            state = 3;
+            games.Clear();
+            generateSemiFinal();
         }
 
         public override string ToString()

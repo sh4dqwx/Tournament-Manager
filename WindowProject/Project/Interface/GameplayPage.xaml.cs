@@ -90,6 +90,13 @@ namespace Project.Interface
             refreshList();
             hideGame();
         }
+        public void prepareSemiFinal()
+        {
+            gameplayPhase.Content = "Półfinał";
+            tournament.prepareSemiFinal();
+            refreshList();
+            hideGame();
+        }
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
@@ -102,7 +109,13 @@ namespace Project.Interface
         }
         private void Next_Button(object sender, RoutedEventArgs e)
         {
-            tournament.changeState();
+            switch (tournament.getState())
+            {
+                case 2:
+                    prepareSemiFinal();
+                    break;
+            }
+
             if (tournament.getState() == 5) return;
         }
         private void Exit_Button(object sender, RoutedEventArgs e)

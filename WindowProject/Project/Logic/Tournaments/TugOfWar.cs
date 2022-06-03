@@ -12,12 +12,6 @@ namespace Project.Logic.Tournaments
             return "Przeciąganie liny";
         }
 
-        public void generateSemiFinal()
-        {
-            games.Add(new Game(teams[0], teams[2]));
-            games.Add(new Game(teams[1], teams[3]));
-        }
-
         public void generateFinal()
         {
             games.Add(new Game(teams[0], teams[1]));
