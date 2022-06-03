@@ -1,5 +1,5 @@
 ﻿using Project.Logic.Registrations;
-using System;
+using System.Linq;
 using System.Collections.Generic;
 using Project.Interface;
 using Project.Exceptions;
@@ -13,10 +13,6 @@ namespace Project.Logic.Tournaments
         protected List<Game> games = new List<Game>();
         protected string name = "";
         protected int state = 1;
-        protected void generateSemiFinal()
-        {
-
-        }
 
         public Tournament(string name)
         {
@@ -142,8 +138,9 @@ namespace Project.Logic.Tournaments
             judges.Add(new Judge(dane[1].Split('-')[0], dane[1].Split('-')[1]));
         }
 
-        public void generateElimination()
+        public void prepareElimination()
         {
+            state = 2;
             for (int i = 0; i < teams.Count; i++)
                 for (int j = i + 1; j < teams.Count; j++)
                     games.Add(new Game(teams[i], teams[j]));
@@ -152,7 +149,17 @@ namespace Project.Logic.Tournaments
         {
             state = 3;
             games.Clear();
-            generateSemiFinal();
+            teams = teams.OrderBy(team => team.getWin()).ToList();
+            teams.Reverse();
+            games.Add(new Game(teams[0], teams[1]));
+            games.Add(new Game(teams[2], teams[3]));
+        }
+        public void prepareFinal()
+        {
+            state = 4;
+            Game finalGame = new Game(games[0].getWinner(), games[1].getWinner());
+            games.Clear();
+            games.Add(finalGame);
         }
 
         public override string ToString()

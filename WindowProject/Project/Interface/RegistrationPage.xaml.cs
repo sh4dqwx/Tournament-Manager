@@ -45,8 +45,6 @@ namespace Project.Interface
 
         private void Play_Button(object sender, System.Windows.RoutedEventArgs e)
         {
-            tournament.changeState();
-            tournament.generateElimination();
             gameplayPage.loadTournament(tournament);
             NavigationService.Navigate(gameplayPage);
         }

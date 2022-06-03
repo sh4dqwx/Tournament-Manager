@@ -27,12 +27,21 @@ namespace Project.Logic.Registrations
             return winner;
         }
 
-        public Team playManual(int chosen)
+        public void playManual(int chosen)
         {
-            if (chosen == 1) winner = firstTeam;
-            else if (chosen == 2) winner = secondTeam;
+            if (chosen == 1)
+            {
+                winner = firstTeam;
+                firstTeam.addScore(true);
+                secondTeam.addScore(false);
+            }
+            else if (chosen == 2)
+            {
+                winner = secondTeam;
+                firstTeam.addScore(false);
+                secondTeam.addScore(true);
+            }
             else throw new Exception("Wrong number");
-            return winner;
         }
 
         public Team playRandom()

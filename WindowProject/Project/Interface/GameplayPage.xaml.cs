@@ -28,35 +28,39 @@ namespace Project.Interface
         private void refreshList()
         {
             gamesList.ItemsSource = tournament.getGameList();
-            if (tournament.isAllPlayed()) nextButton.IsEnabled = true;
+            if(tournament.getState() == 4 && tournament.isAllPlayed()) showResultsButton.IsEnabled = true;
+            else if (tournament.isAllPlayed()) nextButton.IsEnabled = true;
             else nextButton.IsEnabled = false;
         }
-        private void showGame()
+        private void showGame(bool isFinished)
         {
             selectedFirst.Content = selectedGame.getFirstTeam().getName();
             selectedSecond.Content = selectedGame.getSecondTeam().getName();
             radioFirst.Visibility = Visibility.Visible;
-            radioSecond.Visibility = Visibility.Visible;          
+            radioSecond.Visibility = Visibility.Visible;
+            confirmButton.Visibility = Visibility.Visible;
+            if(isFinished) showFinishedGame();
+            else showNotFinishedGame();
         }
         private void showNotFinishedGame()
         {
-            showGame();
             radioFirst.IsChecked = false;
             radioSecond.IsChecked = false;
             radioFirst.Focusable = true;
             radioSecond.Focusable = true;
             radioFirst.IsHitTestVisible = true;
             radioSecond.IsHitTestVisible = true;
+            confirmButton.IsEnabled = true;
         }
         private void showFinishedGame()
         {
-            showGame();
             if(selectedGame.getFirstTeam().Equals(selectedGame.getWinner())) radioFirst.IsChecked = true;
             else radioSecond.IsChecked = true;
             radioFirst.Focusable = false;
             radioSecond.Focusable = false;
             radioFirst.IsHitTestVisible = false;
             radioSecond.IsHitTestVisible = false;
+            confirmButton.IsEnabled = false;
         }
         private void hideGame()
         {
@@ -64,12 +68,35 @@ namespace Project.Interface
             selectedSecond.Content = "";
             radioFirst.Visibility = Visibility.Hidden;
             radioSecond.Visibility = Visibility.Hidden;
+            confirmButton.Visibility = Visibility.Hidden;
+        }
+        private void prepareElimination()
+        {
+            gameplayPhase.Content = "Eliminacje";
+            tournament.prepareElimination();
+            refreshList();
+            hideGame();
+        }
+        private void prepareSemiFinal()
+        {
+            gameplayPhase.Content = "Półfinał";
+            tournament.prepareSemiFinal();
+            refreshList();
+            hideGame();
+        }
+        private void prepareFinal()
+        {
+            gameplayPhase.Content = "Finał";
+            tournament.prepareFinal();
+            refreshList();
+            hideGame();
         }
 
         public GameplayPage(MenuPage menu)
         {
             InitializeComponent();
             _menu = menu;
+            showResultsButton.IsEnabled = false;
         }
 
         public void loadTournament(Tournament tournament)
@@ -77,25 +104,25 @@ namespace Project.Interface
             this.tournament = tournament;
             switch(tournament.getState())
             {
+                case 1:
+                    prepareElimination();
+                    break;
                 case 2:
                     gameplayPhase.Content = "Eliminacje";
+                    refreshList();
+                    hideGame();
                     break;
                 case 3:
                     gameplayPhase.Content = "Półfinały";
+                    refreshList();
+                    hideGame();
                     break;
                 case 4:
                     gameplayPhase.Content = "Finał";
+                    refreshList();
+                    hideGame();
                     break;
             }
-            refreshList();
-            hideGame();
-        }
-        public void prepareSemiFinal()
-        {
-            gameplayPhase.Content = "Półfinał";
-            tournament.prepareSemiFinal();
-            refreshList();
-            hideGame();
         }
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
@@ -114,9 +141,20 @@ namespace Project.Interface
                 case 2:
                     prepareSemiFinal();
                     break;
+                case 3:
+                    prepareFinal();
+                    break;
+                case 4:
+                    showResultsButton.IsEnabled = true;
+                    break;
             }
-
-            if (tournament.getState() == 5) return;
+        }
+        private void ShowResults_Button(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Koniec", "Koniec", MessageBoxButton.OK, MessageBoxImage.Stop);
+            /**
+             * Tutaj przechodzi do podstrony z wynikami!!!!!
+             */
         }
         private void Exit_Button(object sender, RoutedEventArgs e)
         {
@@ -127,8 +165,8 @@ namespace Project.Interface
         {
             if (gamesList.SelectedIndex == -1) return;
             selectedGame = tournament.getGame(gamesList.SelectedIndex);
-            if (selectedGame.getWinner() is null) showNotFinishedGame();
-            else showFinishedGame();
+            if (selectedGame.getWinner() is null) showGame(false);
+            else showGame(true);
         }
     }
 }

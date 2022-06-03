@@ -117,9 +117,23 @@ namespace Project.Interface
         {
             if (tournamentList.SelectedIndex == -1) return;
             Tournament selectedT = program.getTournament(tournamentList.SelectedIndex);
-            registrationPage.loadTournament(selectedT);
+            switch(selectedT.getState())
+            {
+                case 1:
+                    registrationPage.loadTournament(selectedT);
+                    NavigationService.Navigate(registrationPage);
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    gameplayPage.loadTournament(selectedT);
+                    NavigationService.Navigate(gameplayPage);
+                    break;
+                case 5:
+                    //jak będzie strona z wynikami to zmienić tu, dodać zeby przechodziło do tej strony
+                    break;
+            }
             tournamentList.SelectedIndex = -1;
-            NavigationService.Navigate(registrationPage);
         }
     }
 }

@@ -41,8 +41,9 @@
                     <RadioButton Grid.Row="2" Grid.Column="0" GroupName="selectWinner" x:Name="radioFirst" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
                     <RadioButton Grid.Row="2" Grid.Column="1" GroupName="selectWinner" x:Name="radioSecond" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
                 </Grid>
-                <Button Content="Zatwierdź mecz" HorizontalAlignment="Left" Height="24" Width="150" Background="#FFCCE6FF" Click="Confirm_Button" Margin="0,0,0,10"/>
+                <Button x:Name="confirmButton" Content="Zatwierdź mecz" HorizontalAlignment="Left" Height="24" Width="150" Background="#FFCCE6FF" Click="Confirm_Button" Margin="0,0,0,10"/>
                 <Button x:Name="nextButton" Content="Przejdź dalej" HorizontalAlignment="Left" Height="24" Width="150" Background="#FFCCE6FF" Click="Next_Button" Margin="0,0,0,10"/>
+                <Button x:Name="showResultsButton" Content="Zobacz wyniki" HorizontalAlignment="Left" Height="24" Width="150" Background="#FFCCE6FF" Click="ShowResults_Button" Margin="0,0,0,10"/>
                 <Button Content="Wyjdź do menu" HorizontalAlignment="Left" Height="24" Width="150" Background="#FFCCE6FF" Click="Exit_Button" Margin="0,0,0,10"/>
             </StackPanel>
             <Grid Grid.Column="1" Width="300" Margin="0,0,0,20">
