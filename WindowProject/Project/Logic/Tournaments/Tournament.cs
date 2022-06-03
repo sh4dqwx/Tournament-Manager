@@ -1,4 +1,5 @@
 ﻿using Project.Logic.Registrations;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using Project.Interface;
@@ -11,12 +12,14 @@ namespace Project.Logic.Tournaments
         protected List<Team> teams = new List<Team>();
         protected List<Judge> judges = new List<Judge>();
         protected List<Game> games = new List<Game>();
+        protected Random random;
         protected string name = "";
         protected int state = 1;
 
-        public Tournament(string name)
+        public Tournament(string name, Random random)
         {
             this.name = name;
+            this.random = random;
         }
 
         public void addTeam(Team t)
@@ -72,6 +75,22 @@ namespace Project.Logic.Tournaments
         {
             return games[i];
         }
+        public void playRandom()
+        {
+            foreach (Game game in games)
+            {
+                if (game.getWinner() is null) game.playRandom();
+            }
+        }
+        public bool isAllPlayed()
+        {
+            foreach (Game game in games)
+            {
+                if (game.getWinner() is null) return false;
+            }
+            return true;
+        }
+
         public ResultsDisplay[] getResults()
         {
             ResultsDisplay[] toSend = new ResultsDisplay[teams.Count];
@@ -94,14 +113,6 @@ namespace Project.Logic.Tournaments
         public void changeState()
         {
             state++;
-        }
-        public bool isAllPlayed()
-        {
-            foreach(Game game in games)
-            {
-                if (game.getWinner() is null) return false;
-            }
-            return true;
         }
 
         public virtual string getCategory()
@@ -143,7 +154,7 @@ namespace Project.Logic.Tournaments
             state = 2;
             for (int i = 0; i < teams.Count; i++)
                 for (int j = i + 1; j < teams.Count; j++)
-                    games.Add(new Game(teams[i], teams[j]));
+                    games.Add(new Game(teams[i], teams[j], random));
         }
         public void prepareSemiFinal()
         {
@@ -151,13 +162,13 @@ namespace Project.Logic.Tournaments
             games.Clear();
             teams = teams.OrderBy(team => team.getWin()).ToList();
             teams.Reverse();
-            games.Add(new Game(teams[0], teams[1]));
-            games.Add(new Game(teams[2], teams[3]));
+            games.Add(new Game(teams[0], teams[1], random));
+            games.Add(new Game(teams[2], teams[3], random));
         }
         public void prepareFinal()
         {
             state = 4;
-            Game finalGame = new Game(games[0].getWinner(), games[1].getWinner());
+            Game finalGame = new Game(games[0].getWinner(), games[1].getWinner(), random);
             games.Clear();
             games.Add(finalGame);
         }

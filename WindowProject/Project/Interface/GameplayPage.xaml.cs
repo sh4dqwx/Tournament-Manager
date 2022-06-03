@@ -134,6 +134,12 @@ namespace Project.Interface
             refreshList();
             hideGame();
         }
+        private void RandomScore_Button(object sender, RoutedEventArgs e)
+        {
+            tournament.playRandom();
+            refreshList();
+            hideGame();
+        }
         private void Next_Button(object sender, RoutedEventArgs e)
         {
             switch (tournament.getState())

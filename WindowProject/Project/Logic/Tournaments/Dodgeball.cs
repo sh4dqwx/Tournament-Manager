@@ -5,16 +5,11 @@ namespace Project.Logic.Tournaments
 {
     public class Dodgeball : Tournament
     {
-        public Dodgeball(string name) : base(name) { }
+        public Dodgeball(string name, Random random) : base(name, random) { }
 
         public override string getCategory()
         {
             return "Dwa ognie";
-        }
-
-        public void generateFinal()
-        {
-            games.Add(new Game(teams[0], teams[1]));
         }
 
         public override bool Equals(object obj)

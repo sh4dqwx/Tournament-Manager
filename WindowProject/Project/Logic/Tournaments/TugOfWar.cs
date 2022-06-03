@@ -5,16 +5,11 @@ namespace Project.Logic.Tournaments
 {
     public class TugOfWar : Tournament
     {
-        public TugOfWar(string name) : base(name) { }
+        public TugOfWar(string name, Random random) : base(name, random) { }
 
         public override string getCategory()
         {
             return "Przeciąganie liny";
-        }
-
-        public void generateFinal()
-        {
-            games.Add(new Game(teams[0], teams[1]));
         }
 
         public override bool Equals(object obj)

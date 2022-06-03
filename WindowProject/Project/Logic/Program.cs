@@ -10,6 +10,7 @@ namespace Project.Logic
     public class Program
     {
         private List<Tournament> tournaments;
+        private Random random;
         private void clear()
         {
             tournaments.Clear();
@@ -18,6 +19,7 @@ namespace Project.Logic
         public Program()
         {
             tournaments = new List<Tournament>();
+            random = new Random();
         }
         public Tournament newTournament(string TName, string TCategory)
         {
@@ -26,13 +28,13 @@ namespace Project.Logic
             switch (TCategory)
             {
                 case "Siatkówka":
-                    tmp = new Volleyball(TName);
+                    tmp = new Volleyball(TName, random);
                     break;
                 case "Przeciąganie liny":
-                    tmp = new TugOfWar(TName);
+                    tmp = new TugOfWar(TName, random);
                     break;
                 case "Dwa ognie":
-                    tmp = new Dodgeball(TName);
+                    tmp = new Dodgeball(TName, random);
                     break;
             }
             return tmp;
