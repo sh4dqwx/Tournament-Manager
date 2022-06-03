@@ -27,7 +27,9 @@ namespace Project.Interface
         private Game selectedGame;
         private void refreshList()
         {
-            gamesList.ItemsSource = tournament.getGameList();          
+            gamesList.ItemsSource = tournament.getGameList();
+            if (tournament.isAllPlayed()) nextButton.IsEnabled = true;
+            else nextButton.IsEnabled = false;
         }
         private void showGame()
         {
@@ -73,7 +75,18 @@ namespace Project.Interface
         public void loadTournament(Tournament tournament)
         {
             this.tournament = tournament;
-            tournament.generateElimination();
+            switch(tournament.getState())
+            {
+                case 2:
+                    gameplayPhase.Content = "Eliminacje";
+                    break;
+                case 3:
+                    gameplayPhase.Content = "Półfinały";
+                    break;
+                case 4:
+                    gameplayPhase.Content = "Finał";
+                    break;
+            }
             refreshList();
             hideGame();
         }
@@ -89,7 +102,8 @@ namespace Project.Interface
         }
         private void Next_Button(object sender, RoutedEventArgs e)
         {
-            ;
+            tournament.changeState();
+            if (tournament.getState() == 5) return;
         }
         private void Exit_Button(object sender, RoutedEventArgs e)
         {

@@ -95,6 +95,14 @@ namespace Project.Logic.Tournaments
         {
             state++;
         }
+        public bool isAllPlayed()
+        {
+            foreach(Game game in games)
+            {
+                if (game.getWinner() is null) return false;
+            }
+            return true;
+        }
 
         public virtual string getCategory()
         {

@@ -17,7 +17,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" x:Name="gameplayPhase" Content="Eliminacje" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
+        <Label Grid.Row="0" x:Name="gameplayPhase" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -42,7 +42,7 @@
                     <RadioButton Grid.Row="2" Grid.Column="1" GroupName="selectWinner" x:Name="radioSecond" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
                 </Grid>
                 <Button Content="Zatwierdź mecz" HorizontalAlignment="Left" Height="24" Width="150" Background="#FFCCE6FF" Click="Confirm_Button" Margin="0,0,0,10"/>
-                <Button Content="Przejdź dalej" HorizontalAlignment="Left" Height="24" Width="150" Background="#FFCCE6FF" Click="Next_Button" Margin="0,0,0,10"/>
+                <Button x:Name="nextButton" Content="Przejdź dalej" HorizontalAlignment="Left" Height="24" Width="150" Background="#FFCCE6FF" Click="Next_Button" Margin="0,0,0,10"/>
                 <Button Content="Wyjdź do menu" HorizontalAlignment="Left" Height="24" Width="150" Background="#FFCCE6FF" Click="Exit_Button" Margin="0,0,0,10"/>
             </StackPanel>
             <Grid Grid.Column="1" Width="300" Margin="0,0,0,20">
