@@ -25,6 +25,30 @@ namespace Project.Interface
         private MenuPage _menu;
         private Tournament tournament;
         private Game selectedGame;
+        private void refresh()
+        {
+            gamesList.ItemsSource = tournament.getGameList();
+            if (selectedGame is Game)
+            {
+                selectedFirst.Content = selectedGame.getFirstTeam().getName();
+                selectedSecond.Content = selectedGame.getSecondTeam().getName();
+                radioFirst.Visibility = Visibility.Visible;
+                radioSecond.Visibility = Visibility.Visible;
+                if(selectedGame.getWinner() is Team)
+                {
+                    if (selectedGame.getFirstTeam().Equals(selectedGame.getWinner())) radioFirst.IsChecked = true;
+                    else radioSecond.IsChecked = true;
+                    radioFirst.Focusable = false;
+                    radioSecond.Focusable = false;
+                    return;
+                }
+                radioFirst.IsChecked = false;
+                radioSecond.IsChecked = false;
+                radioFirst.Focusable = true;
+                radioSecond.Focusable = true;
+            }
+        }
+
         public GameplayPage(MenuPage menu)
         {
             InitializeComponent();
@@ -35,15 +59,16 @@ namespace Project.Interface
         {
             this.tournament = tournament;
             tournament.generateElimination();
-            gamesList.ItemsSource = tournament.getGameList();
+            refresh();
         }
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
             if (radioFirst.IsChecked == false && radioSecond.IsChecked == false) return;
-            if (selectedGame == null) return;
+            if (selectedGame is null) return;
             if (radioFirst.IsChecked == true) selectedGame.playManual(1);
             else selectedGame.playManual(2);
+            refresh();
         }
         private void RandomScore_Button(object sender, RoutedEventArgs e)
         {
@@ -54,12 +79,7 @@ namespace Project.Interface
         {
             if (gamesList.SelectedIndex == -1) return;
             selectedGame = tournament.getGame(gamesList.SelectedIndex);
-            selectedFirst.Content = selectedGame.getFirstTeam().getName();
-            selectedSecond.Content = selectedGame.getSecondTeam().getName();
-            radioFirst.Visibility = Visibility.Visible;
-            radioFirst.IsChecked = false;
-            radioSecond.Visibility = Visibility.Visible;
-            radioSecond.IsChecked = false;
+            refresh();
         }
     }
 }
