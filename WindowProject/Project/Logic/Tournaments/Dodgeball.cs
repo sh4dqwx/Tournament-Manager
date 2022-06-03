@@ -3,20 +3,13 @@ using Project.Logic.Registrations;
 
 namespace Project.Logic.Tournaments
 {
-    public class Dodgeball : Tournament, ISport
+    public class Dodgeball : Tournament
     {
         public Dodgeball(string name) : base(name) { }
 
         public override string getCategory()
         {
             return "Dwa ognie";
-        }
-
-        public void generateElimination()
-        {
-            for (int i = 0; i < teams.Count; i++)
-                for (int j = i + 1; j < teams.Count; j++)
-                    games.Add(new Game(teams[i], teams[j]));
         }
 
         public void generateSemiFinal()

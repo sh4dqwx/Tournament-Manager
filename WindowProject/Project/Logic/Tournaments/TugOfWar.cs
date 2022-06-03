@@ -3,20 +3,13 @@ using Project.Logic.Registrations;
 
 namespace Project.Logic.Tournaments
 {
-    public class TugOfWar : Tournament, ISport
+    public class TugOfWar : Tournament
     {
         public TugOfWar(string name) : base(name) { }
 
         public override string getCategory()
         {
             return "Przeciąganie liny";
-        }
-
-        public void generateElimination()
-        {
-            for (int i = 0; i < teams.Count; i++)
-                for (int j = i + 1; j < teams.Count; j++)
-                    games.Add(new Game(teams[i], teams[j]));
         }
 
         public void generateSemiFinal()

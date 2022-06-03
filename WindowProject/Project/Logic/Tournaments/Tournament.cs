@@ -126,6 +126,13 @@ namespace Project.Logic.Tournaments
             judges.Add(new Judge(dane[1].Split('-')[0], dane[1].Split('-')[1]));
         }
 
+        public void generateElimination()
+        {
+            for (int i = 0; i < teams.Count; i++)
+                for (int j = i + 1; j < teams.Count; j++)
+                    games.Add(new Game(teams[i], teams[j]));
+        }
+
         public override string ToString()
         {
             string toSave = $"T,{name},{getCategory()}\n";
