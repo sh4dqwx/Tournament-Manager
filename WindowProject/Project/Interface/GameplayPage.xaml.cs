@@ -25,28 +25,43 @@ namespace Project.Interface
         private MenuPage _menu;
         private Tournament tournament;
         private Game selectedGame;
-        private void refresh()
+        private void refreshList()
         {
-            gamesList.ItemsSource = tournament.getGameList();
-            if (selectedGame is Game)
-            {
-                selectedFirst.Content = selectedGame.getFirstTeam().getName();
-                selectedSecond.Content = selectedGame.getSecondTeam().getName();
-                radioFirst.Visibility = Visibility.Visible;
-                radioSecond.Visibility = Visibility.Visible;
-                if(selectedGame.getWinner() is Team)
-                {
-                    if (selectedGame.getFirstTeam().Equals(selectedGame.getWinner())) radioFirst.IsChecked = true;
-                    else radioSecond.IsChecked = true;
-                    radioFirst.Focusable = false;
-                    radioSecond.Focusable = false;
-                    return;
-                }
-                radioFirst.IsChecked = false;
-                radioSecond.IsChecked = false;
-                radioFirst.Focusable = true;
-                radioSecond.Focusable = true;
-            }
+            gamesList.ItemsSource = tournament.getGameList();          
+        }
+        private void showGame()
+        {
+            selectedFirst.Content = selectedGame.getFirstTeam().getName();
+            selectedSecond.Content = selectedGame.getSecondTeam().getName();
+            radioFirst.Visibility = Visibility.Visible;
+            radioSecond.Visibility = Visibility.Visible;          
+        }
+        private void showNotFinishedGame()
+        {
+            showGame();
+            radioFirst.IsChecked = false;
+            radioSecond.IsChecked = false;
+            radioFirst.Focusable = true;
+            radioSecond.Focusable = true;
+            radioFirst.IsHitTestVisible = true;
+            radioSecond.IsHitTestVisible = true;
+        }
+        private void showFinishedGame()
+        {
+            showGame();
+            if(selectedGame.getFirstTeam().Equals(selectedGame.getWinner())) radioFirst.IsChecked = true;
+            else radioSecond.IsChecked = true;
+            radioFirst.Focusable = false;
+            radioSecond.Focusable = false;
+            radioFirst.IsHitTestVisible = false;
+            radioSecond.IsHitTestVisible = false;
+        }
+        private void hideGame()
+        {
+            selectedFirst.Content = "";
+            selectedSecond.Content = "";
+            radioFirst.Visibility = Visibility.Hidden;
+            radioSecond.Visibility = Visibility.Hidden;
         }
 
         public GameplayPage(MenuPage menu)
@@ -59,7 +74,8 @@ namespace Project.Interface
         {
             this.tournament = tournament;
             tournament.generateElimination();
-            refresh();
+            refreshList();
+            hideGame();
         }
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
@@ -68,18 +84,24 @@ namespace Project.Interface
             if (selectedGame is null) return;
             if (radioFirst.IsChecked == true) selectedGame.playManual(1);
             else selectedGame.playManual(2);
-            refresh();
+            refreshList();
+            hideGame();
         }
-        private void RandomScore_Button(object sender, RoutedEventArgs e)
+        private void Next_Button(object sender, RoutedEventArgs e)
         {
             ;
         }
+        private void Exit_Button(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(_menu);
+        }
 
-        private void showGame(object sender, SelectionChangedEventArgs e)
+        private void OnClick(object sender, SelectionChangedEventArgs e)
         {
             if (gamesList.SelectedIndex == -1) return;
             selectedGame = tournament.getGame(gamesList.SelectedIndex);
-            refresh();
+            if (selectedGame.getWinner() is null) showNotFinishedGame();
+            else showFinishedGame();
         }
     }
 }
