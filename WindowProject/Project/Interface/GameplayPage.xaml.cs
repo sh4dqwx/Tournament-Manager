@@ -23,6 +23,7 @@ namespace Project.Interface
     public partial class GameplayPage : Page
     {
         private MenuPage _menu;
+        private Results _results;
         private Tournament tournament;
         private Game selectedGame;
         private void refreshList()
@@ -96,6 +97,7 @@ namespace Project.Interface
         {
             InitializeComponent();
             _menu = menu;
+            _results = new Results(this);
             showResultsButton.IsEnabled = false;
         }
 
@@ -157,10 +159,9 @@ namespace Project.Interface
         }
         private void ShowResults_Button(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Koniec", "Koniec", MessageBoxButton.OK, MessageBoxImage.Stop);
-            /**
-             * Tutaj przechodzi do podstrony z wynikami!!!!!
-             */
+            tournament.finalResult();
+            _results.loadResults(tournament);
+            NavigationService.Navigate(_results);
         }
         private void Exit_Button(object sender, RoutedEventArgs e)
         {

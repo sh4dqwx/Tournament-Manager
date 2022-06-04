@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Project.Interface;
 using Project.Logic;
+using Project.Logic.Registrations;
 using Project.Logic.Tournaments;
 namespace Project.Interface
 {
@@ -28,8 +29,21 @@ namespace Project.Interface
         }
         public void loadResults(Tournament tournament)
         {
-            tournament = tournament;
+            this.tournament = tournament;
             teamsList.ItemsSource = tournament.getResults();
+        }
+        private void Go_menu(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(_gamePage);
+        }
+        private void TeamResult(object sender, SelectionChangedEventArgs e)
+        {
+            TeamInfo.Text = "";
+            Team team = tournament.getTeam(teamsList.SelectedIndex);
+            TeamInfo.Text += "Nazwa drużyny: " + team.getName() + "\n";
+            TeamInfo.Text += "Zajęte miejsce :"+ team.getPlace().ToString()+"\n";
+            TeamInfo.Text += "Wygranych spotkań :" + team.getWin().ToString() + "\n";
+            TeamInfo.Text += "Przegranych spotkań :" + team.getLost().ToString() + "\n";
         }
     }
 }
