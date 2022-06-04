@@ -70,24 +70,21 @@ namespace Project.Interface
             radioSecond.Visibility = Visibility.Hidden;
             confirmButton.Visibility = Visibility.Hidden;
         }
-        private void prepareElimination()
+        private void showElimination()
         {
             gameplayPhase.Content = "Eliminacje";
-            tournament.prepareElimination();
             refreshList();
             hideGame();
         }
-        private void prepareSemiFinal()
+        private void showSemiFinal()
         {
             gameplayPhase.Content = "Półfinał";
-            tournament.prepareSemiFinal();
             refreshList();
             hideGame();
         }
-        private void prepareFinal()
+        private void showFinal()
         {
             gameplayPhase.Content = "Finał";
-            tournament.prepareFinal();
             refreshList();
             hideGame();
         }
@@ -105,22 +102,17 @@ namespace Project.Interface
             switch(tournament.getState())
             {
                 case 1:
-                    prepareElimination();
+                    tournament.prepareElimination();
+                    showElimination();
                     break;
                 case 2:
-                    gameplayPhase.Content = "Eliminacje";
-                    refreshList();
-                    hideGame();
+                    showElimination();
                     break;
                 case 3:
-                    gameplayPhase.Content = "Półfinały";
-                    refreshList();
-                    hideGame();
+                    showSemiFinal();
                     break;
                 case 4:
-                    gameplayPhase.Content = "Finał";
-                    refreshList();
-                    hideGame();
+                    showFinal();
                     break;
             }
         }
@@ -145,10 +137,12 @@ namespace Project.Interface
             switch (tournament.getState())
             {
                 case 2:
-                    prepareSemiFinal();
+                    tournament.prepareSemiFinal();
+                    showSemiFinal();
                     break;
                 case 3:
-                    prepareFinal();
+                    tournament.prepareFinal();
+                    showFinal();
                     break;
                 case 4:
                     showResultsButton.IsEnabled = true;
