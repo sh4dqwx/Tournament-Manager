@@ -61,6 +61,14 @@ namespace Project.Logic.Tournaments
             }
             return result;
         }
+        public Team getTeam(int index)
+        {
+            return teams[index];
+        }
+        public int TeamsNumber()
+        {
+            return teams.Count;
+        }
         public GameDisplay[] getGameList()
         {
             GameDisplay[] toSend = new GameDisplay[games.Count];
@@ -162,15 +170,29 @@ namespace Project.Logic.Tournaments
             games.Clear();
             teams = teams.OrderBy(team => team.getWin()).ToList();
             teams.Reverse();
+            for(int i = 0; i<teams.Count;i++)
+            {
+                teams[i].setPlace(i+1);
+            }
             games.Add(new Game(teams[0], teams[1], random));
             games.Add(new Game(teams[2], teams[3], random));
         }
         public void prepareFinal()
         {
+            games[0].getWinner().setPlace(1);
+            games[0].getLoser().setPlace(3);
+            games[1].getWinner().setPlace(2);
+            games[1].getLoser().setPlace(4);
             state = 4;
             Game finalGame = new Game(games[0].getWinner(), games[1].getWinner(), random);
             games.Clear();
             games.Add(finalGame);
+        }
+        public void finalResult()
+        {
+            games[0].getWinner().setPlace(1);
+            games[0].getLoser().setPlace(2);
+            teams = teams.OrderBy(team => team.getPlace()).ToList();
         }
 
         public override string ToString()

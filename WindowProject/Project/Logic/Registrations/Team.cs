@@ -7,7 +7,7 @@ namespace Project.Logic.Registrations
     {
         private List<Player> players;
         private string name;
-        private int win = 0, lose = 0;
+        private int win = 0, lose = 0,place;
 
         public Team(string name)
         {
@@ -43,6 +43,14 @@ namespace Project.Logic.Registrations
         public int getLost()
         {
             return lose;
+        }
+        public void setPlace(int i)
+        {
+            place = i;
+        }
+        public int getPlace()
+        {
+            return place;
         }
         public void addScore(bool result)
         {
