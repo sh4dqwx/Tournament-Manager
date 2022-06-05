@@ -14,6 +14,7 @@ namespace Project.Interface
         private Window mainWindow;
         private RegistrationPage registrationPage;
         private GameplayPage gameplayPage;
+        private Results resultsPage;
         private Program program;
         private string savedFolderPath;
 
@@ -21,7 +22,8 @@ namespace Project.Interface
         {
             InitializeComponent();
             mainWindow = window;
-            gameplayPage = new GameplayPage(this);
+            resultsPage = new Results(this);
+            gameplayPage = new GameplayPage(this, resultsPage);
             registrationPage = new RegistrationPage(this, gameplayPage);
             program = new Program();
             savedFolderPath = getSavedFolderPath();
@@ -130,7 +132,8 @@ namespace Project.Interface
                     NavigationService.Navigate(gameplayPage);
                     break;
                 case 5:
-                    //jak będzie strona z wynikami to zmienić tu, dodać zeby przechodziło do tej strony
+                    resultsPage.loadResults(selectedT);
+                    NavigationService.Navigate(resultsPage);
                     break;
             }
             tournamentList.SelectedIndex = -1;

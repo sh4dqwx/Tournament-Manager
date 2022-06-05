@@ -90,11 +90,11 @@ namespace Project.Interface
             hideGame();
         }
 
-        public GameplayPage(MenuPage menu)
+        public GameplayPage(MenuPage menu, Results resultsPage)
         {
             InitializeComponent();
             _menu = menu;
-            _results = new Results(this);
+            _results = resultsPage;
             showResultsButton.IsEnabled = false;
         }
 

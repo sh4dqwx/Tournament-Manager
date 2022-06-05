@@ -179,17 +179,18 @@ namespace Project.Logic.Tournaments
         }
         public void prepareFinal()
         {
+            state = 4;
             games[0].getWinner().setPlace(1);
             games[0].getLoser().setPlace(3);
             games[1].getWinner().setPlace(2);
             games[1].getLoser().setPlace(4);
-            state = 4;
             Game finalGame = new Game(games[0].getWinner(), games[1].getWinner(), random);
             games.Clear();
             games.Add(finalGame);
         }
         public void finalResult()
         {
+            state = 5;
             games[0].getWinner().setPlace(1);
             games[0].getLoser().setPlace(2);
             teams = teams.OrderBy(team => team.getPlace()).ToList();

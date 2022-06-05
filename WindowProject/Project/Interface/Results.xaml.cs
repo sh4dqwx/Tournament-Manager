@@ -21,11 +21,11 @@ namespace Project.Interface
     public partial class Results : Page
     {
         private Tournament tournament;
-        private GameplayPage _gamePage;
-        public Results(GameplayPage gamePage)
+        private MenuPage _menu;
+        public Results(MenuPage menu)
         {
             InitializeComponent();
-            _gamePage = gamePage;
+            _menu = menu;
         }
         public void loadResults(Tournament tournament)
         {
@@ -34,10 +34,12 @@ namespace Project.Interface
         }
         private void Go_menu(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(_gamePage);
+            teamsList.SelectedIndex = -1;
+            NavigationService.Navigate(_menu);
         }
         private void TeamResult(object sender, SelectionChangedEventArgs e)
         {
+            if (teamsList.SelectedIndex == -1) return;
             TeamInfo.Text = "";
             Team team = tournament.getTeam(teamsList.SelectedIndex);
             TeamInfo.Text += "Nazwa drużyny: " + team.getName() + "\n";
