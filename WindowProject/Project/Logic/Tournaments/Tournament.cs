@@ -118,11 +118,6 @@ namespace Project.Logic.Tournaments
             return results;
         }
 
-        public void changeState()
-        {
-            state++;
-        }
-
         public virtual string getCategory()
         {
             return "";
@@ -159,6 +154,9 @@ namespace Project.Logic.Tournaments
 
         public void prepareElimination()
         {
+            if (teams.Count < 5) throw new NotEnoughTeamsException("Do rozpoczęcia turnieju potrzeba co najmniej 5 drużyn");
+            if (this is Volleyball && judges.Count < 3) throw new NotEnoughJudgesException("Do rozpoczęcia turnieju potrzeba co najmniej 3 sędziów");
+            if (judges.Count < 1) throw new NotEnoughJudgesException("Do rozpoczęcia turnieju potrzeba co najmniej 1 sędziego");
             state = 2;
             for (int i = 0; i < teams.Count; i++)
                 for (int j = i + 1; j < teams.Count; j++)

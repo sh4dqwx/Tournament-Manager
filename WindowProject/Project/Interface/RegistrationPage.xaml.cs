@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using Project.Logic.Tournaments;
+using Project.Exceptions;
 
 namespace Project.Interface
 {
@@ -45,8 +47,21 @@ namespace Project.Interface
 
         private void Play_Button(object sender, System.Windows.RoutedEventArgs e)
         {
-            gameplayPage.loadTournament(tournament);
-            NavigationService.Navigate(gameplayPage);
+            try
+            {
+                gameplayPage.loadTournament(tournament);
+                NavigationService.Navigate(gameplayPage);
+            }
+            catch (NotEnoughTeamsException ex)
+            {
+                MessageBoxResult error = MessageBox.Show(ex.getMessage(), "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            catch (NotEnoughJudgesException ex)
+            {
+                MessageBoxResult error = MessageBox.Show(ex.getMessage(), "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }   
         }
     }
 }

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Project.Logic.Tournaments;
 using Project.Logic.Registrations;
+using Project.Exceptions;
 
 namespace Project.Interface
 {
