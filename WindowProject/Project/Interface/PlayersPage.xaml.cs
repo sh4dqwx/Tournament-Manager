@@ -75,5 +75,19 @@ namespace Project.Interface
                 return;
             }
         }
+
+        private void autoFillButton(object sender, RoutedEventArgs e)
+        {
+            addCaptain.Text = "Ważny";
+            addCaptainS.Text = "Kapitan";
+            player1.Text = "Pierwszy";
+            player1S.Text = "Gracz";
+            player2.Text = "Drugi";
+            player2S.Text = "Gracz";
+            player3.Text = "Trzeci";
+            player3S.Text = "Gracz";
+            player4.Text = "Czwarty";
+            player4S.Text = "Gracz";
+        }
     }
 }
