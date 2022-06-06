@@ -9,7 +9,7 @@
       Title="RegistrationPage">
 
     <Page.Background>
-        <ImageBrush ImageSource="/Backgrounds/menu.png" Stretch="Fill"/>
+        <ImageBrush x:Name="background" ImageSource="/Backgrounds/menu.png" Stretch="Fill"/>
     </Page.Background>
 
     <Grid>

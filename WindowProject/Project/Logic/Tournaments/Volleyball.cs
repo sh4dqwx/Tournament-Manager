@@ -11,6 +11,10 @@ namespace Project.Logic.Tournaments
         {
             return "Siatkówka";
         }
+        public override string getBackground()
+        {
+            return "/Backgrounds/volleyball.png";
+        }
 
         public override bool Equals(object obj)
         {

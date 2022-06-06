@@ -83,6 +83,10 @@ namespace Project.Logic.Tournaments
         {
             return games[i];
         }
+        public virtual string getBackground()
+        {
+            return "";
+        }
         public void playRandom()
         {
             foreach (Game game in games)
