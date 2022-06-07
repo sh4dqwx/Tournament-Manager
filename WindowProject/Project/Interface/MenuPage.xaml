@@ -83,7 +83,7 @@
                     <TextBlock Grid.Column="0"  Text="Nazwa" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
                     <TextBlock Grid.Column="1"  Text="Kategoria" FontSize="16" FontFamily="Constantia" FontWeight="Bold" HorizontalAlignment="Center"/>
                 </Grid>
-                <ListBox Grid.Row="2" x:Name="tournamentList" ItemsSource="{Binding}" BorderThickness="3" BorderBrush="Gray" SelectionChanged="moveToTournament">
+                <ListBox Grid.Row="2" x:Name="tournamentList" ItemsSource="{Binding}" BorderThickness="3" BorderBrush="Gray" SelectionChanged="moveToTournament" Opacity="0.65">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
