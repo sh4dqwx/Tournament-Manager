@@ -41,10 +41,17 @@ namespace Project.Interface
             radioFirst.Visibility = Visibility.Visible;
             radioSecond.Visibility = Visibility.Visible;
             confirmButton.Visibility = Visibility.Visible;
-            if(isFinished) showFinishedGame();
-            else showNotFinishedGame();
+            if (tournament is Volleyball)
+            {
+                judgeGrid.Visibility = Visibility.Visible;
+                secondaryJudgesGrid.Visibility = Visibility.Visible;
+            }
+            else judgeGrid.Visibility = Visibility.Visible;
+
+            if (isFinished) setFinishedGame();
+            else setNotFinishedGame();
         }
-        private void showNotFinishedGame()
+        private void setNotFinishedGame()
         {
             radioFirst.IsChecked = false;
             radioSecond.IsChecked = false;
@@ -54,7 +61,7 @@ namespace Project.Interface
             radioSecond.IsHitTestVisible = true;
             confirmButton.IsEnabled = true;
         }
-        private void showFinishedGame()
+        private void setFinishedGame()
         {
             if(selectedGame.getFirstTeam().Equals(selectedGame.getWinner())) radioFirst.IsChecked = true;
             else radioSecond.IsChecked = true;
@@ -71,6 +78,8 @@ namespace Project.Interface
             radioFirst.Visibility = Visibility.Hidden;
             radioSecond.Visibility = Visibility.Hidden;
             confirmButton.Visibility = Visibility.Hidden;
+            judgeGrid.Visibility = Visibility.Hidden;
+            secondaryJudgesGrid.Visibility = Visibility.Hidden;
         }
         private void showElimination()
         {
@@ -123,7 +132,6 @@ namespace Project.Interface
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
             if (radioFirst.IsChecked == false && radioSecond.IsChecked == false) return;
-            if (selectedGame is null) return;
             if (radioFirst.IsChecked == true) selectedGame.playManual(1);
             else selectedGame.playManual(2);
             refreshList();

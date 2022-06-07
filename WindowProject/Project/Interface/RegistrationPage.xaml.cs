@@ -27,8 +27,6 @@ namespace Project.Interface
         {
             this.tournament = tournament;
             Title.Content = tournament.getName();
-            string pack = "pack://application:,,,/AssemblyName;component" + tournament.getBackground();
-            background.ImageSource = new ImageSourceConverter().ConvertFromString(pack) as ImageSource;
         }
 
         private void Exit_Button(object sender, System.Windows.RoutedEventArgs e)

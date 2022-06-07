@@ -18,7 +18,7 @@
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Label x:Name="Title" Grid.Row="0" Content="Wielki Turniej Kopakabana" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
+        <Label x:Name="Title" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="Bold" FontFamily="Constantia"/>
         <Button Grid.Column="2" Grid.Row="2"  Content="Wyjście" Margin="10" Height="24" Width="120" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#FFCCE6FF" Click="Exit_Button"/>
         <Grid Grid.Row="1" MinWidth="750">
             <Grid.ColumnDefinitions>
