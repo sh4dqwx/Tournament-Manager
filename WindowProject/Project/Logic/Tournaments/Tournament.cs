@@ -61,6 +61,10 @@ namespace Project.Logic.Tournaments
             }
             return result;
         }
+        public int getNumberofTeams()
+        {
+            return teams.Count;
+        }
         public Team getTeam(int index)
         {
             return teams[index];

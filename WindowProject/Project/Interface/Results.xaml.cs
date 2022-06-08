@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Project.Interface;
+using System;
+using System.IO;
+using System.Text;
 using Project.Logic;
 using Project.Logic.Registrations;
 using Project.Logic.Tournaments;
@@ -34,6 +37,24 @@ namespace Project.Interface
         }
         private void Go_menu(object sender, RoutedEventArgs e)
         {
+            string path = "../../../history/" + tournament.getName() + ".txt";
+            FileStream fs = File.Create(path);
+            string results = "";
+            results += "Nazwa turnieju: " + tournament.getName()+"\n";
+            for(int i=0;i<=tournament.getNumberofTeams()-1;i++)
+            {
+                results += "\n";
+                Team team = tournament.getTeam(i);
+                results+= "Nazwa drużyny: " + team.getName() + "\n";
+                results+= "Kapitan:" + team.getCaptain() + "\n";
+                results+= "Zajęte miejsce :" + team.getPlace().ToString() + "\n";
+                results+= "Wygranych spotkań :" + team.getWin().ToString() + "\n";
+                results+= "Przegranych spotkań :" + team.getLost().ToString() + "\n";
+
+            }
+            Byte[] resultstowrite = new UTF8Encoding(true).GetBytes(results);
+            fs.Write(resultstowrite);
+            fs.Close();
             teamsList.SelectedIndex = -1;
             NavigationService.Navigate(_menu);
         }
@@ -43,6 +64,7 @@ namespace Project.Interface
             TeamInfo.Text = "";
             Team team = tournament.getTeam(teamsList.SelectedIndex);
             TeamInfo.Text += "Nazwa drużyny: " + team.getName() + "\n";
+            TeamInfo.Text += "Kapitan:" + team.getCaptain() + "\n";
             TeamInfo.Text += "Zajęte miejsce :"+ team.getPlace().ToString()+"\n";
             TeamInfo.Text += "Wygranych spotkań :" + team.getWin().ToString() + "\n";
             TeamInfo.Text += "Przegranych spotkań :" + team.getLost().ToString() + "\n";

@@ -1,0 +1,30 @@
+Nazwa turnieju: TurniejSiatkówka
+Nazwa drużyny: Olympiacos
+Kapitan:Kapitan 4
+Zajęte miejsce :1
+Wygranych spotkań :5
+Przegranych spotkań :1
+
+Nazwa drużyny: Modena Volley
+Kapitan:Kapitan 1
+Zajęte miejsce :2
+Wygranych spotkań :3
+Przegranych spotkań :3
+
+Nazwa drużyny: CSKA Moscow
+Kapitan:Kapitan 2
+Zajęte miejsce :3
+Wygranych spotkań :3
+Przegranych spotkań :2
+
+Nazwa drużyny: Dynamo Moscow
+Kapitan:Kapitan 3
+Zajęte miejsce :4
+Wygranych spotkań :2
+Przegranych spotkań :3
+
+Nazwa drużyny: Pallavolo Parma
+Kapitan:Kapitan 5
+Zajęte miejsce :5
+Wygranych spotkań :0
+Przegranych spotkań :4
