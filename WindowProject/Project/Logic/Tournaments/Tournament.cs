@@ -52,6 +52,15 @@ namespace Project.Logic.Tournaments
             }
             return result;
         }
+        public JudgeDisplay[] getJudgeList()
+        {
+            JudgeDisplay[] toSend = new JudgeDisplay[judges.Count];
+            for (int i = 0; i < judges.Count; i++)
+            {
+                toSend[i] = new JudgeDisplay(judges[i]);
+            }
+            return toSend;
+        }
         public string[] getTeams()
         {
             string[] result = new string[teams.Count];

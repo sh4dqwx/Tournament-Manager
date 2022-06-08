@@ -80,6 +80,9 @@ namespace Project.Interface
             confirmButton.Visibility = Visibility.Hidden;
             judgeGrid.Visibility = Visibility.Hidden;
             secondaryJudgesGrid.Visibility = Visibility.Hidden;
+            judgeComboBox.SelectedIndex = -1;
+            secondaryJudge1ComboBox.SelectedIndex = -1;
+            secondaryJudge2ComboBox.SelectedIndex = -1;
         }
         private void showElimination()
         {
@@ -111,7 +114,10 @@ namespace Project.Interface
         public void loadTournament(Tournament tournament)
         {
             this.tournament = tournament;
-            switch(tournament.getState())
+            judgeComboBox.ItemsSource = tournament.getJudgeList();
+            secondaryJudge1ComboBox.ItemsSource = tournament.getJudgeList();
+            secondaryJudge2ComboBox.ItemsSource = tournament.getJudgeList();
+            switch (tournament.getState())
             {
                 case 1:
                     tournament.prepareElimination();

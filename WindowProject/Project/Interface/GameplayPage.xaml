@@ -24,7 +24,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
-                <Grid Margin="0,20,0,0">
+                <Grid Margin="0,20,0,5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -33,9 +33,6 @@
                         <RowDefinition/>
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="20"/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Content="Drużyna 1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Constantia"/>
                     <Label Grid.Row="0" Grid.Column="1" Content="Drużyna 2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Constantia"/>
@@ -50,7 +47,20 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Sędzia:" HorizontalAlignment="Center" FontSize="16" Margin="0,0,0,5"/>
-                    <ComboBox Grid.Column="1" Margin="0,0,0,5"/>
+                    <ComboBox Grid.Column="1" x:Name="judgeComboBox" ItemsSource="{Binding}" Margin="0,0,0,5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Name}" Margin="0,0,5,0"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Surname}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </Grid>
                 <Grid x:Name="secondaryJudgesGrid" Margin="0,0,0,5">
                     <Grid.ColumnDefinitions>
@@ -62,9 +72,35 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" Text="Sędzia pomocniczy 1:" HorizontalAlignment="Center" FontSize="16" Margin="0,0,0,5"/>
-                    <ComboBox Grid.Row="0" Grid.Column="1" Margin="0,0,0,5"/>
+                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="secondaryJudge1ComboBox" Margin="0,0,0,5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Name}" Margin="0,0,5,0"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Surname}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Sędzia pomocniczy 2:" HorizontalAlignment="Center" FontSize="16" Margin="0,0,0,5"/>
-                    <ComboBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,5"/>
+                    <ComboBox Grid.Row="1" Grid.Column="1" x:Name="secondaryJudge2ComboBox" Margin="0,0,0,5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Name}" Margin="0,0,5,0"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Surname}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </Grid>
                 <Button x:Name="confirmButton" Content="Zatwierdź mecz" HorizontalAlignment="Center" Height="24" Width="150" Background="#FFCCE6FF" Click="Confirm_Button" Margin="0,0,0,30"/>
                 <Button Content="Wylosuj" HorizontalAlignment="Center" Height="24" Width="150" Background="#FFCCE6FF" Click="RandomScore_Button" Margin="0,0,0,10"/>
