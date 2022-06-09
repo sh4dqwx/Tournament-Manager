@@ -41,15 +41,20 @@ namespace Project.Interface
             radioFirst.Visibility = Visibility.Visible;
             radioSecond.Visibility = Visibility.Visible;
             confirmButton.Visibility = Visibility.Visible;
-            if (tournament is Volleyball)
-            {
-                judgeGrid.Visibility = Visibility.Visible;
-                secondaryJudgesGrid.Visibility = Visibility.Visible;
-            }
-            else judgeGrid.Visibility = Visibility.Visible;
 
-            if (isFinished) setFinishedGame();
-            else setNotFinishedGame();
+            if (tournament is Volleyball) secondaryJudgesGrid.Visibility = Visibility.Visible;
+            judgeGrid.Visibility = Visibility.Visible;
+
+            if (isFinished)
+            {
+                setFinishedGame();
+                setChosenJudges();
+            }
+            else
+            {
+                setNotFinishedGame();
+                setNotChosenJudges();
+            }
         }
         private void setNotFinishedGame()
         {
@@ -59,9 +64,6 @@ namespace Project.Interface
             radioSecond.Focusable = true;
             radioFirst.IsHitTestVisible = true;
             radioSecond.IsHitTestVisible = true;
-            judgeComboBox.ItemsSource = tournament.getJudgeList();
-            secondaryJudge1ComboBox.ItemsSource = tournament.getJudgeList();
-            secondaryJudge2ComboBox.ItemsSource = tournament.getJudgeList();
             confirmButton.IsEnabled = true;
         }
         private void setFinishedGame()
@@ -72,10 +74,40 @@ namespace Project.Interface
             radioSecond.Focusable = false;
             radioFirst.IsHitTestVisible = false;
             radioSecond.IsHitTestVisible = false;
-            judgeComboBox.Items.Add(new JudgeDisplay(selectedGame.getMainJudge()));
+            confirmButton.IsEnabled = false;
+        }
+        private void setNotChosenJudges()
+        {
+            judgeComboBox.ItemsSource = tournament.getJudgeList();
+            judgeComboBox.IsEnabled = true;
+
+            secondaryJudge1ComboBox.ItemsSource = tournament.getJudgeList();
+            secondaryJudge1ComboBox.IsEnabled = true;
+
+            secondaryJudge2ComboBox.ItemsSource = tournament.getJudgeList();
+            secondaryJudge2ComboBox.IsEnabled = true;
+        }
+        private void setChosenJudges()
+        {
+            JudgeDisplay[] mainJudge = new JudgeDisplay[1];
+            mainJudge[0] = new JudgeDisplay(selectedGame.getMainJudge());
+            judgeComboBox.ItemsSource = mainJudge;
             judgeComboBox.SelectedIndex = 0;
             judgeComboBox.IsEnabled = false;
-            confirmButton.IsEnabled = false;
+
+            if (selectedGame.getSecondaryJudge1() is null) return;
+
+            JudgeDisplay[] secondaryJudge1 = new JudgeDisplay[1];
+            secondaryJudge1[0] = new JudgeDisplay(selectedGame.getSecondaryJudge1());
+            secondaryJudge1ComboBox.ItemsSource = secondaryJudge1;
+            secondaryJudge1ComboBox.SelectedIndex = 0;
+            secondaryJudge1ComboBox.IsEnabled = false;
+
+            JudgeDisplay[] secondaryJudge2 = new JudgeDisplay[1];
+            secondaryJudge2[0] = new JudgeDisplay(selectedGame.getSecondaryJudge2());
+            secondaryJudge2ComboBox.ItemsSource = secondaryJudge2;
+            secondaryJudge2ComboBox.SelectedIndex = 0;
+            secondaryJudge2ComboBox.IsEnabled = false;
         }
         private void hideGame()
         {
@@ -149,7 +181,8 @@ namespace Project.Interface
             if (!isJudgeChosen()) return;
             if (radioFirst.IsChecked == true) selectedGame.playManual(1);
             else selectedGame.playManual(2);
-            selectedGame.setJudge(tournament.getJudge(judgeComboBox.SelectedIndex));
+            if (tournament is Volleyball) selectedGame.setJudges(tournament.getJudge(judgeComboBox.SelectedIndex), tournament.getJudge(secondaryJudge1ComboBox.SelectedIndex), tournament.getJudge(secondaryJudge2ComboBox.SelectedIndex));
+            else selectedGame.setJudges(tournament.getJudge(judgeComboBox.SelectedIndex));
             refreshList();
             hideGame();
         }

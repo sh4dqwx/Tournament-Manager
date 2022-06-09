@@ -6,7 +6,7 @@ namespace Project.Logic.Registrations
     public class Game
     {
         private Team firstTeam, secondTeam, winner, loser;
-        private Judge mainJudge;
+        private Judge mainJudge, secondaryJudge1, secondaryJudge2;
         private Random random;
 
         public Game(Team firstTeam, Team secondTeam, Random random)
@@ -32,13 +32,29 @@ namespace Project.Logic.Registrations
         {
             return loser;
         }
-        public void setJudge(Judge j)
+        public void setJudges(Judge j)
         {
             mainJudge = j;
+            secondaryJudge1 = null;
+            secondaryJudge2 = null;
+        }
+        public void setJudges(Judge j1, Judge j2, Judge j3)
+        {
+            mainJudge = j1;
+            secondaryJudge1 = j2;
+            secondaryJudge2 = j3;
         }
         public Judge getMainJudge()
         {
             return mainJudge;
+        }
+        public Judge getSecondaryJudge1()
+        {
+            return secondaryJudge1;
+        }
+        public Judge getSecondaryJudge2()
+        {
+            return secondaryJudge2;
         }
 
         public void playManual(int chosen)
