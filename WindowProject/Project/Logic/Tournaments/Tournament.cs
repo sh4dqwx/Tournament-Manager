@@ -43,7 +43,11 @@ namespace Project.Logic.Tournaments
             judges.Remove(j);
         }
 
-        public string[] getJudges()
+        public Judge getJudge(int i)
+        {
+            return judges[i];
+        }
+        public string[] getJudgeString()
         {
             string[] result = new string[judges.Count];
             for (int i = 0; i < result.Length; i++)
