@@ -58,12 +58,12 @@ namespace Project.Logic.Tournaments
         }
         public JudgeDisplay[] getJudgeList()
         {
-            JudgeDisplay[] toSend = new JudgeDisplay[judges.Count];
-            for (int i = 0; i < judges.Count; i++)
+            JudgeDisplay[] result = new JudgeDisplay[judges.Count()];
+            for(int i = 0; i < result.Length; i++)
             {
-                toSend[i] = new JudgeDisplay(judges[i]);
+                result[i] = new JudgeDisplay(getJudge(i));
             }
-            return toSend;
+            return result;
         }
         public string[] getTeams()
         {
@@ -100,11 +100,16 @@ namespace Project.Logic.Tournaments
         {
             return "";
         }
-        public void playRandom()
+
+        public virtual void playRandom()
         {
             foreach (Game game in games)
             {
-                if (game.getWinner() is null) game.playRandom();
+                if (game.getWinner() is null)
+                {
+                    game.playRandom();
+                    game.setJudges(judges[random.Next(judges.Count)]);
+                }
             }
         }
         public bool isAllPlayed()

@@ -15,7 +15,17 @@ namespace Project.Logic.Tournaments
         {
             return "/Backgrounds/volleyball.png";
         }
-
+        public override void playRandom()
+        {
+            foreach (Game game in games)
+            {
+                if (game.getWinner() is null)
+                {
+                    game.playRandom();
+                    game.setJudges(judges[random.Next(judges.Count)], judges[random.Next(judges.Count)], judges[random.Next(judges.Count)]);
+                }
+            }
+        }
         public override bool Equals(object obj)
         {
             if (!(obj is Volleyball)) return false;
