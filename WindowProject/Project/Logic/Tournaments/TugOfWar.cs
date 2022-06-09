@@ -11,6 +11,10 @@ namespace Project.Logic.Tournaments
         {
             return "Przeciąganie liny";
         }
+        public override string getBackground()
+        {
+            return "/Backgrounds/tug_of_war.png";
+        }
 
         public override bool Equals(object obj)
         {

@@ -43,12 +43,25 @@ namespace Project.Logic.Tournaments
             judges.Remove(j);
         }
 
-        public string[] getJudges()
+        public Judge getJudge(int i)
+        {
+            return judges[i];
+        }
+        public string[] getJudgeString()
         {
             string[] result = new string[judges.Count];
             for (int i = 0; i < result.Length; i++)
             {
                 result[i] = judges[i].getName() + " " + judges[i].getSurname();
+            }
+            return result;
+        }
+        public JudgeDisplay[] getJudgeList()
+        {
+            JudgeDisplay[] result = new JudgeDisplay[judges.Count()];
+            for(int i = 0; i < result.Length; i++)
+            {
+                result[i] = new JudgeDisplay(getJudge(i));
             }
             return result;
         }
@@ -87,11 +100,20 @@ namespace Project.Logic.Tournaments
         {
             return games[i];
         }
-        public void playRandom()
+        public virtual string getBackground()
+        {
+            return "";
+        }
+
+        public virtual void playRandom()
         {
             foreach (Game game in games)
             {
-                if (game.getWinner() is null) game.playRandom();
+                if (game.getWinner() is null)
+                {
+                    game.playRandom();
+                    game.setJudges(judges[random.Next(judges.Count)]);
+                }
             }
         }
         public bool isAllPlayed()

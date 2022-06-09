@@ -39,7 +39,7 @@ namespace Project.Interface
             removeJudgeName.Text = "";
             removeJudgeSurname.Text = "";
             string names = "";
-            string[] judges = tournament.getJudges();
+            string[] judges = tournament.getJudgeString();
             for(int i = 0; i < judges.Length; i++)
             {
                 names+=judges[i]+"\n";

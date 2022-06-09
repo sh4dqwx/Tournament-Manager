@@ -4,8 +4,8 @@ namespace Project.Logic.Registrations
 {
     public class Judge : Person
     {
-        public Judge(string name, string surname) : base(name, surname)
-        { }
+        public Judge(string name, string surname) : base(name, surname) { }
+
         public override bool Equals(object obj)
         {
             if (!(obj is Judge)) return false;

@@ -41,10 +41,22 @@ namespace Project.Interface
             radioFirst.Visibility = Visibility.Visible;
             radioSecond.Visibility = Visibility.Visible;
             confirmButton.Visibility = Visibility.Visible;
-            if(isFinished) showFinishedGame();
-            else showNotFinishedGame();
+
+            if (tournament is Volleyball) secondaryJudgesGrid.Visibility = Visibility.Visible;
+            judgeGrid.Visibility = Visibility.Visible;
+
+            if (isFinished)
+            {
+                setFinishedGame();
+                setChosenJudges();
+            }
+            else
+            {
+                setNotFinishedGame();
+                setNotChosenJudges();
+            }
         }
-        private void showNotFinishedGame()
+        private void setNotFinishedGame()
         {
             radioFirst.IsChecked = false;
             radioSecond.IsChecked = false;
@@ -54,7 +66,7 @@ namespace Project.Interface
             radioSecond.IsHitTestVisible = true;
             confirmButton.IsEnabled = true;
         }
-        private void showFinishedGame()
+        private void setFinishedGame()
         {
             if(selectedGame.getFirstTeam().Equals(selectedGame.getWinner())) radioFirst.IsChecked = true;
             else radioSecond.IsChecked = true;
@@ -64,6 +76,39 @@ namespace Project.Interface
             radioSecond.IsHitTestVisible = false;
             confirmButton.IsEnabled = false;
         }
+        private void setNotChosenJudges()
+        {
+            judgeComboBox.ItemsSource = tournament.getJudgeList();
+            judgeComboBox.IsEnabled = true;
+
+            secondaryJudge1ComboBox.ItemsSource = tournament.getJudgeList();
+            secondaryJudge1ComboBox.IsEnabled = true;
+
+            secondaryJudge2ComboBox.ItemsSource = tournament.getJudgeList();
+            secondaryJudge2ComboBox.IsEnabled = true;
+        }
+        private void setChosenJudges()
+        {
+            JudgeDisplay[] mainJudge = new JudgeDisplay[1];
+            mainJudge[0] = new JudgeDisplay(selectedGame.getMainJudge());
+            judgeComboBox.ItemsSource = mainJudge;
+            judgeComboBox.SelectedIndex = 0;
+            judgeComboBox.IsEnabled = false;
+
+            if (selectedGame.getSecondaryJudge1() is null) return;
+
+            JudgeDisplay[] secondaryJudge1 = new JudgeDisplay[1];
+            secondaryJudge1[0] = new JudgeDisplay(selectedGame.getSecondaryJudge1());
+            secondaryJudge1ComboBox.ItemsSource = secondaryJudge1;
+            secondaryJudge1ComboBox.SelectedIndex = 0;
+            secondaryJudge1ComboBox.IsEnabled = false;
+
+            JudgeDisplay[] secondaryJudge2 = new JudgeDisplay[1];
+            secondaryJudge2[0] = new JudgeDisplay(selectedGame.getSecondaryJudge2());
+            secondaryJudge2ComboBox.ItemsSource = secondaryJudge2;
+            secondaryJudge2ComboBox.SelectedIndex = 0;
+            secondaryJudge2ComboBox.IsEnabled = false;
+        }
         private void hideGame()
         {
             selectedFirst.Content = "";
@@ -71,6 +116,11 @@ namespace Project.Interface
             radioFirst.Visibility = Visibility.Hidden;
             radioSecond.Visibility = Visibility.Hidden;
             confirmButton.Visibility = Visibility.Hidden;
+            judgeGrid.Visibility = Visibility.Hidden;
+            secondaryJudgesGrid.Visibility = Visibility.Hidden;
+            judgeComboBox.ItemsSource = null;
+            secondaryJudge1ComboBox.ItemsSource = null;
+            secondaryJudge2ComboBox.ItemsSource = null;
         }
         private void showElimination()
         {
@@ -90,7 +140,12 @@ namespace Project.Interface
             refreshList();
             hideGame();
         }
-
+        private bool isJudgeChosen()
+        {
+            if (tournament is Volleyball && judgeComboBox.SelectedIndex == -1 && secondaryJudge1ComboBox.SelectedIndex == -1 && secondaryJudge2ComboBox.SelectedIndex == -1) return false;
+            if (judgeComboBox.SelectedIndex == -1) return false;
+            return true;
+        }
         public GameplayPage(MenuPage menu, Results resultsPage)
         {
             InitializeComponent();
@@ -102,7 +157,7 @@ namespace Project.Interface
         public void loadTournament(Tournament tournament)
         {
             this.tournament = tournament;
-            switch(tournament.getState())
+            switch (tournament.getState())
             {
                 case 1:
                     tournament.prepareElimination();
@@ -123,9 +178,11 @@ namespace Project.Interface
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
             if (radioFirst.IsChecked == false && radioSecond.IsChecked == false) return;
-            if (selectedGame is null) return;
+            if (!isJudgeChosen()) return;
             if (radioFirst.IsChecked == true) selectedGame.playManual(1);
             else selectedGame.playManual(2);
+            if (tournament is Volleyball) selectedGame.setJudges(tournament.getJudge(judgeComboBox.SelectedIndex), tournament.getJudge(secondaryJudge1ComboBox.SelectedIndex), tournament.getJudge(secondaryJudge2ComboBox.SelectedIndex));
+            else selectedGame.setJudges(tournament.getJudge(judgeComboBox.SelectedIndex));
             refreshList();
             hideGame();
         }
