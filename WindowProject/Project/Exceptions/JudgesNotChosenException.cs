@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Project.Exceptions
 {
-    public class EmptyStringException : Exception
+    public class JudgesNotChosenException : Exception
     {
-        public EmptyStringException(string msg): base(msg) { }
+        public JudgesNotChosenException(string msg): base(msg) { }
     }
 }

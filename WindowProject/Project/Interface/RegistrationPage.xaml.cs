@@ -55,12 +55,12 @@ namespace Project.Interface
             }
             catch (NotEnoughTeamsException ex)
             {
-                MessageBoxResult error = MessageBox.Show(ex.getMessage(), "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             catch (NotEnoughJudgesException ex)
             {
-                MessageBoxResult error = MessageBox.Show(ex.getMessage(), "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }   
         }

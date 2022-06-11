@@ -56,12 +56,12 @@ namespace Project.Interface
         {
             try
             {
-                if (addJudgeName.Text == "" || addJudgeSurname.Text == "") throw new EmptyStringException();
+                if (addJudgeName.Text == "" || addJudgeSurname.Text == "") throw new EmptyStringException("Podaj dane sędziego");
                 tournament.addJudge(new Judge(addJudgeName.Text, addJudgeSurname.Text));
             }
-            catch(EmptyStringException)
+            catch(EmptyStringException ex)
             {
-                MessageBoxResult error = MessageBox.Show("Podaj dane sędziego", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
                 refreshJudges();
                 return;
             }
@@ -78,12 +78,12 @@ namespace Project.Interface
         {
             try
             {
-                if (removeJudgeName.Text == "" || removeJudgeSurname.Text == "") throw new EmptyStringException();
+                if (removeJudgeName.Text == "" || removeJudgeSurname.Text == "") throw new EmptyStringException("Podaj dane sędziego");
                 tournament.removeJudge(new Judge(removeJudgeName.Text, removeJudgeSurname.Text));
             }
-            catch(EmptyStringException)
+            catch(EmptyStringException ex)
             {
-                MessageBoxResult error = MessageBox.Show("Podaj dane sędziego", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
                 refreshJudges();
                 return;
             }

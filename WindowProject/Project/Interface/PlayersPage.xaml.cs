@@ -66,12 +66,12 @@ namespace Project.Interface
         {
             try
             {
-                if (isEmpty()) throw new EmptyStringException();
+                if (isEmpty()) throw new EmptyStringException("Podaj dane zawodników");
                 NavigationService.Navigate(_team);
             }
-            catch(EmptyStringException)
+            catch(EmptyStringException ex)
             {
-                MessageBoxResult error = MessageBox.Show("Podaj dane zawodników", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
         }

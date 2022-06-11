@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Project.Exceptions
 {
-    public class EmptyStringException : Exception
+    public class TeamNotCheckedException : Exception
     {
-        public EmptyStringException(string msg): base(msg) { }
+        public TeamNotCheckedException(string msg) : base(msg) { }
     }
 }
