@@ -30,7 +30,10 @@ namespace Project.Interface
         private void refreshList()
         {
             gamesList.ItemsSource = tournament.getGameList();
-            if(tournament.getState() == 4 && tournament.isAllPlayed()) showResultsButton.IsEnabled = true;
+        }
+        private void refreshButtons()
+        {
+            if (tournament.getState() == 4 && tournament.isAllPlayed()) showResultsButton.IsEnabled = true;
             else if (tournament.isAllPlayed()) nextButton.IsEnabled = true;
             else nextButton.IsEnabled = false;
         }
@@ -126,18 +129,21 @@ namespace Project.Interface
         {
             gameplayPhase.Content = "Eliminacje";
             refreshList();
+            refreshButtons();
             hideGame();
         }
         private void showSemiFinal()
         {
             gameplayPhase.Content = "Półfinał";
             refreshList();
+            refreshButtons();
             hideGame();
         }
         private void showFinal()
         {
             gameplayPhase.Content = "Finał";
             refreshList();
+            refreshButtons();
             hideGame();
         }
         private bool isJudgeChosen()
@@ -177,19 +183,34 @@ namespace Project.Interface
 
         private void Confirm_Button(object sender, RoutedEventArgs e)
         {
-            if (radioFirst.IsChecked == false && radioSecond.IsChecked == false) return;
-            if (!isJudgeChosen()) return;
-            if (radioFirst.IsChecked == true) selectedGame.playManual(1);
-            else selectedGame.playManual(2);
-            if (tournament is Volleyball) selectedGame.setJudges(tournament.getJudge(judgeComboBox.SelectedIndex), tournament.getJudge(secondaryJudge1ComboBox.SelectedIndex), tournament.getJudge(secondaryJudge2ComboBox.SelectedIndex));
-            else selectedGame.setJudges(tournament.getJudge(judgeComboBox.SelectedIndex));
-            refreshList();
-            hideGame();
+            try
+            {
+                if (radioFirst.IsChecked == false && radioSecond.IsChecked == false) throw new TeamNotCheckedException("Wybierz wygraną drużynę");
+                if (!isJudgeChosen()) throw new JudgesNotChosenException("Wybierz sędziów");
+                if (radioFirst.IsChecked == true) selectedGame.playManual(1);
+                else selectedGame.playManual(2);
+                if (tournament is Volleyball) selectedGame.setJudges(tournament.getJudge(judgeComboBox.SelectedIndex), tournament.getJudge(secondaryJudge1ComboBox.SelectedIndex), tournament.getJudge(secondaryJudge2ComboBox.SelectedIndex));
+                else selectedGame.setJudges(tournament.getJudge(judgeComboBox.SelectedIndex));
+                refreshList();
+                refreshButtons();
+                hideGame();
+            }
+            catch(TeamNotCheckedException ex)
+            {
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            catch(JudgesNotChosenException ex)
+            {
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
         private void RandomScore_Button(object sender, RoutedEventArgs e)
         {
             tournament.playRandom();
             refreshList();
+            refreshButtons();
             hideGame();
         }
         private void Next_Button(object sender, RoutedEventArgs e)
