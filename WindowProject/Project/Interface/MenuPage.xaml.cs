@@ -54,12 +54,13 @@ namespace Project.Interface
         {
             try
             {
+                if(addTournamentName.Text.Length == 0) throw new EmptyStringException("Podaj nazwę turnieju");
                 program.addTournament(program.newTournament(addTournamentName.Text, addTournamentCategory.SelectedItem.ToString().Remove(0,38)));
                 refresh();
             }
-            catch(EmptyStringException)
+            catch(EmptyStringException ex)
             {
-                MessageBoxResult error = MessageBox.Show("Podaj nazwę turnieju", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
                 refresh();
                 return;
             }
@@ -74,12 +75,13 @@ namespace Project.Interface
         {
             try
             {
+                if (removeTournamentName.Text.Length == 0) throw new EmptyStringException("Podaj nazwę turnieju");
                 program.removeTournament(program.newTournament(removeTournamentName.Text, removeTournamentCategory.SelectedItem.ToString().Remove(0,38)));
                 refresh();
             }
-            catch (EmptyStringException)
+            catch (EmptyStringException ex)
             {
-                MessageBoxResult error = MessageBox.Show("Podaj nazwę turnieju", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
                 refresh();
                 return;
             }

@@ -23,7 +23,6 @@ namespace Project.Logic
         }
         public Tournament newTournament(string TName, string TCategory)
         {
-            if (TName.Length == 0) throw new EmptyStringException();
             Tournament tmp = null;
             switch (TCategory)
             {

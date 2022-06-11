@@ -64,13 +64,13 @@ namespace Project.Interface
         {
             try
             {
-                if (addTeamName.Text.Length == 0) throw new EmptyStringException();
+                if (addTeamName.Text.Length == 0) throw new EmptyStringException("Podaj nazwę drużyny");
                 Player[] players = playersPage.getPlayers();
                 tournament.addTeam(new Team(players, addTeamName.Text));
             }
-            catch(EmptyStringException)
+            catch(EmptyStringException ex)
             {
-                MessageBoxResult error = MessageBox.Show("Podaj nazwę drużyny", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
                 refreshTeams();
                 return;
             }
@@ -89,12 +89,12 @@ namespace Project.Interface
         {
             try
             {
-                if (removeTeamName.Text.Length == 0) throw new EmptyStringException();
+                if (removeTeamName.Text.Length == 0) throw new EmptyStringException("Podaj nazwę drużyny");
                 tournament.removeTeam(new Team(removeTeamName.Text));
             }
-            catch(EmptyStringException)
+            catch(EmptyStringException ex)
             {
-                MessageBoxResult error = MessageBox.Show("Podaj nazwę drużyny", "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBoxResult error = MessageBox.Show(ex.Message, "UWAGA", MessageBoxButton.OK, MessageBoxImage.Error);
                 refreshTeams();
                 return;
             }

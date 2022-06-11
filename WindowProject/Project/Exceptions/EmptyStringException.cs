@@ -8,6 +8,6 @@ namespace Project.Exceptions
 {
     public class EmptyStringException : Exception
     {
-        public EmptyStringException(): base() { }
+        public EmptyStringException(string msg): base(msg) { }
     }
 }
