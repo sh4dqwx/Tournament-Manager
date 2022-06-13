@@ -1,4 +1,20 @@
 Nazwa turnieju: TurniejSiatkówka
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+Nazwa drużyny: Modena Volley
+Kapitan:Kapitan 1
+Zajęte miejsce :1
+Wygranych spotkań :4
+Przegranych spotkań :2
+
+Nazwa drużyny: Olympiacos
+Kapitan:Kapitan 4
+Zajęte miejsce :2
+Wygranych spotkań :4
+=======
+>>>>>>> Stashed changes
 
 Nazwa drużyny: Olympiacos
 Kapitan:Kapitan 4
@@ -16,13 +32,20 @@ Nazwa drużyny: Modena Volley
 Kapitan:Kapitan 1
 Zajęte miejsce :3
 Wygranych spotkań :3
+>>>>>>> befe9bc4e485463b87c23bd1f5b7278828b062f4
 Przegranych spotkań :2
 
 Nazwa drużyny: Dynamo Moscow
 Kapitan:Kapitan 3
+Zajęte miejsce :3
+Wygranych spotkań :4
+Przegranych spotkań :1
+
+Nazwa drużyny: CSKA Moscow
+Kapitan:Kapitan 2
 Zajęte miejsce :4
-Wygranych spotkań :2
-Przegranych spotkań :3
+Wygranych spotkań :1
+Przegranych spotkań :4
 
 Nazwa drużyny: CSKA Moscow
 Kapitan:Kapitan 2
