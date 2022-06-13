@@ -1,0 +1,10 @@
+T,siusiak,Siatkówka
+t,ąąąąąąąąąąąąąąą,Ważny-Kapitan,Pierwszy-Gracz,Drugi-Gracz,Trzeci-Gracz,Czwarty-Gracz
+t,aaaaaaaaaaaaaaa,Ważny-Kapitan,Pierwszy-Gracz12,Drugi-Gracz2,Trzeci-Gracz22,Czwarty-Gracz2137
+t,@@@@@@@@@@@@@@@,@-@,@-@,@-@,@-@,*****-***
+t,uuuuuuuuuuuuuuu,Ważny-Kapitan,Pierwszy-Gracz,Drugi-Gracz,Trzeci-Gracz,Czwarty-Gracz
+t,konsantynopolFC,Ważny-Kapitan,Pierwszy-Gracz,Drugi-Gracz,Trzeci-Gracz,Czwarty-Gracz
+j,adam-ciwryj
+j,łysy-zbrazzers
+j,zenon-martyniuk
+j,bogudar-samosąd
