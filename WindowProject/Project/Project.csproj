@@ -9,13 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Backgrounds\cup.png" />
-    <None Remove="Backgrounds\dodgeball.png" />
-    <None Remove="Backgrounds\judge.png" />
-    <None Remove="Backgrounds\menu.png" />
-    <None Remove="Backgrounds\team.png" />
-    <None Remove="Backgrounds\tug_of_war.png" />
-    <None Remove="Backgrounds\volleyball.png" />
+    <None Remove="Backgrounds\cup.jpg" />
+    <None Remove="Backgrounds\dodgeball.jpg" />
+    <None Remove="Backgrounds\judge.jpg" />
+    <None Remove="Backgrounds\menu.jpg" />
+    <None Remove="Backgrounds\team.jpg" />
+    <None Remove="Backgrounds\tug_of_war.jpg" />
+    <None Remove="Backgrounds\volleyball.jpg" />
     <None Remove="gameFinished.png" />
   </ItemGroup>
 
@@ -28,13 +28,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Backgrounds\cup.png" />
-    <Resource Include="Backgrounds\dodgeball.png" />
-    <Resource Include="Backgrounds\judge.png" />
-    <Resource Include="Backgrounds\menu.png" />
-    <Resource Include="Backgrounds\team.png" />
-    <Resource Include="Backgrounds\tug_of_war.png" />
-    <Resource Include="Backgrounds\volleyball.png" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Backgrounds\cup.jpg" />
+    <Resource Include="Backgrounds\dodgeball.jpg" />
+    <Resource Include="Backgrounds\judge.jpg" />
+    <Resource Include="Backgrounds\menu.jpg" />
+    <Resource Include="Backgrounds\team.jpg" />
+    <Resource Include="Backgrounds\tug_of_war.jpg" />
+    <Resource Include="Backgrounds\volleyball.jpg" />
     <Resource Include="gameFinished.png" />
   </ItemGroup>
 
