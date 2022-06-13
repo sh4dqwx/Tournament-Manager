@@ -10,12 +10,9 @@
 
   <ItemGroup>
     <None Remove="Backgrounds\cup.jpg" />
-    <None Remove="Backgrounds\dodgeball.jpg" />
     <None Remove="Backgrounds\judge.jpg" />
     <None Remove="Backgrounds\menu.jpg" />
     <None Remove="Backgrounds\team.jpg" />
-    <None Remove="Backgrounds\tug_of_war.jpg" />
-    <None Remove="Backgrounds\volleyball.jpg" />
     <None Remove="gameFinished.png" />
   </ItemGroup>
 
@@ -33,12 +30,9 @@
 
   <ItemGroup>
     <Resource Include="Backgrounds\cup.jpg" />
-    <Resource Include="Backgrounds\dodgeball.jpg" />
     <Resource Include="Backgrounds\judge.jpg" />
     <Resource Include="Backgrounds\menu.jpg" />
     <Resource Include="Backgrounds\team.jpg" />
-    <Resource Include="Backgrounds\tug_of_war.jpg" />
-    <Resource Include="Backgrounds\volleyball.jpg" />
     <Resource Include="gameFinished.png" />
   </ItemGroup>
 
