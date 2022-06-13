@@ -100,10 +100,6 @@ namespace Project.Logic.Tournaments
         {
             return games[i];
         }
-        public virtual string getBackground()
-        {
-            return "";
-        }
 
         public virtual void playRandom()
         {
