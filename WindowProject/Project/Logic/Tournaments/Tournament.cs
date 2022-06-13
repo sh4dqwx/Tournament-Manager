@@ -157,16 +157,6 @@ namespace Project.Logic.Tournaments
             return state;
         }
 
-        public string showResults()
-        {
-            string result = "";
-            foreach (Team team in teams)
-            {
-                result += team.ToString();
-            }
-            return result;
-        }
-
         public void loadTeams(string[] dane)
         {
             List<Player> players = new List<Player>();
