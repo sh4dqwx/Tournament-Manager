@@ -1,0 +1,19 @@
+Karolczak Bartosz
+- strona główna MenuPage
+- strona z rozgrywkami GameplayPage
+- klasa Program, GameDisplay, TournamentDisplay, JudgeDisplay
+- wyjątki
+
+Modzelewski Jakub Franciszek
+- tła
+- ikona programu
+- strona do tworzenia drużyn TeamPage
+- strona do tworzenia sędziów JudgePage
+- strona do dodawania zawodników PlayersPage
+- strona z wynikami ResultsPage
+- klasa ResultsDisplay
+ 
+Niewierowski Paweł
+- stworzył projekt w WPF
+- strona do rejestracji RegistrationPage
+- klasa Tournament, TugOfWar, Volleyball, Dodgeball, Game, Judge, Person, Player, Team

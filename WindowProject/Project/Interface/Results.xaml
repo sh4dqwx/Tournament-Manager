@@ -9,7 +9,7 @@
       Title="GameplayPage">
 
     <Page.Background>
-        <ImageBrush ImageSource="/Backgrounds/menu.jpg" Stretch="Fill"/>
+        <ImageBrush ImageSource="/Backgrounds/cup.jpg" Stretch="Fill"/>
     </Page.Background>
 
     <Grid>
