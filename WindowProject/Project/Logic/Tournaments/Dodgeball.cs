@@ -11,10 +11,6 @@ namespace Project.Logic.Tournaments
         {
             return "Dwa ognie";
         }
-        public override string getBackground()
-        {
-            return "/Backgrounds/dodgeball.png";
-        }
 
         public override bool Equals(object obj)
         {

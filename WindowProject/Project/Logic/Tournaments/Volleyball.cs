@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Project.Logic.Registrations;
 
 namespace Project.Logic.Tournaments
@@ -11,10 +12,6 @@ namespace Project.Logic.Tournaments
         {
             return "Siatkówka";
         }
-        public override string getBackground()
-        {
-            return "/Backgrounds/volleyball.png";
-        }
         public override void playRandom()
         {
             foreach (Game game in games)
@@ -22,7 +19,15 @@ namespace Project.Logic.Tournaments
                 if (game.getWinner() is null)
                 {
                     game.playRandom();
-                    game.setJudges(judges[random.Next(judges.Count)], judges[random.Next(judges.Count)], judges[random.Next(judges.Count)]);
+                    List<Judge> judgesToChoose = new List<Judge>(judges);
+                    List<Judge> judgesToSend = new List<Judge>();
+                    for(int i=0; i<3; i++)
+                    {
+                        int k = random.Next(judgesToChoose.Count);
+                        judgesToSend.Add(judgesToChoose[k]);
+                        judgesToChoose.Remove(judgesToChoose[k]);
+                    }
+                    game.setJudges(judgesToSend[0], judgesToSend[1], judgesToSend[2]);
                 }
             }
         }
